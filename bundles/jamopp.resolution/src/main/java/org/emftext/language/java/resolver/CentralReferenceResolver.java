@@ -106,10 +106,11 @@ public class CentralReferenceResolver {
 		
 		if (mapping instanceof IJavaElementMapping<?>) {
 			target = ((IJavaElementMapping<? extends EObject>) mapping).getTarget();
-		} else if (mapping instanceof IJavaURIMapping) {
-			target = EcoreUtil.copy(proxy);
-			URI uri = ((IJavaURIMapping) mapping).getTarget();
-			((InternalEObject) target).eSetProxyURI(uri);
+			// TODO
+		// } else if (mapping instanceof IJavaURIMapping) {
+		// 	target = EcoreUtil.copy(proxy);
+		// 	URI uri = ((IJavaURIMapping) mapping).getTarget();
+		// 	((InternalEObject) target).eSetProxyURI(uri);
 		}
 		try {
 			// If target is in another proxy and list is "unique", add() will try to resolve

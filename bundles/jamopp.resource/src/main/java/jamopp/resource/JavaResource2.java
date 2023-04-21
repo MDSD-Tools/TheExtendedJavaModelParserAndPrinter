@@ -199,28 +199,30 @@ public class JavaResource2 extends XMIResourceImpl {
 
 	private EObject getResultElement(IJavaContextDependentURIFragment uriFragment,
 			IJavaReferenceMapping<? extends EObject> mapping, EObject proxy, final String errorMessage) {
-		if (mapping instanceof IJavaURIMapping) {
-			URI uri = ((IJavaURIMapping) mapping).getTarget();
-			if (uri != null) {
-				EObject result = null;
-				try {
-					result = this.getResourceSet().getEObject(uri, true);
-				} catch (Exception e) {
-					// We can catch exceptions here because EMF will try to resolve again and
-					// handles the exception.
-				}
-				if (result == null || result.eIsProxy()) {
-					// Unable to resolve: attach error.
-					if (errorMessage == null) {
-						assert false;
-					} else {
-						getErrors().add(new SimpleDiagnostic(errorMessage, proxy));
-					}
-				}
-				return result;
-			}
-			return null;
-		} else if (mapping instanceof IJavaElementMapping<?>) {
+				// TODO
+		// if (mapping instanceof IJavaURIMapping) {
+		// 	URI uri = ((IJavaURIMapping) mapping).getTarget();
+		// 	if (uri != null) {
+		// 		EObject result = null;
+		// 		try {
+		// 			result = this.getResourceSet().getEObject(uri, true);
+		// 		} catch (Exception e) {
+		// 			// We can catch exceptions here because EMF will try to resolve again and
+		// 			// handles the exception.
+		// 		}
+		// 		if (result == null || result.eIsProxy()) {
+		// 			// Unable to resolve: attach error.
+		// 			if (errorMessage == null) {
+		// 				assert false;
+		// 			} else {
+		// 				getErrors().add(new SimpleDiagnostic(errorMessage, proxy));
+		// 			}
+		// 		}
+		// 		return result;
+		// 	}
+		// 	return null;
+		// } else
+		if (mapping instanceof IJavaElementMapping<?>) {
 			EObject element = ((IJavaElementMapping<? extends EObject>) mapping).getTarget();
 			EReference reference = uriFragment.getReference();
 			EReference oppositeReference = uriFragment.getReference().getEOpposite();
