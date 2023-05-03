@@ -2,6 +2,7 @@ package org.emftext.language.java.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.io.File;
 import java.nio.file.Paths;
 
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -25,7 +26,7 @@ public class JaMoPPParserAPITest extends AbstractJaMoPPTests {
 	
 	private JaMoPPJDTParser parser;
 	private static final String JAVA_FILE_EXTENSION = ".java";
-	protected static final String TEST_INPUT_FOLDER = "src-input";
+	protected static final String TEST_INPUT_FOLDER = "src" + File.separator + "test" + File.separator + "resources" + File.separator + "input";
 	
 	@BeforeEach
 	public void setUp() {
@@ -60,8 +61,8 @@ public class JaMoPPParserAPITest extends AbstractJaMoPPTests {
 	@Disabled
 	public void testMethodOverwriting()throws Exception {
 		//System.out.print("setup");
-		String filenameParent = "scr-input/ClassB" + JAVA_FILE_EXTENSION;
-		String filenameChild = "scr-input/ClassA" + JAVA_FILE_EXTENSION;
+		String filenameParent = "src" + File.separator + "test" + File.separator + "resources" + File.separator + "input" + File.separator + "ClassB" + JAVA_FILE_EXTENSION;
+		String filenameChild = "src" + File.separator + "test" + File.separator + "resources" + File.separator + "input" + File.separator + "ClassA" + JAVA_FILE_EXTENSION;
 		CompilationUnit cu = (CompilationUnit) parseResource(filenameParent, filenameChild);
 		System.out.print("setup");
 		System.out.print(cu.getClassifiers().get(1).getName());
@@ -91,7 +92,7 @@ public class JaMoPPParserAPITest extends AbstractJaMoPPTests {
 	
 	@Disabled
 	public void testSrcSevenAndUp() {
-		ResourceSet set = parser.parseDirectory(Paths.get("src-sevenandup"));
+		ResourceSet set = parser.parseDirectory(Paths.get("src" + File.separator + "test" + File.separator + "resources" + File.separator + "sevenandup"));
 		this.assertModelValid(set);
 	}
 

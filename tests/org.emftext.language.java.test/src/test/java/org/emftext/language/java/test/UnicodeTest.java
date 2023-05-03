@@ -76,7 +76,7 @@ public class UnicodeTest extends AbstractJaMoPPTests {
 
 	@Override
 	protected String getTestInputFolder() {
-		return "src-input" + File.separator + "unicode";
+		return "src" + File.separator + "test" + File.separator + "resources" + File.separator + "input" + File.separator + "unicode";
 	}
 
 }

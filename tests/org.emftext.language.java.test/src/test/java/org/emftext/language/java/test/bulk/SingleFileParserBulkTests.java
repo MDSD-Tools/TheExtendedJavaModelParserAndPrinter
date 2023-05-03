@@ -45,6 +45,7 @@ import jamopp.resource.JavaResource2;
 public class SingleFileParserBulkTests extends AbstractJaMoPPTests {
 	private static final Logger LOGGER = Logger.getLogger("jamopp."
 			+ SingleFileParserBulkTests.class.getSimpleName());
+	// TODO: Adjust path.
 	private static final String BASE_ZIP = "JaMoPP-BulkTest" + File.separator + "Tests" + File.separator
 		+ "org.emftext.language.java.test.bulk" + File.separator + "input" + File.separator;
 	private static final String END_ZIP = File.separator + "src.zip";

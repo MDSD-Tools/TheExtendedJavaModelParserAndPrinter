@@ -15,6 +15,7 @@ package org.emftext.language.java.test.performance;
 
 import static org.junit.jupiter.api.Assertions.fail;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -41,7 +42,7 @@ import jamopp.resource.JavaResource2;
 public class PerformanceTest extends AbstractJaMoPPTests {
 	private static final Logger LOGGER = Logger.getLogger("jamopp."
 			+ SingleFileParserBulkTests.class.getSimpleName());
-	private final String inputFolder = "TeaStore";
+	private final String inputFolder = "target" + File.separator + "src-bulk" + File.separator + "TeaStore";
 	private final Path parentOutput = Paths.get("output_performance");
 	
 	@Test

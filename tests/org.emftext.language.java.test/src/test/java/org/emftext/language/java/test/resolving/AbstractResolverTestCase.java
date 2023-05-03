@@ -40,7 +40,7 @@ import org.emftext.language.java.variables.LocalVariable;
  */
 public abstract class AbstractResolverTestCase extends AbstractJaMoPPTests {
 
-	protected static final String TEST_INPUT_FOLDER_RESOLVING = "src-input" + File.separator + "resolving" + File.separator;
+	protected static final String TEST_INPUT_FOLDER_RESOLVING = "src" + File.separator + "test" + File.separator + "resources" + File.separator + "input" + File.separator + "resolving" + File.separator;
 
 	protected Field assertIsField(Member member, String expectedName) {
 		assertType(member, Field.class);

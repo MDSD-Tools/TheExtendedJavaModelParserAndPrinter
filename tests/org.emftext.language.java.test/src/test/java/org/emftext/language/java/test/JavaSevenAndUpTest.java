@@ -74,7 +74,7 @@ import jamopp.options.ParserOptions;
 public class JavaSevenAndUpTest extends AbstractJaMoPPTests {
 	@Override
 	public String getTestInputFolder() {
-		return "src-sevenandup";
+		return "src" + File.separator + "test" + File.separator + "resources" + File.separator + "sevenandup";
 	}
 	
 	@Override

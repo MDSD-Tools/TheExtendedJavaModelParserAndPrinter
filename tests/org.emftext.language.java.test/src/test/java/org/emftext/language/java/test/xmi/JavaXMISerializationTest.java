@@ -47,8 +47,8 @@ import jamopp.parser.jdt.singlefile.JaMoPPJDTSingleFileParser;
 
 public class JavaXMISerializationTest extends AbstractJaMoPPTests {
 
-	protected static final String TEST_INPUT_FOLDER_NAME = "src-input";
-	protected static String TEST_OUTPUT_FOLDER_NAME = "output";
+	protected static final String TEST_INPUT_FOLDER_NAME = "src" + File.separator + "test" + File.separator + "resources" + File.separator + "input";
+	protected static String TEST_OUTPUT_FOLDER_NAME = "target" + File.separator + "tests" + File.separator + "output";
 	
 	@BeforeAll
 	public static void generalSetup() {

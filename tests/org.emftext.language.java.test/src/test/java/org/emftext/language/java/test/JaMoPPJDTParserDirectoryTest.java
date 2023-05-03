@@ -50,7 +50,7 @@ public class JaMoPPJDTParserDirectoryTest extends AbstractJaMoPPTests {
 	
 	@Test
 	public void testSrcInputDirectory() throws Exception {
-		ResourceSet set = parser.parseDirectory(Paths.get("src-input"));
+		ResourceSet set = parser.parseDirectory(Paths.get("src", "test", "resources", "input"));
 		this.assertModelValid(set);
 		this.testReprint(set);
 	}
@@ -58,7 +58,7 @@ public class JaMoPPJDTParserDirectoryTest extends AbstractJaMoPPTests {
 	@Test
 	@Disabled("JDT puts break statements into Blocks on the right side of a SwitchRule.")
 	public void testSrcSevenAndUp() throws Exception {
-		ResourceSet set = parser.parseDirectory(Paths.get("src-sevenandup"));
+		ResourceSet set = parser.parseDirectory(Paths.get("src", "test", "resources", "sevenandup"));
 		this.assertModelValid(set);
 		this.testReprint(set);
 	}

@@ -121,6 +121,6 @@ public class ClassFileParserTest extends AbstractJaMoPPTests {
 
 	@Override
 	protected String getTestInputFolder() {
-		return "src-input";
+		return "src" + File.separator + "test" + File.separator + "resources" + File.separator + "input";
 	}
 }

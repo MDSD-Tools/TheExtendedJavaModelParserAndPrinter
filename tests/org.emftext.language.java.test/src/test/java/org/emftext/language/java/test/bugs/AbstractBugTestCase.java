@@ -16,6 +16,8 @@
 
 package org.emftext.language.java.test.bugs;
 
+import java.io.File;
+
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.emftext.language.java.test.AbstractJaMoPPTests;
@@ -28,7 +30,7 @@ public abstract class AbstractBugTestCase extends AbstractJaMoPPTests {
 	
 	@Override
 	protected String getTestInputFolder() {
-		return "src-input";
+		return "src" + File.separator + "test" + File.separator + "resources" + File.separator + "input";
 	}
 	
 	protected ResourceSet createResourceSet() {

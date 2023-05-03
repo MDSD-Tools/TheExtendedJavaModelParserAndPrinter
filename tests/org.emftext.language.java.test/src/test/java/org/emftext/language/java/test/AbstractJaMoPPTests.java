@@ -57,6 +57,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.dom.AST;
 import org.eclipse.jdt.core.dom.ASTParser;
@@ -92,7 +93,7 @@ import jamopp.resource.JavaResource2Factory;
  */
 public abstract class AbstractJaMoPPTests {
 
-	protected static final String TEST_OUTPUT_FOLDER = "output";
+	protected static final String TEST_OUTPUT_FOLDER = "target" + File.separator + "tests" + File.separator + "output";
 
 	@BeforeAll
 	public static void initLogging() {
@@ -108,6 +109,7 @@ public abstract class AbstractJaMoPPTests {
 	public final void initResourceFactory() {
 		this.createNewResourceSet();
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("java", new JavaResource2Factory());
+		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
 		JavaClasspath.get().clear();
 		JavaClasspath.get().registerStdLib();
 	}

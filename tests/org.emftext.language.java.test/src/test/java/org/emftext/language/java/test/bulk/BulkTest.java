@@ -36,6 +36,7 @@ import jamopp.parser.jdt.JaMoPPJDTParser;
 
 @Disabled("Requires initialization of all submodules and dependency resolution.")
 public class BulkTest extends AbstractJaMoPPTests {
+	// TODO: Adjust path.
 	private final static String BASE_ZIP = "JaMoPP-BulkTest" + File.separator + "Tests" + File.separator
 		+ "org.emftext.language.java.test.bulk" + File.separator + "input" + File.separator;
 	private final static String END_ZIP = File.separator + "src.zip";

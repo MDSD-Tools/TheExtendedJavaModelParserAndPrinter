@@ -34,7 +34,7 @@ public class TrivialRecoveryTest extends JavaXMISerializationTest {
 		ParserOptions.RESOLVE_EVERYTHING.setValue(Boolean.FALSE);
 		JaMoPPJDTSingleFileParser parser = new JaMoPPJDTSingleFileParser();
 		parser.setExclusionPatterns(".*?/src/test/.*?", ".*?/src/client/.*?", ".*?/src/e2e/.*?", ".*?/src/lnp/.*?", ".*?/src/web/.*?");
-		var set = parser.parseDirectory(Paths.get("teammates"));
+		var set = parser.parseDirectory(Paths.get("target", "src-bulk", "teammates"));
 		new TrivialRecovery(set).recover();
 		set.getResources().forEach(resource -> this.assertResolveAllProxies(resource));
 		super.testReprint(set);

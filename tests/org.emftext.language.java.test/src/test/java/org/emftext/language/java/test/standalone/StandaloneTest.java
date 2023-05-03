@@ -72,8 +72,10 @@ public class StandaloneTest extends JavaXMISerializationTest {
 	 * @see org.emftext.language.java.test.AbstractJaMoPPTests
 	 */
 	@ParameterizedTest
-	@ValueSource(strings = { "src-standalone", "acmeair", "piggymetrics", "petclinic", "TeaStore", "src-sevenandup",
-			"teammates", "esda", "microservice", "src-input" })
+	// TODO: look for possibility to extract constants.
+	@ValueSource(strings = { "src/test/resources/standalone", "target/src-bulk/acmeair", "target/src-bulk/piggymetrics",
+			"target/src-bulk/petclinic", "target/src-bulk/TeaStore", "src/test/resources/sevenandup",
+			"target/src-bulk/teammates", "target/src-bulk/esda", "target/src-bulk/microservice", "src/test/resources/input" })
 	// src-input will be further examined, because it includes special symbols. One
 	// of them is allowed in java but not allowed in xml.
 	public void testProject(String input) throws Exception {
@@ -88,7 +90,7 @@ public class StandaloneTest extends JavaXMISerializationTest {
 		parser.setExclusionPatterns(".*?/src/test/.*?", ".*?UnicodeIdentifiers.java");
 		final ResourceSet rs = parser.parseDirectory(directory);
 
-		TEST_OUTPUT_FOLDER_NAME = "standalone_output_ResolveAll_Active" + File.separator + input;
+		TEST_OUTPUT_FOLDER_NAME = "target" + File.separator + "tests" + File.separator + "standalone_output_ResolveAll_Active" + File.separator + input;
 		File outputDir = new File(TEST_OUTPUT_FOLDER_NAME);
 		outputDir.mkdirs();
 		
