@@ -16,7 +16,7 @@
    DevBoost GmbH - Berlin, Germany
       - initial API and implementation
    Martin Armbruster
-      - Extension for Java 7-13
+      - Adaptation and extension for Java 7+
   
 -->
 
@@ -31,8 +31,6 @@
       <import plugin="org.eclipse.core.runtime"/>
       <import plugin="org.emftext.language.java" export="true"/>
       <import plugin="org.eclipse.emf.edit" export="true"/>
-      <import plugin="org.emftext.commons.layout" export="true"/>
-      <import plugin="org.emftext.commons.layout.edit" export="true"/>
    </requires>
 
    <runtime>
