@@ -39,6 +39,8 @@ If the model code needs to be re-generated, there are the following possibilitie
 
 # Sources on GitHub
 
-[https://github.com/PalladioSimulator/Palladio-Supporting-EclipseJavaDevelopmentTools](https://github.com/PalladioSimulator/Palladio-Supporting-EclipseJavaDevelopmentTools)
+[https://github.com/MDSD-Tools/TheExtendedJavaModelParserAndPrinter](https://github.com/MDSD-Tools/TheExtendedJavaModelParserAndPrinter)
+
+Former repository: [https://github.com/PalladioSimulator/Palladio-Supporting-EclipseJavaDevelopmentTools](https://github.com/PalladioSimulator/Palladio-Supporting-EclipseJavaDevelopmentTools)
 
 Original repository: [https://github.com/DevBoost/JaMoPP](https://github.com/DevBoost/JaMoPP)
