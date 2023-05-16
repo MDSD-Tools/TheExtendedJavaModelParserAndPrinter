@@ -21,6 +21,7 @@
     <modules>
         <module>bundles</module>
         <module>tests</module>
+        <module>jamopp.p2</module>
     </modules>
     
     <dependencyManagement>
