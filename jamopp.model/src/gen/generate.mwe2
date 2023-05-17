@@ -1,0 +1,29 @@
+module generate
+
+import org.eclipse.emf.mwe2.ecore.EcoreGenerator
+import org.eclipse.emf.mwe.utils.StandaloneSetup
+
+var workspaceRoot = "."
+
+Workflow {
+	
+	bean = StandaloneSetup {
+		logResourceUriMap = true
+		scanClassPath = false
+		platformUri = workspaceRoot
+		projectMapping = {
+			projectName = "jamopp.model"
+			path = "jamopp.model"
+		}
+		projectMapping = {
+		    projectName = "jamopp.model.edit"
+			path = "jamopp.model.edit"
+		}
+	}
+	
+	component = EcoreGenerator {
+		genModel = "platform:/resource/jamopp.model/src/main/resources/metamodel/java.genmodel"
+		srcPath = "platform:/resource/jamopp.model/src/main/generated"
+		generateEdit = true
+	}
+}
