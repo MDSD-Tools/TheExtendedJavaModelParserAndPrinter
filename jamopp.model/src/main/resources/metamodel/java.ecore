@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmi:id="_WosmsNz1Ed2bJ_pQViWxFg" name="java" nsURI="http://www.emftext.org/java"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmi:id="_WosmsNz1Ed2bJ_pQViWxFg" name="java" nsURI="https://mdsd.tools/jamopp/java"
     nsPrefix="java">
-  <eSubpackages xmi:id="_Wosmsdz1Ed2bJ_pQViWxFg" name="annotations" nsURI="http://www.emftext.org/java/annotations"
+  <eSubpackages xmi:id="_Wosmsdz1Ed2bJ_pQViWxFg" name="annotations" nsURI="https://mdsd.tools/jamopp/java/annotations"
       nsPrefix="annotations">
     <eClassifiers xsi:type="ecore:EClass" name="Annotable" abstract="true" eSuperTypes="#//commons/Commentable">
       <eStructuralFeatures xsi:type="ecore:EReference" name="annotations" upperBound="-1"
@@ -34,11 +34,11 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="AnnotationValue" abstract="true" eSuperTypes="#//commons/Commentable"/>
   </eSubpackages>
-  <eSubpackages name="arrays" nsURI="http://www.emftext.org/java/arrays" nsPrefix="arrays">
+  <eSubpackages name="arrays" nsURI="https://mdsd.tools/jamopp/java/arrays" nsPrefix="arrays">
     <eClassifiers xsi:type="ecore:EClass" name="ArrayTypeable" abstract="true" eSuperTypes="#//commons/Commentable">
       <eOperations name="getArrayDimension" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.arrays.ArrayTypeableExtension.getArrayDimension((org.emftext.language.java.arrays.ArrayTypeable) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.arrays.ArrayTypeableExtension.getArrayDimension((tools.mdsd.jamopp.model.java.arrays.ArrayTypeable) this);"/>
         </eAnnotations>
       </eOperations>
       <eStructuralFeatures xsi:type="ecore:EReference" name="arrayDimensionsBefore"
@@ -58,7 +58,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="ArrayInstantiationBySize" eSuperTypes="#//arrays/ArrayInstantiation #_Wo2ZP9z1Ed2bJ_pQViWxFg">
       <eOperations name="getArrayDimension" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.expressions.ExpressionExtension.getArrayDimension((org.emftext.language.java.expressions.Expression) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.expressions.ExpressionExtension.getArrayDimension((tools.mdsd.jamopp.model.java.expressions.Expression) this);"/>
         </eAnnotations>
       </eOperations>
       <eStructuralFeatures xsi:type="ecore:EReference" name="sizes" lowerBound="1"
@@ -74,7 +74,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="ArrayInstantiationByValuesTyped" eSuperTypes="#//arrays/ArrayInstantiationByValues #_Wo2ZP9z1Ed2bJ_pQViWxFg">
       <eOperations name="getArrayDimension" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.expressions.ExpressionExtension.getArrayDimension((org.emftext.language.java.expressions.Expression) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.expressions.ExpressionExtension.getArrayDimension((tools.mdsd.jamopp.model.java.expressions.Expression) this);"/>
         </eAnnotations>
       </eOperations>
     </eClassifiers>
@@ -83,25 +83,25 @@
           containment="true"/>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages name="classifiers" nsURI="http://www.emftext.org/java/classifiers"
+  <eSubpackages name="classifiers" nsURI="https://mdsd.tools/jamopp/java/classifiers"
       nsPrefix="classifiers">
     <eClassifiers xsi:type="ecore:EClass" name="Classifier" abstract="true" eSuperTypes="#_Wo2ZO9z1Ed2bJ_pQViWxFg #//references/ReferenceableElement">
       <eOperations name="getAllSuperClassifiers" upperBound="-1" eType="#//classifiers/ConcreteClassifier">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.classifiers.ClassifierExtension.getAllSuperClassifiers((org.emftext.language.java.classifiers.Classifier) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.classifiers.ClassifierExtension.getAllSuperClassifiers((tools.mdsd.jamopp.model.java.classifiers.Classifier) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="addImport">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="org.emftext.language.java.extensions.classifiers.ClassifierExtension.addImport((org.emftext.language.java.classifiers.Classifier) this, nameOfClassToImport);"/>
+          <details key="body" value="tools.mdsd.jamopp.model.java.extensions.classifiers.ClassifierExtension.addImport((tools.mdsd.jamopp.model.java.classifiers.Classifier) this, nameOfClassToImport);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="nameOfClassToImport" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eOperations>
       <eOperations name="addPackageImport">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="org.emftext.language.java.extensions.classifiers.ClassifierExtension.addPackageImport((org.emftext.language.java.classifiers.Classifier) this, packageName);"/>
+          <details key="body" value="tools.mdsd.jamopp.model.java.extensions.classifiers.ClassifierExtension.addPackageImport((tools.mdsd.jamopp.model.java.classifiers.Classifier) this, packageName);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="packageName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -111,38 +111,38 @@
         eSuperTypes="#//classifiers/Classifier #//generics/TypeParametrizable #//members/MemberContainer #//members/Member #_Wo2YzNz1Ed2bJ_pQViWxFg #//modifiers/AnnotableAndModifiable">
       <eOperations name="getInnerClassifiers" upperBound="-1" eType="#//classifiers/ConcreteClassifier">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.classifiers.ConcreteClassifierExtension.getInnerClassifiers((org.emftext.language.java.classifiers.ConcreteClassifier) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.classifiers.ConcreteClassifierExtension.getInnerClassifiers((tools.mdsd.jamopp.model.java.classifiers.ConcreteClassifier) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getAllInnerClassifiers" upperBound="-1" eType="#//classifiers/ConcreteClassifier">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.classifiers.ConcreteClassifierExtension.getAllInnerClassifiers((org.emftext.language.java.classifiers.ConcreteClassifier) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.classifiers.ConcreteClassifierExtension.getAllInnerClassifiers((tools.mdsd.jamopp.model.java.classifiers.ConcreteClassifier) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getSuperTypeReferences" upperBound="-1" eType="#//types/ClassifierReference">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.classifiers.ConcreteClassifierExtension.getSuperTypeReferences((org.emftext.language.java.classifiers.ConcreteClassifier) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.classifiers.ConcreteClassifierExtension.getSuperTypeReferences((tools.mdsd.jamopp.model.java.classifiers.ConcreteClassifier) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getAllMembers" upperBound="-1" eType="#//members/Member">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.classifiers.ConcreteClassifierExtension.getAllMembers((org.emftext.language.java.classifiers.ConcreteClassifier) this, (org.emftext.language.java.commons.Commentable) context);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.classifiers.ConcreteClassifierExtension.getAllMembers((tools.mdsd.jamopp.model.java.classifiers.ConcreteClassifier) this, (tools.mdsd.jamopp.model.java.commons.Commentable) context);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="context" eType="#//commons/Commentable"/>
       </eOperations>
       <eOperations name="getQualifiedName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.classifiers.ConcreteClassifierExtension.getQualifiedName((org.emftext.language.java.classifiers.ConcreteClassifier) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.classifiers.ConcreteClassifierExtension.getQualifiedName((tools.mdsd.jamopp.model.java.classifiers.ConcreteClassifier) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="isJavaLangObject" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.classifiers.ConcreteClassifierExtension.isJavaLangObject((org.emftext.language.java.classifiers.ConcreteClassifier) clazz);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.classifiers.ConcreteClassifierExtension.isJavaLangObject((tools.mdsd.jamopp.model.java.classifiers.ConcreteClassifier) clazz);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="clazz" lowerBound="1" eType="#//classifiers/ConcreteClassifier"/>
@@ -156,19 +156,19 @@
     <eClassifiers xsi:type="ecore:EClass" name="Class" eSuperTypes="#//classifiers/ConcreteClassifier #//classifiers/Implementor">
       <eOperations name="getAllSuperClassifiers" upperBound="-1" eType="#//classifiers/ConcreteClassifier">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.classifiers.ClassExtension.getAllSuperClassifiers((org.emftext.language.java.classifiers.Class) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.classifiers.ClassExtension.getAllSuperClassifiers((tools.mdsd.jamopp.model.java.classifiers.Class) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getSuperClass" eType="#//classifiers/Class">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.classifiers.ClassExtension.getSuperClass((org.emftext.language.java.classifiers.Class) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.classifiers.ClassExtension.getSuperClass((tools.mdsd.jamopp.model.java.classifiers.Class) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="unWrapPrimitiveType" eType="#_Wo2ZR9z1Ed2bJ_pQViWxFg">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.classifiers.ClassExtension.unWrapPrimitiveType((org.emftext.language.java.classifiers.Class) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.classifiers.ClassExtension.unWrapPrimitiveType((tools.mdsd.jamopp.model.java.classifiers.Class) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
@@ -180,13 +180,13 @@
     <eClassifiers xsi:type="ecore:EClass" name="Interface" eSuperTypes="#//classifiers/ConcreteClassifier">
       <eOperations name="getAllSuperClassifiers" upperBound="-1" eType="#//classifiers/ConcreteClassifier">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.classifiers.InterfaceExtension.getAllSuperClassifiers((org.emftext.language.java.classifiers.Interface) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.classifiers.InterfaceExtension.getAllSuperClassifiers((tools.mdsd.jamopp.model.java.classifiers.Interface) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getAbstractMethodOfFunctionalInterface" eType="#//members/Method">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.classifiers.InterfaceExtension.getAbstractMethodOfFunctionalInterface((org.emftext.language.java.classifiers.Interface) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.classifiers.InterfaceExtension.getAbstractMethodOfFunctionalInterface((tools.mdsd.jamopp.model.java.classifiers.Interface) this);"/>
         </eAnnotations>
       </eOperations>
       <eStructuralFeatures xsi:type="ecore:EReference" name="extends" upperBound="-1"
@@ -197,13 +197,13 @@
     <eClassifiers xsi:type="ecore:EClass" name="Enumeration" eSuperTypes="#//classifiers/ConcreteClassifier #//classifiers/Implementor">
       <eOperations name="getAllSuperClassifiers" upperBound="-1" eType="#//classifiers/ConcreteClassifier">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.classifiers.EnumerationExtension.getAllSuperClassifiers((org.emftext.language.java.classifiers.Enumeration) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.classifiers.EnumerationExtension.getAllSuperClassifiers((tools.mdsd.jamopp.model.java.classifiers.Enumeration) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getContainedConstant" eType="#//members/EnumConstant">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.classifiers.EnumerationExtension.getContainedConstant((org.emftext.language.java.classifiers.Enumeration) this, name);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.classifiers.EnumerationExtension.getContainedConstant((tools.mdsd.jamopp.model.java.classifiers.Enumeration) this, name);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -214,7 +214,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="Annotation" eSuperTypes="#//classifiers/ConcreteClassifier">
       <eOperations name="getAllSuperClassifiers" upperBound="-1" eType="#//classifiers/ConcreteClassifier">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.classifiers.AnnotationExtension.getAllSuperClassifiers((org.emftext.language.java.classifiers.Annotation) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.classifiers.AnnotationExtension.getAllSuperClassifiers((tools.mdsd.jamopp.model.java.classifiers.Annotation) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
@@ -222,37 +222,37 @@
     <eClassifiers xsi:type="ecore:EClass" name="AnonymousClass" eSuperTypes="#_Wo2ZO9z1Ed2bJ_pQViWxFg #//members/MemberContainer">
       <eOperations name="getAllSuperClassifiers" upperBound="-1" eType="#//classifiers/ConcreteClassifier">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.classifiers.AnonymousClassExtension.getAllSuperClassifiers((org.emftext.language.java.classifiers.AnonymousClass) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.classifiers.AnonymousClassExtension.getAllSuperClassifiers((tools.mdsd.jamopp.model.java.classifiers.AnonymousClass) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getSuperClassifier" eType="#//classifiers/ConcreteClassifier">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.classifiers.AnonymousClassExtension.getSuperClassifier((org.emftext.language.java.classifiers.AnonymousClass) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.classifiers.AnonymousClassExtension.getSuperClassifier((tools.mdsd.jamopp.model.java.classifiers.AnonymousClass) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getAllMembers" upperBound="-1" eType="#//members/Member">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.classifiers.AnonymousClassExtension.getAllMembers((org.emftext.language.java.classifiers.AnonymousClass) this, (org.emftext.language.java.commons.Commentable) context);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.classifiers.AnonymousClassExtension.getAllMembers((tools.mdsd.jamopp.model.java.classifiers.AnonymousClass) this, (tools.mdsd.jamopp.model.java.commons.Commentable) context);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="context" eType="#//commons/Commentable"/>
       </eOperations>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages name="commons" nsURI="http://www.emftext.org/java/commons" nsPrefix="commons">
+  <eSubpackages name="commons" nsURI="https://mdsd.tools/jamopp/java/commons" nsPrefix="commons">
     <eClassifiers xsi:type="ecore:EClass" name="Commentable" abstract="true">
       <eOperations name="getConcreteClassifier" eType="#//classifiers/ConcreteClassifier">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.commons.CommentableExtension.getConcreteClassifier((org.emftext.language.java.commons.Commentable) this, name);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.commons.CommentableExtension.getConcreteClassifier((tools.mdsd.jamopp.model.java.commons.Commentable) this, name);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eOperations>
       <eOperations name="getConcreteClassifiers" upperBound="-1" eType="#//classifiers/ConcreteClassifier">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.commons.CommentableExtension.getConcreteClassifiers((org.emftext.language.java.commons.Commentable) this, packageName, classifierQuery);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.commons.CommentableExtension.getConcreteClassifiers((tools.mdsd.jamopp.model.java.commons.Commentable) this, packageName, classifierQuery);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="packageName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -260,101 +260,101 @@
       </eOperations>
       <eOperations name="getLibClass" eType="#//classifiers/Class">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.commons.CommentableExtension.getLibClass((org.emftext.language.java.commons.Commentable) this, name);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.commons.CommentableExtension.getLibClass((tools.mdsd.jamopp.model.java.commons.Commentable) this, name);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eOperations>
       <eOperations name="getLibInterface" eType="#//classifiers/Interface">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.commons.CommentableExtension.getLibInterface((org.emftext.language.java.commons.Commentable) this, name);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.commons.CommentableExtension.getLibInterface((tools.mdsd.jamopp.model.java.commons.Commentable) this, name);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eOperations>
       <eOperations name="getClassClass" eType="#//classifiers/Class">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.commons.CommentableExtension.getClassClass((org.emftext.language.java.commons.Commentable) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.commons.CommentableExtension.getClassClass((tools.mdsd.jamopp.model.java.commons.Commentable) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getObjectClass" eType="#//classifiers/Class">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.commons.CommentableExtension.getObjectClass((org.emftext.language.java.commons.Commentable) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.commons.CommentableExtension.getObjectClass((tools.mdsd.jamopp.model.java.commons.Commentable) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getStringClass" eType="#//classifiers/Class">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.commons.CommentableExtension.getStringClass((org.emftext.language.java.commons.Commentable) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.commons.CommentableExtension.getStringClass((tools.mdsd.jamopp.model.java.commons.Commentable) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getAnnotationInterface" eType="#//classifiers/Interface">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.commons.CommentableExtension.getAnnotationInterface((org.emftext.language.java.commons.Commentable) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.commons.CommentableExtension.getAnnotationInterface((tools.mdsd.jamopp.model.java.commons.Commentable) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getContainingAnnotationInstance" eType="#_Wosms9z1Ed2bJ_pQViWxFg">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.commons.CommentableExtension.getContainingAnnotationInstance((org.emftext.language.java.commons.Commentable) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.commons.CommentableExtension.getContainingAnnotationInstance((tools.mdsd.jamopp.model.java.commons.Commentable) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getContainingAnonymousClass" eType="#//classifiers/AnonymousClass">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.commons.CommentableExtension.getContainingAnonymousClass((org.emftext.language.java.commons.Commentable) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.commons.CommentableExtension.getContainingAnonymousClass((tools.mdsd.jamopp.model.java.commons.Commentable) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getContainingConcreteClassifier" eType="#//classifiers/ConcreteClassifier">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.commons.CommentableExtension.getContainingConcreteClassifier((org.emftext.language.java.commons.Commentable) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.commons.CommentableExtension.getContainingConcreteClassifier((tools.mdsd.jamopp.model.java.commons.Commentable) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getContainingCompilationUnit" eType="#//containers/CompilationUnit">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.commons.CommentableExtension.getContainingCompilationUnit((org.emftext.language.java.commons.Commentable) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.commons.CommentableExtension.getContainingCompilationUnit((tools.mdsd.jamopp.model.java.commons.Commentable) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getContainingPackageName" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.commons.CommentableExtension.getContainingPackageName((org.emftext.language.java.commons.Commentable) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.commons.CommentableExtension.getContainingPackageName((tools.mdsd.jamopp.model.java.commons.Commentable) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getContainingContainerName" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.commons.CommentableExtension.getContainingContainerName((org.emftext.language.java.commons.Commentable) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.commons.CommentableExtension.getContainingContainerName((tools.mdsd.jamopp.model.java.commons.Commentable) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getParentConcreteClassifier" eType="#//classifiers/ConcreteClassifier">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.commons.CommentableExtension.getParentConcreteClassifier((org.emftext.language.java.commons.Commentable) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.commons.CommentableExtension.getParentConcreteClassifier((tools.mdsd.jamopp.model.java.commons.Commentable) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getParentByEType" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.commons.CommentableExtension.getParentByEType((org.emftext.language.java.commons.Commentable) this, (org.eclipse.emf.ecore.EClass) type);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.commons.CommentableExtension.getParentByEType((tools.mdsd.jamopp.model.java.commons.Commentable) this, (org.eclipse.emf.ecore.EClass) type);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="type" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
       </eOperations>
       <eOperations name="getFirstChildByEType" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.commons.CommentableExtension.getFirstChildByEType((org.emftext.language.java.commons.Commentable) this, (org.eclipse.emf.ecore.EClass) type);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.commons.CommentableExtension.getFirstChildByEType((tools.mdsd.jamopp.model.java.commons.Commentable) this, (org.eclipse.emf.ecore.EClass) type);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="type" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
       </eOperations>
       <eOperations name="getParentByType">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.commons.CommentableExtension.getParentByType((org.emftext.language.java.commons.Commentable) this, type);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.commons.CommentableExtension.getParentByType((tools.mdsd.jamopp.model.java.commons.Commentable) this, type);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eGenericType eTypeParameter="#//commons/Commentable/getParentByType/T"/>
@@ -367,7 +367,7 @@
       </eOperations>
       <eOperations name="getFirstChildByType">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.commons.CommentableExtension.getFirstChildByType((org.emftext.language.java.commons.Commentable) this, ( java.lang.Class&lt;T>) type);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.commons.CommentableExtension.getFirstChildByType((tools.mdsd.jamopp.model.java.commons.Commentable) this, ( java.lang.Class&lt;T>) type);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eGenericType eTypeParameter="#//commons/Commentable/getFirstChildByType/T"/>
@@ -380,14 +380,14 @@
       </eOperations>
       <eOperations name="getChildrenByEType" upperBound="-1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.commons.CommentableExtension.getChildrenByEType((org.emftext.language.java.commons.Commentable) this, (org.eclipse.emf.ecore.EClass) type);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.commons.CommentableExtension.getChildrenByEType((tools.mdsd.jamopp.model.java.commons.Commentable) this, (org.eclipse.emf.ecore.EClass) type);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="type" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
       </eOperations>
       <eOperations name="getChildrenByType" upperBound="-1">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.commons.CommentableExtension.getChildrenByType((org.emftext.language.java.commons.Commentable) this, ( java.lang.Class&lt;T>) type);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.commons.CommentableExtension.getChildrenByType((tools.mdsd.jamopp.model.java.commons.Commentable) this, ( java.lang.Class&lt;T>) type);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eGenericType eTypeParameter="#//commons/Commentable/getChildrenByType/T"/>
@@ -400,14 +400,14 @@
       </eOperations>
       <eOperations name="addBeforeContainingStatement">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="org.emftext.language.java.extensions.commons.CommentableExtension.addBeforeContainingStatement((org.emftext.language.java.commons.Commentable) this, (org.emftext.language.java.statements.Statement) statementToAdd);"/>
+          <details key="body" value="tools.mdsd.jamopp.model.java.extensions.commons.CommentableExtension.addBeforeContainingStatement((tools.mdsd.jamopp.model.java.commons.Commentable) this, (tools.mdsd.jamopp.model.java.statements.Statement) statementToAdd);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="statementToAdd" lowerBound="1" eType="#_Wo2YzNz1Ed2bJ_pQViWxFg"/>
       </eOperations>
       <eOperations name="addAfterContainingStatement">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="org.emftext.language.java.extensions.commons.CommentableExtension.addAfterContainingStatement((org.emftext.language.java.commons.Commentable) this, (org.emftext.language.java.statements.Statement) statementToAdd);"/>
+          <details key="body" value="tools.mdsd.jamopp.model.java.extensions.commons.CommentableExtension.addAfterContainingStatement((tools.mdsd.jamopp.model.java.commons.Commentable) this, (tools.mdsd.jamopp.model.java.statements.Statement) statementToAdd);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="statementToAdd" lowerBound="1" eType="#_Wo2YzNz1Ed2bJ_pQViWxFg"/>
@@ -423,13 +423,13 @@
         eSuperTypes="#//commons/Commentable">
       <eOperations name="getNamespacesAsString" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.commons.NamespaceAwareElementExtension.getNamespacesAsString((org.emftext.language.java.commons.NamespaceAwareElement) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.commons.NamespaceAwareElementExtension.getNamespacesAsString((tools.mdsd.jamopp.model.java.commons.NamespaceAwareElement) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getClassifierAtNamespaces" eType="#//classifiers/ConcreteClassifier">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.commons.NamespaceAwareElementExtension.getClassifierAtNamespaces((org.emftext.language.java.commons.NamespaceAwareElement) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.commons.NamespaceAwareElementExtension.getClassifierAtNamespaces((tools.mdsd.jamopp.model.java.commons.NamespaceAwareElement) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
@@ -437,11 +437,12 @@
           upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages name="containers" nsURI="http://www.emftext.org/java/containers" nsPrefix="containers">
+  <eSubpackages name="containers" nsURI="https://mdsd.tools/jamopp/java/containers"
+      nsPrefix="containers">
     <eClassifiers xsi:type="ecore:EClass" name="JavaRoot" abstract="true" eSuperTypes="#//commons/NamedElement #//commons/NamespaceAwareElement #//imports/ImportingElement #//annotations/Annotable">
       <eOperations name="getClassifiersInSamePackage" upperBound="-1" eType="#//classifiers/ConcreteClassifier">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.containers.JavaRootExtension.getClassifiersInSamePackage((org.emftext.language.java.containers.JavaRoot) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.containers.JavaRootExtension.getClassifiersInSamePackage((tools.mdsd.jamopp.model.java.containers.JavaRoot) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
@@ -451,51 +452,51 @@
     <eClassifiers xsi:type="ecore:EClass" name="CompilationUnit" eSuperTypes="#//containers/JavaRoot">
       <eOperations name="getContainedClassifier" eType="#//classifiers/ConcreteClassifier">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.containers.CompilationUnitExtension.getContainedClassifier((org.emftext.language.java.containers.CompilationUnit) this, name);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.containers.CompilationUnitExtension.getContainedClassifier((tools.mdsd.jamopp.model.java.containers.CompilationUnit) this, name);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eOperations>
       <eOperations name="getClassifiersInSamePackage" upperBound="-1" eType="#//classifiers/ConcreteClassifier">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.containers.CompilationUnitExtension.getClassifiersInSamePackage((org.emftext.language.java.containers.CompilationUnit) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.containers.CompilationUnitExtension.getClassifiersInSamePackage((tools.mdsd.jamopp.model.java.containers.CompilationUnit) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getContainedClass" eType="#//classifiers/Class">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.containers.CompilationUnitExtension.getContainedClass((org.emftext.language.java.containers.CompilationUnit) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.containers.CompilationUnitExtension.getContainedClass((tools.mdsd.jamopp.model.java.containers.CompilationUnit) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getContainedInterface" eType="#//classifiers/Interface">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.containers.CompilationUnitExtension.getContainedInterface((org.emftext.language.java.containers.CompilationUnit) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.containers.CompilationUnitExtension.getContainedInterface((tools.mdsd.jamopp.model.java.containers.CompilationUnit) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getContainedAnnotation" eType="#//classifiers/Annotation">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.containers.CompilationUnitExtension.getContainedAnnotation((org.emftext.language.java.containers.CompilationUnit) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.containers.CompilationUnitExtension.getContainedAnnotation((tools.mdsd.jamopp.model.java.containers.CompilationUnit) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getContainedEnumeration" eType="#//classifiers/Enumeration">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.containers.CompilationUnitExtension.getContainedEnumeration((org.emftext.language.java.containers.CompilationUnit) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.containers.CompilationUnitExtension.getContainedEnumeration((tools.mdsd.jamopp.model.java.containers.CompilationUnit) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="addImport">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="org.emftext.language.java.extensions.containers.CompilationUnitExtension.addImport((org.emftext.language.java.containers.CompilationUnit) this, nameOfClassToImport);"/>
+          <details key="body" value="tools.mdsd.jamopp.model.java.extensions.containers.CompilationUnitExtension.addImport((tools.mdsd.jamopp.model.java.containers.CompilationUnit) this, nameOfClassToImport);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="nameOfClassToImport" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eOperations>
       <eOperations name="addPackageImport">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="org.emftext.language.java.extensions.containers.CompilationUnitExtension.addPackageImport((org.emftext.language.java.containers.CompilationUnit) this, packageName);"/>
+          <details key="body" value="tools.mdsd.jamopp.model.java.extensions.containers.CompilationUnitExtension.addPackageImport((tools.mdsd.jamopp.model.java.containers.CompilationUnit) this, packageName);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="packageName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -524,7 +525,7 @@
       <eLiterals name="BINDING" value="3"/>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages xmi:id="_Wo2YC9z1Ed2bJ_pQViWxFg" name="expressions" nsURI="http://www.emftext.org/java/expressions"
+  <eSubpackages xmi:id="_Wo2YC9z1Ed2bJ_pQViWxFg" name="expressions" nsURI="https://mdsd.tools/jamopp/java/expressions"
       nsPrefix="expressions">
     <eClassifiers xsi:type="ecore:EClass" xmi:id="_Wo2YF9z1Ed2bJ_pQViWxFg" name="ExpressionList"
         eSuperTypes="#_Wo2Y9tz1Ed2bJ_pQViWxFg">
@@ -535,31 +536,31 @@
         abstract="true" eSuperTypes="#//arrays/ArrayInitializationValue #//expressions/LambdaBody">
       <eOperations name="getType" eType="#_Wo2ZO9z1Ed2bJ_pQViWxFg">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.expressions.ExpressionExtension.getType((org.emftext.language.java.expressions.Expression) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.expressions.ExpressionExtension.getType((tools.mdsd.jamopp.model.java.expressions.Expression) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getAlternativeType" eType="#_Wo2ZO9z1Ed2bJ_pQViWxFg">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.expressions.ExpressionExtension.getAlternativeType((org.emftext.language.java.expressions.Expression) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.expressions.ExpressionExtension.getAlternativeType((tools.mdsd.jamopp.model.java.expressions.Expression) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getOneType" eType="#_Wo2ZO9z1Ed2bJ_pQViWxFg">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.expressions.ExpressionExtension.getOneType((org.emftext.language.java.expressions.Expression) this, alternative);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.expressions.ExpressionExtension.getOneType((tools.mdsd.jamopp.model.java.expressions.Expression) this, alternative);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="alternative" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       </eOperations>
       <eOperations name="getArrayDimension" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.expressions.ExpressionExtension.getArrayDimension((org.emftext.language.java.expressions.Expression) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.expressions.ExpressionExtension.getArrayDimension((tools.mdsd.jamopp.model.java.expressions.Expression) this);"/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getOneTypeReference" eType="#_Wo2ZPdz1Ed2bJ_pQViWxFg">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.expressions.ExpressionExtension.getOneTypeReference((org.emftext.language.java.expressions.Expression) this, alternative);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.expressions.ExpressionExtension.getOneTypeReference((tools.mdsd.jamopp.model.java.expressions.Expression) this, alternative);"/>
         </eAnnotations>
         <eParameters name="alternative" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       </eOperations>
@@ -578,12 +579,12 @@
         eSuperTypes="#//expressions/AssignmentExpressionChild">
       <eOperations name="getExpressionElse" lowerBound="1" eType="#//expressions/AssignmentExpressionChild">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.expressions.ConditionalExpressionExtension.getExpressionElse((org.emftext.language.java.expressions.ConditionalExpression) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.expressions.ConditionalExpressionExtension.getExpressionElse((tools.mdsd.jamopp.model.java.expressions.ConditionalExpression) this);"/>
         </eAnnotations>
       </eOperations>
       <eOperations name="setExpressionChild" lowerBound="1">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="org.emftext.language.java.extensions.expressions.ConditionalExpressionExtension.setExpressionElse((org.emftext.language.java.expressions.ConditionalExpression) this, newChild);"/>
+          <details key="body" value="tools.mdsd.jamopp.model.java.extensions.expressions.ConditionalExpressionExtension.setExpressionElse((tools.mdsd.jamopp.model.java.expressions.ConditionalExpression) this, newChild);"/>
         </eAnnotations>
         <eParameters name="newChild" lowerBound="1" eType="#//expressions/AssignmentExpressionChild"/>
       </eOperations>
@@ -725,12 +726,12 @@
         eSuperTypes="#_Wo2ZP9z1Ed2bJ_pQViWxFg #//expressions/UnaryModificationExpressionChild">
       <eOperations name="getChild" lowerBound="1" eType="#//expressions/MultiplicativeExpressionChild">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.expressions.CastExpressionExtension.getChild((org.emftext.language.java.expressions.CastExpression) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.expressions.CastExpressionExtension.getChild((tools.mdsd.jamopp.model.java.expressions.CastExpression) this);"/>
         </eAnnotations>
       </eOperations>
       <eOperations name="setChild" lowerBound="1">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="org.emftext.language.java.extensions.expressions.CastExpressionExtension.setChild((org.emftext.language.java.expressions.CastExpression) this, newChild);"/>
+          <details key="body" value="tools.mdsd.jamopp.model.java.extensions.expressions.CastExpressionExtension.setChild((tools.mdsd.jamopp.model.java.expressions.CastExpression) this, newChild);"/>
         </eAnnotations>
         <eParameters name="newChild" lowerBound="1" eType="#//expressions/MultiplicativeExpressionChild"/>
       </eOperations>
@@ -749,12 +750,12 @@
         eSuperTypes="#//expressions/UnaryModificationExpressionChild">
       <eOperations name="getTargetType" lowerBound="1" eType="#_Wo2ZO9z1Ed2bJ_pQViWxFg">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.expressions.MethodReferenceExpressionExtension.getTargetType((MethodReferenceExpression) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.expressions.MethodReferenceExpressionExtension.getTargetType((MethodReferenceExpression) this);"/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getTargetTypeReference" lowerBound="1" eType="#_Wo2ZPdz1Ed2bJ_pQViWxFg">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.expressions.MethodReferenceExpressionExtension.getTargetTypeReference((MethodReferenceExpression) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.expressions.MethodReferenceExpressionExtension.getTargetTypeReference((MethodReferenceExpression) this);"/>
         </eAnnotations>
       </eOperations>
     </eClassifiers>
@@ -774,13 +775,13 @@
     <eClassifiers xsi:type="ecore:EClass" name="LambdaExpression" eSuperTypes="#_Wo2YDNz1Ed2bJ_pQViWxFg">
       <eOperations name="doesLambdaMatchFunctionalInterface" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.expressions.LambdaExpressionExtension.doesLambdaMatchFunctionalInterface((org.emftext.language.java.expressions.LambdaExpression) this, functionalInterface);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.expressions.LambdaExpressionExtension.doesLambdaMatchFunctionalInterface((tools.mdsd.jamopp.model.java.expressions.LambdaExpression) this, functionalInterface);"/>
         </eAnnotations>
         <eParameters name="functionalInterface" lowerBound="1" eType="#//classifiers/Interface"/>
       </eOperations>
       <eOperations name="getReturnType" eType="#_Wo2ZO9z1Ed2bJ_pQViWxFg">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.expressions.LambdaExpressionExtension.getReturnType((org.emftext.language.java.expressions.LambdaExpression) this, potentialReturnType);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.expressions.LambdaExpressionExtension.getReturnType((tools.mdsd.jamopp.model.java.expressions.LambdaExpression) this, potentialReturnType);"/>
         </eAnnotations>
         <eParameters name="potentialReturnType" eType="#_Wo2ZO9z1Ed2bJ_pQViWxFg"/>
       </eOperations>
@@ -796,7 +797,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="ImplicitlyTypedLambdaParameters" eSuperTypes="#//expressions/LambdaParameters"/>
     <eClassifiers xsi:type="ecore:EClass" name="SingleImplicitLambdaParameter" eSuperTypes="#//expressions/ImplicitlyTypedLambdaParameters"/>
   </eSubpackages>
-  <eSubpackages name="generics" nsURI="http://www.emftext.org/java/generics" nsPrefix="generics">
+  <eSubpackages name="generics" nsURI="https://mdsd.tools/jamopp/java/generics" nsPrefix="generics">
     <eClassifiers xsi:type="ecore:EClass" name="TypeArgument" abstract="true" eSuperTypes="#//arrays/ArrayTypeable"/>
     <eClassifiers xsi:type="ecore:EClass" name="TypeArgumentable" abstract="true"
         eSuperTypes="#//commons/Commentable">
@@ -816,7 +817,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="ExtendsTypeArgument" eSuperTypes="#//annotations/Annotable #//generics/TypeArgument">
       <eOperations name="getExtendTypes" lowerBound="1">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.generics.ExtendsTypeArgumentExtension.getExtendTypes((org.emftext.language.java.generics.ExtendsTypeArgument) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.generics.ExtendsTypeArgumentExtension.getExtendTypes((tools.mdsd.jamopp.model.java.generics.ExtendsTypeArgument) this);"/>
         </eAnnotations>
         <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EEList">
           <eTypeArguments eClassifier="#_Wo2ZPdz1Ed2bJ_pQViWxFg"/>
@@ -833,20 +834,20 @@
     <eClassifiers xsi:type="ecore:EClass" name="TypeParameter" eSuperTypes="#//classifiers/Classifier #//annotations/Annotable">
       <eOperations name="getAllSuperClassifiers" upperBound="-1" eType="#//classifiers/ConcreteClassifier">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.generics.TypeParameterExtension.getAllSuperClassifiers((org.emftext.language.java.generics.TypeParameter) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.generics.TypeParameterExtension.getAllSuperClassifiers((tools.mdsd.jamopp.model.java.generics.TypeParameter) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getAllMembers" upperBound="-1" eType="#//members/Member">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.generics.TypeParameterExtension.getAllMembers((org.emftext.language.java.generics.TypeParameter) this, (org.emftext.language.java.commons.Commentable) context);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.generics.TypeParameterExtension.getAllMembers((tools.mdsd.jamopp.model.java.generics.TypeParameter) this, (tools.mdsd.jamopp.model.java.commons.Commentable) context);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="context" eType="#//commons/Commentable"/>
       </eOperations>
       <eOperations name="getBoundType" eType="#_Wo2ZO9z1Ed2bJ_pQViWxFg">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.generics.TypeParameterExtension.getBoundType((org.emftext.language.java.generics.TypeParameter) this, (org.emftext.language.java.types.TypeReference) typeReference, (org.emftext.language.java.references.Reference) reference);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.generics.TypeParameterExtension.getBoundType((tools.mdsd.jamopp.model.java.generics.TypeParameter) this, (tools.mdsd.jamopp.model.java.types.TypeReference) typeReference, (tools.mdsd.jamopp.model.java.references.Reference) reference);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="typeReference" eType="#_Wo2ZPdz1Ed2bJ_pQViWxFg"/>
@@ -854,7 +855,7 @@
       </eOperations>
       <eOperations name="getBoundTypeReference" eType="#_Wo2ZPdz1Ed2bJ_pQViWxFg">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.generics.TypeParameterExtension.getBoundTypeReference((org.emftext.language.java.generics.TypeParameter) this, (org.emftext.language.java.types.TypeReference) typeReference, (org.emftext.language.java.references.Reference) reference);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.generics.TypeParameterExtension.getBoundTypeReference((tools.mdsd.jamopp.model.java.generics.TypeParameter) this, (tools.mdsd.jamopp.model.java.types.TypeReference) typeReference, (tools.mdsd.jamopp.model.java.references.Reference) reference);"/>
         </eAnnotations>
         <eParameters name="typeReference" eType="#_Wo2ZPdz1Ed2bJ_pQViWxFg"/>
         <eParameters name="reference" eType="#//references/Reference"/>
@@ -864,24 +865,24 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="UnknownTypeArgument" eSuperTypes="#//generics/TypeArgument #//annotations/Annotable"/>
   </eSubpackages>
-  <eSubpackages name="imports" nsURI="http://www.emftext.org/java/imports" nsPrefix="imports">
+  <eSubpackages name="imports" nsURI="https://mdsd.tools/jamopp/java/imports" nsPrefix="imports">
     <eClassifiers xsi:type="ecore:EClass" name="Import" abstract="true" eSuperTypes="#//commons/NamespaceAwareElement">
       <eOperations name="getImportedClassifier" eType="#//classifiers/ConcreteClassifier">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.imports.ImportExtension.getImportedClassifier((org.emftext.language.java.imports.Import) this, name);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.imports.ImportExtension.getImportedClassifier((tools.mdsd.jamopp.model.java.imports.Import) this, name);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eOperations>
       <eOperations name="getImportedClassifiers" upperBound="-1" eType="#//classifiers/ConcreteClassifier">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.imports.ImportExtension.getImportedClassifiers((org.emftext.language.java.imports.Import) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.imports.ImportExtension.getImportedClassifiers((tools.mdsd.jamopp.model.java.imports.Import) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getImportedMembers" upperBound="-1" eType="#//commons/NamedElement">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.imports.ImportExtension.getImportedMembers((org.emftext.language.java.imports.Import) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.imports.ImportExtension.getImportedMembers((tools.mdsd.jamopp.model.java.imports.Import) this);"/>
         </eAnnotations>
       </eOperations>
       <eStructuralFeatures xsi:type="ecore:EReference" name="classifier" eType="#//classifiers/ConcreteClassifier"/>
@@ -903,7 +904,7 @@
           upperBound="-1" eType="#//references/ReferenceableElement"/>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages name="instantiations" nsURI="http://www.emftext.org/java/instantiations"
+  <eSubpackages name="instantiations" nsURI="https://mdsd.tools/jamopp/java/instantiations"
       nsPrefix="instantiations">
     <eClassifiers xsi:type="ecore:EClass" name="Initializable" abstract="true" eSuperTypes="#//commons/Commentable">
       <eStructuralFeatures xsi:type="ecore:EReference" name="initialValue" eType="#_Wo2YDNz1Ed2bJ_pQViWxFg"
@@ -921,13 +922,13 @@
           eType="#//literals/Self" containment="true"/>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages xmi:id="_Wo2Yntz1Ed2bJ_pQViWxFg" name="literals" nsURI="http://www.emftext.org/java/literals"
+  <eSubpackages xmi:id="_Wo2Yntz1Ed2bJ_pQViWxFg" name="literals" nsURI="https://mdsd.tools/jamopp/java/literals"
       nsPrefix="literals">
     <eClassifiers xsi:type="ecore:EClass" xmi:id="_Wo2YsNz1Ed2bJ_pQViWxFg" name="Literal"
         abstract="true" eSuperTypes="#//expressions/PrimaryExpression">
       <eOperations name="getOneType" eType="#_Wo2ZO9z1Ed2bJ_pQViWxFg">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.literals.LiteralExtension.getOneType((org.emftext.language.java.literals.Literal) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.literals.LiteralExtension.getOneType((tools.mdsd.jamopp.model.java.literals.Literal) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="alternative" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -1003,7 +1004,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="Super" eSuperTypes="#//literals/Self"/>
     <eClassifiers xsi:type="ecore:EClass" name="This" eSuperTypes="#//literals/Self"/>
   </eSubpackages>
-  <eSubpackages name="members" nsURI="http://www.emftext.org/java/members" nsPrefix="members">
+  <eSubpackages name="members" nsURI="https://mdsd.tools/jamopp/java/members" nsPrefix="members">
     <eClassifiers xsi:type="ecore:EClass" name="ExceptionThrower" abstract="true"
         eSuperTypes="#//commons/Commentable">
       <eStructuralFeatures xsi:type="ecore:EReference" name="exceptions" upperBound="-1"
@@ -1013,48 +1014,48 @@
     <eClassifiers xsi:type="ecore:EClass" name="MemberContainer" abstract="true" eSuperTypes="#//commons/Commentable">
       <eOperations name="getContainedClassifier" eType="#//classifiers/ConcreteClassifier">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.members.MemberContainerExtension.getContainedClassifier((org.emftext.language.java.members.MemberContainer) this, name);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.members.MemberContainerExtension.getContainedClassifier((tools.mdsd.jamopp.model.java.members.MemberContainer) this, name);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eOperations>
       <eOperations name="getContainedField" eType="#//members/Field">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.members.MemberContainerExtension.getContainedField((org.emftext.language.java.members.MemberContainer) this, name);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.members.MemberContainerExtension.getContainedField((tools.mdsd.jamopp.model.java.members.MemberContainer) this, name);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eOperations>
       <eOperations name="getContainedMethod" eType="#//members/Method">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.members.MemberContainerExtension.getContainedMethod((org.emftext.language.java.members.MemberContainer) this, name);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.members.MemberContainerExtension.getContainedMethod((tools.mdsd.jamopp.model.java.members.MemberContainer) this, name);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eOperations>
       <eOperations name="getMethods" upperBound="-1" eType="#//members/Method">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.members.MemberContainerExtension.getMethods((org.emftext.language.java.members.MemberContainer) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.members.MemberContainerExtension.getMethods((tools.mdsd.jamopp.model.java.members.MemberContainer) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="removeMethods">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="org.emftext.language.java.extensions.members.MemberContainerExtension.removeMethods((org.emftext.language.java.members.MemberContainer) this, name);"/>
+          <details key="body" value="tools.mdsd.jamopp.model.java.extensions.members.MemberContainerExtension.removeMethods((tools.mdsd.jamopp.model.java.members.MemberContainer) this, name);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eOperations>
       <eOperations name="getMembersByName" upperBound="-1" eType="#//members/Member">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.members.MemberContainerExtension.getMembersByName((org.emftext.language.java.members.MemberContainer) this, name);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.members.MemberContainerExtension.getMembersByName((tools.mdsd.jamopp.model.java.members.MemberContainer) this, name);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eOperations>
       <eOperations name="createField" eType="#//members/Field">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.members.MemberContainerExtension.createField((org.emftext.language.java.members.MemberContainer) this, name, qualifiedTypeName);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.members.MemberContainerExtension.createField((tools.mdsd.jamopp.model.java.members.MemberContainer) this, name, qualifiedTypeName);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -1062,13 +1063,13 @@
       </eOperations>
       <eOperations name="getFields" upperBound="-1" eType="#//members/Field">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.members.MemberContainerExtension.getFields((org.emftext.language.java.members.MemberContainer) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.members.MemberContainerExtension.getFields((tools.mdsd.jamopp.model.java.members.MemberContainer) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getConstructors" upperBound="-1" eType="#//members/Constructor">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.members.MemberContainerExtension.getConstructors((org.emftext.language.java.members.MemberContainer) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.members.MemberContainerExtension.getConstructors((tools.mdsd.jamopp.model.java.members.MemberContainer) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
@@ -1081,7 +1082,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="Constructor" eSuperTypes="#//members/Member #//parameters/Parametrizable #//generics/TypeParametrizable #//members/ExceptionThrower #//modifiers/AnnotableAndModifiable #//statements/BlockContainer #//statements/StatementListContainer">
       <eOperations name="getStatements" lowerBound="1">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.members.ConstructorExtension.getStatements((org.emftext.language.java.members.Constructor) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.members.ConstructorExtension.getStatements((tools.mdsd.jamopp.model.java.members.Constructor) this);"/>
         </eAnnotations>
         <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EEList">
           <eTypeArguments eClassifier="#_Wo2YzNz1Ed2bJ_pQViWxFg"/>
@@ -1089,7 +1090,7 @@
       </eOperations>
       <eOperations name="isConstructorForCall" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.members.ConstructorExtension.isConstructorForCall((Constructor) this, call, needsPerfectMatch);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.members.ConstructorExtension.isConstructorForCall((Constructor) this, call, needsPerfectMatch);"/>
         </eAnnotations>
         <eParameters name="call" lowerBound="1" eType="#//instantiations/Instantiation"/>
         <eParameters name="needsPerfectMatch" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -1103,7 +1104,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="Method" abstract="true" eSuperTypes="#//members/Member #_Wo2ZP9z1Ed2bJ_pQViWxFg #//generics/TypeParametrizable #//parameters/Parametrizable #//references/ReferenceableElement #//members/ExceptionThrower #//modifiers/AnnotableAndModifiable #//statements/StatementContainer">
       <eOperations name="isMethodForCall" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.members.MethodExtension.isMethodForCall((org.emftext.language.java.members.Method) this, (org.emftext.language.java.references.MethodCall) methodCall, needsPerfectMatch);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.members.MethodExtension.isMethodForCall((tools.mdsd.jamopp.model.java.members.Method) this, (tools.mdsd.jamopp.model.java.references.MethodCall) methodCall, needsPerfectMatch);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="methodCall" eType="#//references/MethodCall"/>
@@ -1111,14 +1112,14 @@
       </eOperations>
       <eOperations name="isSomeMethodForCall" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.members.MethodExtension.isSomeMethodForCall((org.emftext.language.java.members.Method) this, (org.emftext.language.java.references.MethodCall) methodCall);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.members.MethodExtension.isSomeMethodForCall((tools.mdsd.jamopp.model.java.members.Method) this, (tools.mdsd.jamopp.model.java.references.MethodCall) methodCall);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="methodCall" eType="#//references/MethodCall"/>
       </eOperations>
       <eOperations name="isBetterMethodForCall" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.members.MethodExtension.isBetterMethodForCall((org.emftext.language.java.members.Method) this, (org.emftext.language.java.members.Method) otherMethod, (org.emftext.language.java.references.MethodCall) methodCall);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.members.MethodExtension.isBetterMethodForCall((tools.mdsd.jamopp.model.java.members.Method) this, (tools.mdsd.jamopp.model.java.members.Method) otherMethod, (tools.mdsd.jamopp.model.java.references.MethodCall) methodCall);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="otherMethod" eType="#//members/Method"/>
@@ -1126,12 +1127,12 @@
       </eOperations>
       <eOperations name="getBlock" lowerBound="1" eType="#//statements/Block">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.members.MethodExtension.getBlock((org.emftext.language.java.members.Method) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.members.MethodExtension.getBlock((tools.mdsd.jamopp.model.java.members.Method) this);"/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getStatements" lowerBound="1">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.members.MethodExtension.getStatements((org.emftext.language.java.members.Method) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.members.MethodExtension.getStatements((tools.mdsd.jamopp.model.java.members.Method) this);"/>
         </eAnnotations>
         <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EEList">
           <eTypeArguments eClassifier="#_Wo2YzNz1Ed2bJ_pQViWxFg"/>
@@ -1139,7 +1140,7 @@
       </eOperations>
       <eOperations name="isSignatureMatching" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.members.MethodExtension.isSignatureMatching((org.emftext.language.java.members.Method) this, otherMethod);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.members.MethodExtension.isSignatureMatching((tools.mdsd.jamopp.model.java.members.Method) this, otherMethod);"/>
         </eAnnotations>
         <eParameters name="otherMethod" lowerBound="1" eType="#//members/Method"/>
       </eOperations>
@@ -1154,7 +1155,7 @@
           containment="true"/>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages xmi:id="_Wo2Ystz1Ed2bJ_pQViWxFg" name="modifiers" nsURI="http://www.emftext.org/java/modifiers"
+  <eSubpackages xmi:id="_Wo2Ystz1Ed2bJ_pQViWxFg" name="modifiers" nsURI="https://mdsd.tools/jamopp/java/modifiers"
       nsPrefix="modifiers">
     <eClassifiers xsi:type="ecore:EClass" xmi:id="_Wo2Ys9z1Ed2bJ_pQViWxFg" name="Modifier"
         abstract="true" eSuperTypes="#//modifiers/AnnotationInstanceOrModifier"/>
@@ -1164,20 +1165,20 @@
         eSuperTypes="#//commons/Commentable">
       <eOperations name="isHidden" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.modifiers.AnnotableAndModifiableExtension.isHidden((org.emftext.language.java.modifiers.AnnotableAndModifiable) this, (org.emftext.language.java.commons.Commentable) context);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.modifiers.AnnotableAndModifiableExtension.isHidden((tools.mdsd.jamopp.model.java.modifiers.AnnotableAndModifiable) this, (tools.mdsd.jamopp.model.java.commons.Commentable) context);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="context" eType="#//commons/Commentable"/>
       </eOperations>
       <eOperations name="isStatic" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.modifiers.AnnotableAndModifiableExtension.isStatic((org.emftext.language.java.modifiers.AnnotableAndModifiable) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.modifiers.AnnotableAndModifiableExtension.isStatic((tools.mdsd.jamopp.model.java.modifiers.AnnotableAndModifiable) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="removeModifier">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="org.emftext.language.java.extensions.modifiers.AnnotableAndModifiableExtension.removeModifier((org.emftext.language.java.modifiers.AnnotableAndModifiable) this, modifierType);"/>
+          <details key="body" value="tools.mdsd.jamopp.model.java.extensions.modifiers.AnnotableAndModifiableExtension.removeModifier((tools.mdsd.jamopp.model.java.modifiers.AnnotableAndModifiable) this, modifierType);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="modifierType">
@@ -1188,37 +1189,37 @@
       </eOperations>
       <eOperations name="makePublic">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="org.emftext.language.java.extensions.modifiers.AnnotableAndModifiableExtension.makePublic((org.emftext.language.java.modifiers.AnnotableAndModifiable) this);"/>
+          <details key="body" value="tools.mdsd.jamopp.model.java.extensions.modifiers.AnnotableAndModifiableExtension.makePublic((tools.mdsd.jamopp.model.java.modifiers.AnnotableAndModifiable) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="makePrivate">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="org.emftext.language.java.extensions.modifiers.AnnotableAndModifiableExtension.makePrivate((org.emftext.language.java.modifiers.AnnotableAndModifiable) this);"/>
+          <details key="body" value="tools.mdsd.jamopp.model.java.extensions.modifiers.AnnotableAndModifiableExtension.makePrivate((tools.mdsd.jamopp.model.java.modifiers.AnnotableAndModifiable) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="makeProtected">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="org.emftext.language.java.extensions.modifiers.AnnotableAndModifiableExtension.makeProtected((org.emftext.language.java.modifiers.AnnotableAndModifiable) this);"/>
+          <details key="body" value="tools.mdsd.jamopp.model.java.extensions.modifiers.AnnotableAndModifiableExtension.makeProtected((tools.mdsd.jamopp.model.java.modifiers.AnnotableAndModifiable) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getModifiers" upperBound="-1" eType="#_Wo2Ys9z1Ed2bJ_pQViWxFg">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.modifiers.AnnotableAndModifiableExtension.getModifiers((org.emftext.language.java.modifiers.AnnotableAndModifiable) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.modifiers.AnnotableAndModifiableExtension.getModifiers((tools.mdsd.jamopp.model.java.modifiers.AnnotableAndModifiable) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="removeAllModifiers">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="org.emftext.language.java.extensions.modifiers.AnnotableAndModifiableExtension.removeAllModifiers((org.emftext.language.java.modifiers.AnnotableAndModifiable) this);"/>
+          <details key="body" value="tools.mdsd.jamopp.model.java.extensions.modifiers.AnnotableAndModifiableExtension.removeAllModifiers((tools.mdsd.jamopp.model.java.modifiers.AnnotableAndModifiable) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="hasModifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.modifiers.AnnotableAndModifiableExtension.hasModifier((org.emftext.language.java.modifiers.AnnotableAndModifiable) this, type);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.modifiers.AnnotableAndModifiableExtension.hasModifier((tools.mdsd.jamopp.model.java.modifiers.AnnotableAndModifiable) this, type);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="type">
@@ -1229,32 +1230,32 @@
       </eOperations>
       <eOperations name="isPublic" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.modifiers.AnnotableAndModifiableExtension.isPublic((org.emftext.language.java.modifiers.AnnotableAndModifiable) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.modifiers.AnnotableAndModifiableExtension.isPublic((tools.mdsd.jamopp.model.java.modifiers.AnnotableAndModifiable) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="isPrivate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.modifiers.AnnotableAndModifiableExtension.isPrivate((org.emftext.language.java.modifiers.AnnotableAndModifiable) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.modifiers.AnnotableAndModifiableExtension.isPrivate((tools.mdsd.jamopp.model.java.modifiers.AnnotableAndModifiable) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="isProtected" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.modifiers.AnnotableAndModifiableExtension.isProtected((org.emftext.language.java.modifiers.AnnotableAndModifiable) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.modifiers.AnnotableAndModifiableExtension.isProtected((tools.mdsd.jamopp.model.java.modifiers.AnnotableAndModifiable) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="addModifier">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="org.emftext.language.java.extensions.modifiers.AnnotableAndModifiableExtension.addModifier((org.emftext.language.java.modifiers.AnnotableAndModifiable) this, (org.emftext.language.java.modifiers.Modifier) newModifier);"/>
+          <details key="body" value="tools.mdsd.jamopp.model.java.extensions.modifiers.AnnotableAndModifiableExtension.addModifier((tools.mdsd.jamopp.model.java.modifiers.AnnotableAndModifiable) this, (tools.mdsd.jamopp.model.java.modifiers.Modifier) newModifier);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="newModifier" lowerBound="1" eType="#_Wo2Ys9z1Ed2bJ_pQViWxFg"/>
       </eOperations>
       <eOperations name="getAnnotationInstances" upperBound="-1" eType="#_Wosms9z1Ed2bJ_pQViWxFg">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.modifiers.AnnotableAndModifiableExtension.getAnnotationInstances((org.emftext.language.java.modifiers.AnnotableAndModifiable) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.modifiers.AnnotableAndModifiableExtension.getAnnotationInstances((tools.mdsd.jamopp.model.java.modifiers.AnnotableAndModifiable) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
@@ -1293,7 +1294,8 @@
         eSuperTypes="#//commons/Commentable"/>
     <eClassifiers xsi:type="ecore:EClass" name="Open" eSuperTypes="#//commons/Commentable"/>
   </eSubpackages>
-  <eSubpackages name="operators" nsURI="http://www.emftext.org/java/operators" nsPrefix="operators">
+  <eSubpackages name="operators" nsURI="https://mdsd.tools/jamopp/java/operators"
+      nsPrefix="operators">
     <eClassifiers xsi:type="ecore:EClass" name="Operator" abstract="true" eSuperTypes="#//commons/Commentable"/>
     <eClassifiers xsi:type="ecore:EClass" name="AdditiveOperator" abstract="true"
         eSuperTypes="#//operators/Operator"/>
@@ -1340,7 +1342,8 @@
     <eClassifiers xsi:type="ecore:EClass" name="RightShift" eSuperTypes="#//operators/ShiftOperator"/>
     <eClassifiers xsi:type="ecore:EClass" name="UnsignedRightShift" eSuperTypes="#//operators/ShiftOperator"/>
   </eSubpackages>
-  <eSubpackages name="parameters" nsURI="http://www.emftext.org/java/parameters" nsPrefix="parameters">
+  <eSubpackages name="parameters" nsURI="https://mdsd.tools/jamopp/java/parameters"
+      nsPrefix="parameters">
     <eClassifiers xsi:type="ecore:EClass" name="Parameter" abstract="true" eSuperTypes="#//variables/Variable #//modifiers/AnnotableAndModifiable"/>
     <eClassifiers xsi:type="ecore:EClass" name="Parametrizable" abstract="true" eSuperTypes="#//commons/Commentable">
       <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
@@ -1359,23 +1362,24 @@
           eType="#//literals/This" containment="true"/>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages name="references" nsURI="http://www.emftext.org/java/references" nsPrefix="references">
+  <eSubpackages name="references" nsURI="https://mdsd.tools/jamopp/java/references"
+      nsPrefix="references">
     <eClassifiers xsi:type="ecore:EClass" name="Reference" abstract="true" eSuperTypes="#//expressions/PrimaryExpression #//generics/TypeArgumentable #//types/TypedElementExtension">
       <eOperations name="getReferencedType" eType="#_Wo2ZO9z1Ed2bJ_pQViWxFg">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.references.ReferenceExtension.getReferencedType((org.emftext.language.java.references.Reference) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.references.ReferenceExtension.getReferencedType((tools.mdsd.jamopp.model.java.references.Reference) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getPrevious" eType="#//references/Reference">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.references.ReferenceExtension.getPrevious((org.emftext.language.java.references.Reference) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.references.ReferenceExtension.getPrevious((tools.mdsd.jamopp.model.java.references.Reference) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getReferencedTypeReference" eType="#_Wo2ZPdz1Ed2bJ_pQViWxFg">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.references.ReferenceExtension.getReferencedTypeReference((org.emftext.language.java.references.Reference) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.references.ReferenceExtension.getReferencedTypeReference((tools.mdsd.jamopp.model.java.references.Reference) this);"/>
         </eAnnotations>
       </eOperations>
       <eStructuralFeatures xsi:type="ecore:EReference" name="next" eType="#//references/Reference"
@@ -1386,7 +1390,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="Argumentable" abstract="true" eSuperTypes="#//commons/Commentable">
       <eOperations name="getArgumentTypes" upperBound="-1" eType="#_Wo2ZO9z1Ed2bJ_pQViWxFg">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.references.ArgumentableExtension.getArgumentTypes((org.emftext.language.java.references.Argumentable) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.references.ArgumentableExtension.getArgumentTypes((tools.mdsd.jamopp.model.java.references.Argumentable) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
@@ -1405,7 +1409,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="IdentifierReference" eSuperTypes="#//references/ElementReference #//annotations/Annotable #//arrays/ArrayTypeable">
       <eOperations name="getArrayDimension" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.expressions.ExpressionExtension.getArrayDimension((org.emftext.language.java.expressions.Expression) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.expressions.ExpressionExtension.getArrayDimension((tools.mdsd.jamopp.model.java.expressions.Expression) this);"/>
         </eAnnotations>
       </eOperations>
     </eClassifiers>
@@ -1429,7 +1433,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="PackageReference" eSuperTypes="#//references/ReferenceableElement #//commons/NamespaceAwareElement"/>
   </eSubpackages>
-  <eSubpackages xmi:id="_Wo2Yy9z1Ed2bJ_pQViWxFg" name="statements" nsURI="http://www.emftext.org/java/statements"
+  <eSubpackages xmi:id="_Wo2Yy9z1Ed2bJ_pQViWxFg" name="statements" nsURI="https://mdsd.tools/jamopp/java/statements"
       nsPrefix="statements">
     <eClassifiers xsi:type="ecore:EClass" name="StatementContainer" abstract="true"
         eSuperTypes="#//commons/Commentable">
@@ -1440,7 +1444,7 @@
         eSuperTypes="#//commons/Commentable">
       <eOperations name="getLocalVariable" lowerBound="1" eType="#//variables/LocalVariable">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.statements.StatementListContainerExtension.getLocalVariable((org.emftext.language.java.statements.StatementListContainer) this, name);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.statements.StatementListContainerExtension.getLocalVariable((tools.mdsd.jamopp.model.java.statements.StatementListContainer) this, name);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -1479,7 +1483,7 @@
         eSuperTypes="#//statements/StatementListContainer #//statements/BlockContainer">
       <eOperations name="getStatements" lowerBound="1">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.statements.CatchBlockExtension.getStatements((org.emftext.language.java.statements.CatchBlock) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.statements.CatchBlockExtension.getStatements((tools.mdsd.jamopp.model.java.statements.CatchBlock) this);"/>
         </eAnnotations>
         <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EEList">
           <eTypeArguments eClassifier="#_Wo2YzNz1Ed2bJ_pQViWxFg"/>
@@ -1552,7 +1556,7 @@
         eSuperTypes="#_Wo2YzNz1Ed2bJ_pQViWxFg #//statements/StatementListContainer #//statements/BlockContainer">
       <eOperations name="getStatements" lowerBound="1">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.statements.SynchronizedBlockExtension.getStatements((org.emftext.language.java.statements.SynchronizedBlock) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.statements.SynchronizedBlockExtension.getStatements((tools.mdsd.jamopp.model.java.statements.SynchronizedBlock) this);"/>
         </eAnnotations>
         <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EEList">
           <eTypeArguments eClassifier="#_Wo2YzNz1Ed2bJ_pQViWxFg"/>
@@ -1570,7 +1574,7 @@
         eSuperTypes="#_Wo2YzNz1Ed2bJ_pQViWxFg #//statements/StatementListContainer #//statements/BlockContainer">
       <eOperations name="getCatcheBlocks" lowerBound="1">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.statements.TryBlockExtension.getCatcheBlocks((org.emftext.language.java.statements.TryBlock) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.statements.TryBlockExtension.getCatcheBlocks((tools.mdsd.jamopp.model.java.statements.TryBlock) this);"/>
         </eAnnotations>
         <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EEList">
           <eTypeArguments eClassifier="#_Wo2ZD9z1Ed2bJ_pQViWxFg"/>
@@ -1578,7 +1582,7 @@
       </eOperations>
       <eOperations name="getStatements" lowerBound="1">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.statements.TryBlockExtension.getStatements((org.emftext.language.java.statements.TryBlock) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.statements.TryBlockExtension.getStatements((tools.mdsd.jamopp.model.java.statements.TryBlock) this);"/>
         </eAnnotations>
         <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EEList">
           <eTypeArguments eClassifier="#_Wo2YzNz1Ed2bJ_pQViWxFg"/>
@@ -1608,13 +1612,13 @@
           upperBound="-1" eType="#_Wo2YDNz1Ed2bJ_pQViWxFg" containment="true"/>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages xmi:id="_Wo2ZOtz1Ed2bJ_pQViWxFg" name="types" nsURI="http://www.emftext.org/java/types"
+  <eSubpackages xmi:id="_Wo2ZOtz1Ed2bJ_pQViWxFg" name="types" nsURI="https://mdsd.tools/jamopp/java/types"
       nsPrefix="types">
     <eClassifiers xsi:type="ecore:EClass" xmi:id="_Wo2ZO9z1Ed2bJ_pQViWxFg" name="Type"
         abstract="true" eSuperTypes="#//commons/Commentable">
       <eOperations name="equalsType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.types.TypeExtension.equalsType((org.emftext.language.java.types.Type) this, arrayDimension, (org.emftext.language.java.types.Type) otherType, otherArrayDimension);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.types.TypeExtension.equalsType((tools.mdsd.jamopp.model.java.types.Type) this, arrayDimension, (tools.mdsd.jamopp.model.java.types.Type) otherType, otherArrayDimension);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="arrayDimension" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
@@ -1623,7 +1627,7 @@
       </eOperations>
       <eOperations name="isSuperType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.types.TypeExtension.isSuperType((org.emftext.language.java.types.Type) this, arrayDimension, (org.emftext.language.java.types.Type) otherType, (org.emftext.language.java.arrays.ArrayTypeable) otherArrayType);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.types.TypeExtension.isSuperType((tools.mdsd.jamopp.model.java.types.Type) this, arrayDimension, (tools.mdsd.jamopp.model.java.types.Type) otherType, (tools.mdsd.jamopp.model.java.arrays.ArrayTypeable) otherArrayType);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="arrayDimension" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
@@ -1652,33 +1656,33 @@
         abstract="true" eSuperTypes="#//commons/Commentable #//arrays/ArrayTypeable">
       <eOperations name="getTarget" eType="#_Wo2ZO9z1Ed2bJ_pQViWxFg">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.types.TypeReferenceExtension.getBoundTarget((org.emftext.language.java.types.TypeReference) this, null);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.types.TypeReferenceExtension.getBoundTarget((tools.mdsd.jamopp.model.java.types.TypeReference) this, null);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="setTarget">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="org.emftext.language.java.extensions.types.TypeReferenceExtension.setTarget((org.emftext.language.java.types.TypeReference) this, (org.emftext.language.java.classifiers.Classifier) type);"/>
+          <details key="body" value="tools.mdsd.jamopp.model.java.extensions.types.TypeReferenceExtension.setTarget((tools.mdsd.jamopp.model.java.types.TypeReference) this, (tools.mdsd.jamopp.model.java.classifiers.Classifier) type);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="type" eType="#//classifiers/Classifier"/>
       </eOperations>
       <eOperations name="getBoundTarget" eType="#_Wo2ZO9z1Ed2bJ_pQViWxFg">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.types.TypeReferenceExtension.getBoundTarget((org.emftext.language.java.types.TypeReference) this, (org.emftext.language.java.references.Reference) reference);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.types.TypeReferenceExtension.getBoundTarget((tools.mdsd.jamopp.model.java.types.TypeReference) this, (tools.mdsd.jamopp.model.java.references.Reference) reference);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="reference" eType="#//references/Reference"/>
       </eOperations>
       <eOperations name="getPureClassifierReference" eType="#//types/ClassifierReference">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.types.TypeReferenceExtension.getPureClassifierReference((org.emftext.language.java.types.TypeReference) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.types.TypeReferenceExtension.getPureClassifierReference((tools.mdsd.jamopp.model.java.types.TypeReference) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
       <eOperations name="getBoundTargetReference" eType="#_Wo2ZPdz1Ed2bJ_pQViWxFg">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.types.TypeReferenceExtension.getBoundTargetReference((org.emftext.language.java.types.TypeReference) this, reference);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.types.TypeReferenceExtension.getBoundTargetReference((tools.mdsd.jamopp.model.java.types.TypeReference) this, reference);"/>
         </eAnnotations>
         <eParameters name="reference" eType="#//references/Reference"/>
       </eOperations>
@@ -1697,14 +1701,14 @@
         abstract="true" eSuperTypes="#_Wo2ZO9z1Ed2bJ_pQViWxFg #_Wo2ZPdz1Ed2bJ_pQViWxFg #//annotations/Annotable">
       <eOperations name="getAllMembers" upperBound="-1" eType="#//members/Member">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.types.PrimitiveTypeExtension.getAllMembers((org.emftext.language.java.types.PrimitiveType) this, (org.emftext.language.java.commons.Commentable) context);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.types.PrimitiveTypeExtension.getAllMembers((tools.mdsd.jamopp.model.java.types.PrimitiveType) this, (tools.mdsd.jamopp.model.java.commons.Commentable) context);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="context" eType="#//commons/Commentable"/>
       </eOperations>
       <eOperations name="wrapPrimitiveType" eType="#//classifiers/Class">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.types.PrimitiveTypeExtension.wrapPrimitiveType((org.emftext.language.java.types.PrimitiveType) this);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.types.PrimitiveTypeExtension.wrapPrimitiveType((tools.mdsd.jamopp.model.java.types.PrimitiveType) this);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
       </eOperations>
@@ -1729,17 +1733,18 @@
     <eClassifiers xsi:type="ecore:EClass" name="InferableType" eSuperTypes="#_Wo2ZPdz1Ed2bJ_pQViWxFg #//types/TypedElementExtension">
       <eOperations name="getBoundTargetReference" eType="#_Wo2ZPdz1Ed2bJ_pQViWxFg">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.types.InferableTypeExtension.getBoundTargetReference((org.emftext.language.java.types.InferableType) this, reference);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.types.InferableTypeExtension.getBoundTargetReference((tools.mdsd.jamopp.model.java.types.InferableType) this, reference);"/>
         </eAnnotations>
         <eParameters name="reference" eType="#//references/Reference"/>
       </eOperations>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages name="variables" nsURI="http://www.emftext.org/java/variables" nsPrefix="variables">
+  <eSubpackages name="variables" nsURI="https://mdsd.tools/jamopp/java/variables"
+      nsPrefix="variables">
     <eClassifiers xsi:type="ecore:EClass" name="Variable" abstract="true" eSuperTypes="#//commons/NamedElement #_Wo2ZP9z1Ed2bJ_pQViWxFg #//references/ReferenceableElement #//generics/TypeArgumentable">
       <eOperations name="createMethodCallStatement" eType="#_Wo2YzNz1Ed2bJ_pQViWxFg">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.variables.VariableExtension.createMethodCallStatement((org.emftext.language.java.variables.Variable) this, methodName, arguments);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.variables.VariableExtension.createMethodCallStatement((tools.mdsd.jamopp.model.java.variables.Variable) this, methodName, arguments);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="methodName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -1747,7 +1752,7 @@
       </eOperations>
       <eOperations name="createMethodCall" eType="#_Wo2YDNz1Ed2bJ_pQViWxFg">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return org.emftext.language.java.extensions.variables.VariableExtension.createMethodCall((org.emftext.language.java.variables.Variable) this, methodName, arguments);"/>
+          <details key="body" value="return tools.mdsd.jamopp.model.java.extensions.variables.VariableExtension.createMethodCall((tools.mdsd.jamopp.model.java.variables.Variable) this, methodName, arguments);"/>
           <details key="documentation" value=""/>
         </eAnnotations>
         <eParameters name="methodName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -1762,7 +1767,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="Resource" abstract="true" interface="true"
         eSuperTypes="#//commons/Commentable"/>
   </eSubpackages>
-  <eSubpackages name="modules" nsURI="http://www.emftext.org/java/modules" nsPrefix="modules">
+  <eSubpackages name="modules" nsURI="https://mdsd.tools/jamopp/java/modules" nsPrefix="modules">
     <eClassifiers xsi:type="ecore:EClass" name="ModuleDirective" abstract="true" eSuperTypes="#//commons/Commentable"/>
     <eClassifiers xsi:type="ecore:EClass" name="UsesModuleDirective" eSuperTypes="#//modules/ModuleDirective #_Wo2ZP9z1Ed2bJ_pQViWxFg"/>
     <eClassifiers xsi:type="ecore:EClass" name="ProvidesModuleDirective" eSuperTypes="#_Wo2ZP9z1Ed2bJ_pQViWxFg #//modules/ModuleDirective">
@@ -1787,7 +1792,7 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//containers/Module"/>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages name="layout" nsURI="http://www.emftext.org/commons/layout" nsPrefix="layout">
+  <eSubpackages name="layout" nsURI="https://mdsd.tools/jamopp/commons/layout" nsPrefix="layout">
     <eClassifiers xsi:type="ecore:EClass" name="LayoutInformation" abstract="true">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="startOffset" lowerBound="1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>

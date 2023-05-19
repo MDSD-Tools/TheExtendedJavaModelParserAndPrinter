@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2006-2014&#xD;&#xA;Software Technology Group, Dresden University of Technology&#xD;&#xA;DevBoost GmbH, Berlin, Amtsgericht Charlottenburg, HRB 140026&#xD;&#xA;&#xD;&#xA;All rights reserved. This program and the accompanying materials&#xD;&#xA;are made available under the terms of the Eclipse Public License v1.0&#xD;&#xA;which accompanies this distribution, and is available at&#xD;&#xA;http://www.eclipse.org/legal/epl-v10.html&#xD;&#xA;&#xD;&#xA;Contributors:&#xD;&#xA;  Software Technology Group - TU Dresden, Germany;&#xD;&#xA;  DevBoost GmbH - Berlin, Germany&#xD;&#xA;     - initial API and implementation&#xD;&#xA;  Martin Armbruster&#xD;&#xA;     - Adaptation and extension for Java 7+&#xD;&#xA; "
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2020-2023&#xD;&#xA;Modelling for Continuous Software Engineering (MCSE) group, Institute of Information Security and Dependability (KASTEL), Karlsruhe Institute of Technology (KIT).&#xD;&#xA;&#xD;&#xA;Copyright (c) 2006-2014&#xD;&#xA;Software Technology Group, Dresden University of Technology&#xD;&#xA;DevBoost GmbH, Berlin, Amtsgericht Charlottenburg, HRB 140026&#xD;&#xA;&#xD;&#xA;All rights reserved. This program and the accompanying materials&#xD;&#xA;are made available under the terms of the Eclipse Public License v1.0&#xD;&#xA;which accompanies this distribution, and is available at&#xD;&#xA;http://www.eclipse.org/legal/epl-v10.html&#xD;&#xA;&#xD;&#xA;Contributors:&#xD;&#xA;  Software Technology Group - TU Dresden, Germany;&#xD;&#xA;  DevBoost GmbH - Berlin, Germany&#xD;&#xA;     - initial API and implementation&#xD;&#xA;  Martin Armbruster (MCSE, KASTEL, KIT)&#xD;&#xA;     - Adaptation and extension for Java 7+&#xD;&#xA; "
     modelDirectory="/jamopp.model/src/main/generated" editDirectory="/jamopp.model.edit/src/main/generated"
     editorDirectory="/jamopp.model.editor/src-gen" modelPluginID="tools.mdsd.jamopp.model"
     templateDirectory="" modelName="Java" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl"
@@ -9,9 +9,9 @@
     editPluginID="tools.mdsd.jamopp.model.edit" editorPluginID="tools.mdsd.jamopp.model.editor"
     testsPluginID="tools.mdsd.jamopp.model.tests">
   <foreignModel>java.ecore</foreignModel>
-  <genPackages prefix="Java" basePackage="org.emftext.language" disposableProviderFactory="true"
+  <genPackages prefix="Java" basePackage="tools.mdsd.jamopp.model" disposableProviderFactory="true"
       ecorePackage="java.ecore#_WosmsNz1Ed2bJ_pQViWxFg">
-    <nestedGenPackages prefix="Annotations" basePackage="org.emftext.language.java"
+    <nestedGenPackages prefix="Annotations" basePackage="tools.mdsd.jamopp.model.java"
         disposableProviderFactory="true" ecorePackage="java.ecore#_Wosmsdz1Ed2bJ_pQViWxFg">
       <genClasses image="false" ecoreClass="java.ecore#//annotations/Annotable">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//annotations/Annotable/annotations"/>
@@ -34,13 +34,13 @@
       </genClasses>
       <genClasses image="false" ecoreClass="java.ecore#//annotations/AnnotationValue"/>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Arrays" basePackage="org.emftext.language.java" disposableProviderFactory="true"
-        ecorePackage="java.ecore#//arrays">
+    <nestedGenPackages prefix="Arrays" basePackage="tools.mdsd.jamopp.model.java"
+        disposableProviderFactory="true" ecorePackage="java.ecore#//arrays">
       <genClasses image="false" ecoreClass="java.ecore#//arrays/ArrayTypeable">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//arrays/ArrayTypeable/arrayDimensionsBefore"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//arrays/ArrayTypeable/arrayDimensionsAfter"/>
         <genOperations ecoreOperation="java.ecore#//arrays/ArrayTypeable/getArrayDimension"
-            body="return org.emftext.language.java.extensions.arrays.ArrayTypeableExtension.getArrayDimension((org.emftext.language.java.arrays.ArrayTypeable) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.arrays.ArrayTypeableExtension.getArrayDimension((tools.mdsd.jamopp.model.arrays.ArrayTypeable) this);"/>
       </genClasses>
       <genClasses ecoreClass="java.ecore#//arrays/ArrayDimension"/>
       <genClasses ecoreClass="java.ecore#//arrays/ArrayInitializer">
@@ -51,7 +51,7 @@
       <genClasses ecoreClass="java.ecore#//arrays/ArrayInstantiationBySize">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//arrays/ArrayInstantiationBySize/sizes"/>
         <genOperations ecoreOperation="java.ecore#//arrays/ArrayInstantiationBySize/getArrayDimension"
-            body="return org.emftext.language.java.extensions.expressions.ExpressionExtension.getArrayDimension((org.emftext.language.java.expressions.Expression) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.expressions.ExpressionExtension.getArrayDimension((tools.mdsd.jamopp.model.expressions.Expression) this);"/>
       </genClasses>
       <genClasses image="false" ecoreClass="java.ecore#//arrays/ArrayInstantiationByValues">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//arrays/ArrayInstantiationByValues/arrayInitializer"/>
@@ -59,42 +59,42 @@
       <genClasses ecoreClass="java.ecore#//arrays/ArrayInstantiationByValuesUntyped"/>
       <genClasses ecoreClass="java.ecore#//arrays/ArrayInstantiationByValuesTyped">
         <genOperations ecoreOperation="java.ecore#//arrays/ArrayInstantiationByValuesTyped/getArrayDimension"
-            body="return org.emftext.language.java.extensions.expressions.ExpressionExtension.getArrayDimension((org.emftext.language.java.expressions.Expression) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.expressions.ExpressionExtension.getArrayDimension((tools.mdsd.jamopp.model.expressions.Expression) this);"/>
       </genClasses>
       <genClasses ecoreClass="java.ecore#//arrays/ArraySelector">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//arrays/ArraySelector/position"/>
       </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Classifiers" basePackage="org.emftext.language.java"
+    <nestedGenPackages prefix="Classifiers" basePackage="tools.mdsd.jamopp.model.java"
         disposableProviderFactory="true" ecorePackage="java.ecore#//classifiers">
       <genClasses image="false" ecoreClass="java.ecore#//classifiers/Classifier">
         <genOperations ecoreOperation="java.ecore#//classifiers/Classifier/getAllSuperClassifiers"
-            body="return org.emftext.language.java.extensions.classifiers.ClassifierExtension.getAllSuperClassifiers((org.emftext.language.java.classifiers.Classifier) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.classifiers.ClassifierExtension.getAllSuperClassifiers((tools.mdsd.jamopp.model.classifiers.Classifier) this);"/>
         <genOperations ecoreOperation="java.ecore#//classifiers/Classifier/addImport"
-            body="org.emftext.language.java.extensions.classifiers.ClassifierExtension.addImport((org.emftext.language.java.classifiers.Classifier) this, nameOfClassToImport);">
+            body="tools.mdsd.jamopp.model.extensions.classifiers.ClassifierExtension.addImport((tools.mdsd.jamopp.model.classifiers.Classifier) this, nameOfClassToImport);">
           <genParameters ecoreParameter="java.ecore#//classifiers/Classifier/addImport/nameOfClassToImport"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//classifiers/Classifier/addPackageImport"
-            body="org.emftext.language.java.extensions.classifiers.ClassifierExtension.addPackageImport((org.emftext.language.java.classifiers.Classifier) this, packageName);">
+            body="tools.mdsd.jamopp.model.extensions.classifiers.ClassifierExtension.addPackageImport((tools.mdsd.jamopp.model.classifiers.Classifier) this, packageName);">
           <genParameters ecoreParameter="java.ecore#//classifiers/Classifier/addPackageImport/packageName"/>
         </genOperations>
       </genClasses>
       <genClasses image="false" ecoreClass="java.ecore#//classifiers/ConcreteClassifier">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//classifiers/ConcreteClassifier/package"/>
         <genOperations ecoreOperation="java.ecore#//classifiers/ConcreteClassifier/getInnerClassifiers"
-            body="return org.emftext.language.java.extensions.classifiers.ConcreteClassifierExtension.getInnerClassifiers((org.emftext.language.java.classifiers.ConcreteClassifier) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.classifiers.ConcreteClassifierExtension.getInnerClassifiers((tools.mdsd.jamopp.model.classifiers.ConcreteClassifier) this);"/>
         <genOperations ecoreOperation="java.ecore#//classifiers/ConcreteClassifier/getAllInnerClassifiers"
-            body="return org.emftext.language.java.extensions.classifiers.ConcreteClassifierExtension.getAllInnerClassifiers((org.emftext.language.java.classifiers.ConcreteClassifier) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.classifiers.ConcreteClassifierExtension.getAllInnerClassifiers((tools.mdsd.jamopp.model.classifiers.ConcreteClassifier) this);"/>
         <genOperations ecoreOperation="java.ecore#//classifiers/ConcreteClassifier/getSuperTypeReferences"
-            body="return org.emftext.language.java.extensions.classifiers.ConcreteClassifierExtension.getSuperTypeReferences((org.emftext.language.java.classifiers.ConcreteClassifier) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.classifiers.ConcreteClassifierExtension.getSuperTypeReferences((tools.mdsd.jamopp.model.classifiers.ConcreteClassifier) this);"/>
         <genOperations ecoreOperation="java.ecore#//classifiers/ConcreteClassifier/getAllMembers"
-            body="return org.emftext.language.java.extensions.classifiers.ConcreteClassifierExtension.getAllMembers((org.emftext.language.java.classifiers.ConcreteClassifier) this, (org.emftext.language.java.commons.Commentable) context);">
+            body="return tools.mdsd.jamopp.model.extensions.classifiers.ConcreteClassifierExtension.getAllMembers((tools.mdsd.jamopp.model.classifiers.ConcreteClassifier) this, (tools.mdsd.jamopp.model.commons.Commentable) context);">
           <genParameters ecoreParameter="java.ecore#//classifiers/ConcreteClassifier/getAllMembers/context"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//classifiers/ConcreteClassifier/getQualifiedName"
-            body="return org.emftext.language.java.extensions.classifiers.ConcreteClassifierExtension.getQualifiedName((org.emftext.language.java.classifiers.ConcreteClassifier) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.classifiers.ConcreteClassifierExtension.getQualifiedName((tools.mdsd.jamopp.model.classifiers.ConcreteClassifier) this);"/>
         <genOperations ecoreOperation="java.ecore#//classifiers/ConcreteClassifier/isJavaLangObject"
-            body="return org.emftext.language.java.extensions.classifiers.ConcreteClassifierExtension.isJavaLangObject((org.emftext.language.java.classifiers.ConcreteClassifier) clazz);">
+            body="return tools.mdsd.jamopp.model.extensions.classifiers.ConcreteClassifierExtension.isJavaLangObject((tools.mdsd.jamopp.model.classifiers.ConcreteClassifier) clazz);">
           <genParameters ecoreParameter="java.ecore#//classifiers/ConcreteClassifier/isJavaLangObject/clazz"/>
         </genOperations>
       </genClasses>
@@ -105,120 +105,120 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//classifiers/Class/extends"/>
         <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference java.ecore#//classifiers/Class/defaultExtends"/>
         <genOperations ecoreOperation="java.ecore#//classifiers/Class/getAllSuperClassifiers"
-            body="return org.emftext.language.java.extensions.classifiers.ClassExtension.getAllSuperClassifiers((org.emftext.language.java.classifiers.Class) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.classifiers.ClassExtension.getAllSuperClassifiers((tools.mdsd.jamopp.model.classifiers.Class) this);"/>
         <genOperations ecoreOperation="java.ecore#//classifiers/Class/getSuperClass"
-            body="return org.emftext.language.java.extensions.classifiers.ClassExtension.getSuperClass((org.emftext.language.java.classifiers.Class) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.classifiers.ClassExtension.getSuperClass((tools.mdsd.jamopp.model.classifiers.Class) this);"/>
         <genOperations ecoreOperation="java.ecore#//classifiers/Class/unWrapPrimitiveType"
-            body="return org.emftext.language.java.extensions.classifiers.ClassExtension.unWrapPrimitiveType((org.emftext.language.java.classifiers.Class) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.classifiers.ClassExtension.unWrapPrimitiveType((tools.mdsd.jamopp.model.classifiers.Class) this);"/>
       </genClasses>
       <genClasses ecoreClass="java.ecore#//classifiers/Interface">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//classifiers/Interface/extends"/>
         <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference java.ecore#//classifiers/Interface/defaultExtends"/>
         <genOperations ecoreOperation="java.ecore#//classifiers/Interface/getAllSuperClassifiers"
-            body="return org.emftext.language.java.extensions.classifiers.InterfaceExtension.getAllSuperClassifiers((org.emftext.language.java.classifiers.Interface) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.classifiers.InterfaceExtension.getAllSuperClassifiers((tools.mdsd.jamopp.model.classifiers.Interface) this);"/>
         <genOperations ecoreOperation="java.ecore#//classifiers/Interface/getAbstractMethodOfFunctionalInterface"
-            body="return org.emftext.language.java.extensions.classifiers.InterfaceExtension.getAbstractMethodOfFunctionalInterface((org.emftext.language.java.classifiers.Interface) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.classifiers.InterfaceExtension.getAbstractMethodOfFunctionalInterface((tools.mdsd.jamopp.model.classifiers.Interface) this);"/>
       </genClasses>
       <genClasses ecoreClass="java.ecore#//classifiers/Enumeration">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//classifiers/Enumeration/constants"/>
         <genOperations ecoreOperation="java.ecore#//classifiers/Enumeration/getAllSuperClassifiers"
-            body="return org.emftext.language.java.extensions.classifiers.EnumerationExtension.getAllSuperClassifiers((org.emftext.language.java.classifiers.Enumeration) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.classifiers.EnumerationExtension.getAllSuperClassifiers((tools.mdsd.jamopp.model.classifiers.Enumeration) this);"/>
         <genOperations ecoreOperation="java.ecore#//classifiers/Enumeration/getContainedConstant"
-            body="return org.emftext.language.java.extensions.classifiers.EnumerationExtension.getContainedConstant((org.emftext.language.java.classifiers.Enumeration) this, name);">
+            body="return tools.mdsd.jamopp.model.extensions.classifiers.EnumerationExtension.getContainedConstant((tools.mdsd.jamopp.model.classifiers.Enumeration) this, name);">
           <genParameters ecoreParameter="java.ecore#//classifiers/Enumeration/getContainedConstant/name"/>
         </genOperations>
       </genClasses>
       <genClasses ecoreClass="java.ecore#//classifiers/Annotation">
         <genOperations ecoreOperation="java.ecore#//classifiers/Annotation/getAllSuperClassifiers"
-            body="return org.emftext.language.java.extensions.classifiers.AnnotationExtension.getAllSuperClassifiers((org.emftext.language.java.classifiers.Annotation) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.classifiers.AnnotationExtension.getAllSuperClassifiers((tools.mdsd.jamopp.model.classifiers.Annotation) this);"/>
       </genClasses>
       <genClasses ecoreClass="java.ecore#//classifiers/AnonymousClass">
         <genOperations ecoreOperation="java.ecore#//classifiers/AnonymousClass/getAllSuperClassifiers"
-            body="return org.emftext.language.java.extensions.classifiers.AnonymousClassExtension.getAllSuperClassifiers((org.emftext.language.java.classifiers.AnonymousClass) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.classifiers.AnonymousClassExtension.getAllSuperClassifiers((tools.mdsd.jamopp.model.classifiers.AnonymousClass) this);"/>
         <genOperations ecoreOperation="java.ecore#//classifiers/AnonymousClass/getSuperClassifier"
-            body="return org.emftext.language.java.extensions.classifiers.AnonymousClassExtension.getSuperClassifier((org.emftext.language.java.classifiers.AnonymousClass) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.classifiers.AnonymousClassExtension.getSuperClassifier((tools.mdsd.jamopp.model.classifiers.AnonymousClass) this);"/>
         <genOperations ecoreOperation="java.ecore#//classifiers/AnonymousClass/getAllMembers"
-            body="return org.emftext.language.java.extensions.classifiers.AnonymousClassExtension.getAllMembers((org.emftext.language.java.classifiers.AnonymousClass) this, (org.emftext.language.java.commons.Commentable) context);">
+            body="return tools.mdsd.jamopp.model.extensions.classifiers.AnonymousClassExtension.getAllMembers((tools.mdsd.jamopp.model.classifiers.AnonymousClass) this, (tools.mdsd.jamopp.model.commons.Commentable) context);">
           <genParameters ecoreParameter="java.ecore#//classifiers/AnonymousClass/getAllMembers/context"/>
         </genOperations>
       </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Commons" basePackage="org.emftext.language.java" disposableProviderFactory="true"
-        ecorePackage="java.ecore#//commons">
+    <nestedGenPackages prefix="Commons" basePackage="tools.mdsd.jamopp.model.java"
+        disposableProviderFactory="true" ecorePackage="java.ecore#//commons">
       <genClasses image="false" ecoreClass="java.ecore#//commons/Commentable">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//commons/Commentable/layoutInformations"/>
         <genOperations ecoreOperation="java.ecore#//commons/Commentable/getConcreteClassifier"
-            body="return org.emftext.language.java.extensions.commons.CommentableExtension.getConcreteClassifier((org.emftext.language.java.commons.Commentable) this, name);">
+            body="return tools.mdsd.jamopp.model.extensions.commons.CommentableExtension.getConcreteClassifier((tools.mdsd.jamopp.model.commons.Commentable) this, name);">
           <genParameters ecoreParameter="java.ecore#//commons/Commentable/getConcreteClassifier/name"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//commons/Commentable/getConcreteClassifiers"
-            body="return org.emftext.language.java.extensions.commons.CommentableExtension.getConcreteClassifiers((org.emftext.language.java.commons.Commentable) this, packageName, classifierQuery);">
+            body="return tools.mdsd.jamopp.model.extensions.commons.CommentableExtension.getConcreteClassifiers((tools.mdsd.jamopp.model.commons.Commentable) this, packageName, classifierQuery);">
           <genParameters ecoreParameter="java.ecore#//commons/Commentable/getConcreteClassifiers/packageName"/>
           <genParameters ecoreParameter="java.ecore#//commons/Commentable/getConcreteClassifiers/classifierQuery"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//commons/Commentable/getLibClass"
-            body="return org.emftext.language.java.extensions.commons.CommentableExtension.getLibClass((org.emftext.language.java.commons.Commentable) this, name);">
+            body="return tools.mdsd.jamopp.model.extensions.commons.CommentableExtension.getLibClass((tools.mdsd.jamopp.model.commons.Commentable) this, name);">
           <genParameters ecoreParameter="java.ecore#//commons/Commentable/getLibClass/name"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//commons/Commentable/getLibInterface"
-            body="return org.emftext.language.java.extensions.commons.CommentableExtension.getLibInterface((org.emftext.language.java.commons.Commentable) this, name);">
+            body="return tools.mdsd.jamopp.model.extensions.commons.CommentableExtension.getLibInterface((tools.mdsd.jamopp.model.commons.Commentable) this, name);">
           <genParameters ecoreParameter="java.ecore#//commons/Commentable/getLibInterface/name"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//commons/Commentable/getClassClass"
-            body="return org.emftext.language.java.extensions.commons.CommentableExtension.getClassClass((org.emftext.language.java.commons.Commentable) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.commons.CommentableExtension.getClassClass((tools.mdsd.jamopp.model.commons.Commentable) this);"/>
         <genOperations ecoreOperation="java.ecore#//commons/Commentable/getObjectClass"
-            body="return org.emftext.language.java.extensions.commons.CommentableExtension.getObjectClass((org.emftext.language.java.commons.Commentable) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.commons.CommentableExtension.getObjectClass((tools.mdsd.jamopp.model.commons.Commentable) this);"/>
         <genOperations ecoreOperation="java.ecore#//commons/Commentable/getStringClass"
-            body="return org.emftext.language.java.extensions.commons.CommentableExtension.getStringClass((org.emftext.language.java.commons.Commentable) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.commons.CommentableExtension.getStringClass((tools.mdsd.jamopp.model.commons.Commentable) this);"/>
         <genOperations ecoreOperation="java.ecore#//commons/Commentable/getAnnotationInterface"
-            body="return org.emftext.language.java.extensions.commons.CommentableExtension.getAnnotationInterface((org.emftext.language.java.commons.Commentable) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.commons.CommentableExtension.getAnnotationInterface((tools.mdsd.jamopp.model.commons.Commentable) this);"/>
         <genOperations ecoreOperation="java.ecore#//commons/Commentable/getContainingAnnotationInstance"
-            body="return org.emftext.language.java.extensions.commons.CommentableExtension.getContainingAnnotationInstance((org.emftext.language.java.commons.Commentable) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.commons.CommentableExtension.getContainingAnnotationInstance((tools.mdsd.jamopp.model.commons.Commentable) this);"/>
         <genOperations ecoreOperation="java.ecore#//commons/Commentable/getContainingAnonymousClass"
-            body="return org.emftext.language.java.extensions.commons.CommentableExtension.getContainingAnonymousClass((org.emftext.language.java.commons.Commentable) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.commons.CommentableExtension.getContainingAnonymousClass((tools.mdsd.jamopp.model.commons.Commentable) this);"/>
         <genOperations ecoreOperation="java.ecore#//commons/Commentable/getContainingConcreteClassifier"
-            body="return org.emftext.language.java.extensions.commons.CommentableExtension.getContainingConcreteClassifier((org.emftext.language.java.commons.Commentable) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.commons.CommentableExtension.getContainingConcreteClassifier((tools.mdsd.jamopp.model.commons.Commentable) this);"/>
         <genOperations ecoreOperation="java.ecore#//commons/Commentable/getContainingCompilationUnit"
-            body="return org.emftext.language.java.extensions.commons.CommentableExtension.getContainingCompilationUnit((org.emftext.language.java.commons.Commentable) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.commons.CommentableExtension.getContainingCompilationUnit((tools.mdsd.jamopp.model.commons.Commentable) this);"/>
         <genOperations ecoreOperation="java.ecore#//commons/Commentable/getContainingPackageName"
-            body="return org.emftext.language.java.extensions.commons.CommentableExtension.getContainingPackageName((org.emftext.language.java.commons.Commentable) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.commons.CommentableExtension.getContainingPackageName((tools.mdsd.jamopp.model.commons.Commentable) this);"/>
         <genOperations ecoreOperation="java.ecore#//commons/Commentable/getContainingContainerName"
-            body="return org.emftext.language.java.extensions.commons.CommentableExtension.getContainingContainerName((org.emftext.language.java.commons.Commentable) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.commons.CommentableExtension.getContainingContainerName((tools.mdsd.jamopp.model.commons.Commentable) this);"/>
         <genOperations ecoreOperation="java.ecore#//commons/Commentable/getParentConcreteClassifier"
-            body="return org.emftext.language.java.extensions.commons.CommentableExtension.getParentConcreteClassifier((org.emftext.language.java.commons.Commentable) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.commons.CommentableExtension.getParentConcreteClassifier((tools.mdsd.jamopp.model.commons.Commentable) this);"/>
         <genOperations ecoreOperation="java.ecore#//commons/Commentable/getParentByEType"
-            body="return org.emftext.language.java.extensions.commons.CommentableExtension.getParentByEType((org.emftext.language.java.commons.Commentable) this, (org.eclipse.emf.ecore.EClass) type);">
+            body="return tools.mdsd.jamopp.model.extensions.commons.CommentableExtension.getParentByEType((tools.mdsd.jamopp.model.commons.Commentable) this, (org.eclipse.emf.ecore.EClass) type);">
           <genParameters ecoreParameter="java.ecore#//commons/Commentable/getParentByEType/type"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//commons/Commentable/getFirstChildByEType"
-            body="return org.emftext.language.java.extensions.commons.CommentableExtension.getFirstChildByEType((org.emftext.language.java.commons.Commentable) this, (org.eclipse.emf.ecore.EClass) type);">
+            body="return tools.mdsd.jamopp.model.extensions.commons.CommentableExtension.getFirstChildByEType((tools.mdsd.jamopp.model.commons.Commentable) this, (org.eclipse.emf.ecore.EClass) type);">
           <genParameters ecoreParameter="java.ecore#//commons/Commentable/getFirstChildByEType/type"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//commons/Commentable/getParentByType"
-            body="return org.emftext.language.java.extensions.commons.CommentableExtension.getParentByType((org.emftext.language.java.commons.Commentable) this, type);">
+            body="return tools.mdsd.jamopp.model.extensions.commons.CommentableExtension.getParentByType((tools.mdsd.jamopp.model.commons.Commentable) this, type);">
           <genParameters ecoreParameter="java.ecore#//commons/Commentable/getParentByType/type"/>
           <genTypeParameters ecoreTypeParameter="java.ecore#//commons/Commentable/getParentByType/T"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//commons/Commentable/getFirstChildByType"
-            body="return org.emftext.language.java.extensions.commons.CommentableExtension.getFirstChildByType((org.emftext.language.java.commons.Commentable) this, ( java.lang.Class&lt;T>) type);">
+            body="return tools.mdsd.jamopp.model.extensions.commons.CommentableExtension.getFirstChildByType((tools.mdsd.jamopp.model.commons.Commentable) this, ( java.lang.Class&lt;T>) type);">
           <genParameters ecoreParameter="java.ecore#//commons/Commentable/getFirstChildByType/type"/>
           <genTypeParameters ecoreTypeParameter="java.ecore#//commons/Commentable/getFirstChildByType/T"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//commons/Commentable/getChildrenByEType"
-            body="return org.emftext.language.java.extensions.commons.CommentableExtension.getChildrenByEType((org.emftext.language.java.commons.Commentable) this, (org.eclipse.emf.ecore.EClass) type);">
+            body="return tools.mdsd.jamopp.model.extensions.commons.CommentableExtension.getChildrenByEType((tools.mdsd.jamopp.model.commons.Commentable) this, (org.eclipse.emf.ecore.EClass) type);">
           <genParameters ecoreParameter="java.ecore#//commons/Commentable/getChildrenByEType/type"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//commons/Commentable/getChildrenByType"
-            body="return org.emftext.language.java.extensions.commons.CommentableExtension.getChildrenByType((org.emftext.language.java.commons.Commentable) this, ( java.lang.Class&lt;T>) type);">
+            body="return tools.mdsd.jamopp.model.extensions.commons.CommentableExtension.getChildrenByType((tools.mdsd.jamopp.model.commons.Commentable) this, ( java.lang.Class&lt;T>) type);">
           <genParameters ecoreParameter="java.ecore#//commons/Commentable/getChildrenByType/type"/>
           <genTypeParameters ecoreTypeParameter="java.ecore#//commons/Commentable/getChildrenByType/T"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//commons/Commentable/addBeforeContainingStatement"
-            body="org.emftext.language.java.extensions.commons.CommentableExtension.addBeforeContainingStatement((org.emftext.language.java.commons.Commentable) this, (org.emftext.language.java.statements.Statement) statementToAdd);">
+            body="tools.mdsd.jamopp.model.extensions.commons.CommentableExtension.addBeforeContainingStatement((tools.mdsd.jamopp.model.commons.Commentable) this, (tools.mdsd.jamopp.model.statements.Statement) statementToAdd);">
           <genParameters ecoreParameter="java.ecore#//commons/Commentable/addBeforeContainingStatement/statementToAdd"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//commons/Commentable/addAfterContainingStatement"
-            body="org.emftext.language.java.extensions.commons.CommentableExtension.addAfterContainingStatement((org.emftext.language.java.commons.Commentable) this, (org.emftext.language.java.statements.Statement) statementToAdd);">
+            body="tools.mdsd.jamopp.model.extensions.commons.CommentableExtension.addAfterContainingStatement((tools.mdsd.jamopp.model.commons.Commentable) this, (tools.mdsd.jamopp.model.statements.Statement) statementToAdd);">
           <genParameters ecoreParameter="java.ecore#//commons/Commentable/addAfterContainingStatement/statementToAdd"/>
         </genOperations>
       </genClasses>
@@ -228,12 +228,12 @@
       <genClasses image="false" ecoreClass="java.ecore#//commons/NamespaceAwareElement">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute java.ecore#//commons/NamespaceAwareElement/namespaces"/>
         <genOperations ecoreOperation="java.ecore#//commons/NamespaceAwareElement/getNamespacesAsString"
-            body="return org.emftext.language.java.extensions.commons.NamespaceAwareElementExtension.getNamespacesAsString((org.emftext.language.java.commons.NamespaceAwareElement) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.commons.NamespaceAwareElementExtension.getNamespacesAsString((tools.mdsd.jamopp.model.commons.NamespaceAwareElement) this);"/>
         <genOperations ecoreOperation="java.ecore#//commons/NamespaceAwareElement/getClassifierAtNamespaces"
-            body="return org.emftext.language.java.extensions.commons.NamespaceAwareElementExtension.getClassifierAtNamespaces((org.emftext.language.java.commons.NamespaceAwareElement) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.commons.NamespaceAwareElementExtension.getClassifierAtNamespaces((tools.mdsd.jamopp.model.commons.NamespaceAwareElement) this);"/>
       </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Containers" basePackage="org.emftext.language.java"
+    <nestedGenPackages prefix="Containers" basePackage="tools.mdsd.jamopp.model.java"
         disposableProviderFactory="true" ecorePackage="java.ecore#//containers">
       <genEnums typeSafeEnumCompatible="false" ecoreEnum="java.ecore#//containers/Origin">
         <genEnumLiterals ecoreEnumLiteral="java.ecore#//containers/Origin/FILE"/>
@@ -244,30 +244,30 @@
       <genClasses image="false" ecoreClass="java.ecore#//containers/JavaRoot">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute java.ecore#//containers/JavaRoot/origin"/>
         <genOperations ecoreOperation="java.ecore#//containers/JavaRoot/getClassifiersInSamePackage"
-            body="return org.emftext.language.java.extensions.containers.JavaRootExtension.getClassifiersInSamePackage((org.emftext.language.java.containers.JavaRoot) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.containers.JavaRootExtension.getClassifiersInSamePackage((tools.mdsd.jamopp.model.containers.JavaRoot) this);"/>
       </genClasses>
       <genClasses ecoreClass="java.ecore#//containers/CompilationUnit">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//containers/CompilationUnit/classifiers"/>
         <genOperations ecoreOperation="java.ecore#//containers/CompilationUnit/getContainedClassifier"
-            body="return org.emftext.language.java.extensions.containers.CompilationUnitExtension.getContainedClassifier((org.emftext.language.java.containers.CompilationUnit) this, name);">
+            body="return tools.mdsd.jamopp.model.extensions.containers.CompilationUnitExtension.getContainedClassifier((tools.mdsd.jamopp.model.containers.CompilationUnit) this, name);">
           <genParameters ecoreParameter="java.ecore#//containers/CompilationUnit/getContainedClassifier/name"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//containers/CompilationUnit/getClassifiersInSamePackage"
-            body="return org.emftext.language.java.extensions.containers.CompilationUnitExtension.getClassifiersInSamePackage((org.emftext.language.java.containers.CompilationUnit) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.containers.CompilationUnitExtension.getClassifiersInSamePackage((tools.mdsd.jamopp.model.containers.CompilationUnit) this);"/>
         <genOperations ecoreOperation="java.ecore#//containers/CompilationUnit/getContainedClass"
-            body="return org.emftext.language.java.extensions.containers.CompilationUnitExtension.getContainedClass((org.emftext.language.java.containers.CompilationUnit) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.containers.CompilationUnitExtension.getContainedClass((tools.mdsd.jamopp.model.containers.CompilationUnit) this);"/>
         <genOperations ecoreOperation="java.ecore#//containers/CompilationUnit/getContainedInterface"
-            body="return org.emftext.language.java.extensions.containers.CompilationUnitExtension.getContainedInterface((org.emftext.language.java.containers.CompilationUnit) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.containers.CompilationUnitExtension.getContainedInterface((tools.mdsd.jamopp.model.containers.CompilationUnit) this);"/>
         <genOperations ecoreOperation="java.ecore#//containers/CompilationUnit/getContainedAnnotation"
-            body="return org.emftext.language.java.extensions.containers.CompilationUnitExtension.getContainedAnnotation((org.emftext.language.java.containers.CompilationUnit) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.containers.CompilationUnitExtension.getContainedAnnotation((tools.mdsd.jamopp.model.containers.CompilationUnit) this);"/>
         <genOperations ecoreOperation="java.ecore#//containers/CompilationUnit/getContainedEnumeration"
-            body="return org.emftext.language.java.extensions.containers.CompilationUnitExtension.getContainedEnumeration((org.emftext.language.java.containers.CompilationUnit) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.containers.CompilationUnitExtension.getContainedEnumeration((tools.mdsd.jamopp.model.containers.CompilationUnit) this);"/>
         <genOperations ecoreOperation="java.ecore#//containers/CompilationUnit/addImport"
-            body="org.emftext.language.java.extensions.containers.CompilationUnitExtension.addImport((org.emftext.language.java.containers.CompilationUnit) this, nameOfClassToImport);">
+            body="tools.mdsd.jamopp.model.extensions.containers.CompilationUnitExtension.addImport((tools.mdsd.jamopp.model.containers.CompilationUnit) this, nameOfClassToImport);">
           <genParameters ecoreParameter="java.ecore#//containers/CompilationUnit/addImport/nameOfClassToImport"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//containers/CompilationUnit/addPackageImport"
-            body="org.emftext.language.java.extensions.containers.CompilationUnitExtension.addPackageImport((org.emftext.language.java.containers.CompilationUnit) this, packageName);">
+            body="tools.mdsd.jamopp.model.extensions.containers.CompilationUnitExtension.addPackageImport((tools.mdsd.jamopp.model.containers.CompilationUnit) this, packageName);">
           <genParameters ecoreParameter="java.ecore#//containers/CompilationUnit/addPackageImport/packageName"/>
         </genOperations>
       </genClasses>
@@ -283,24 +283,24 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//containers/Module/packages"/>
       </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Expressions" basePackage="org.emftext.language.java"
+    <nestedGenPackages prefix="Expressions" basePackage="tools.mdsd.jamopp.model.java"
         disposableProviderFactory="true" ecorePackage="java.ecore#_Wo2YC9z1Ed2bJ_pQViWxFg">
       <genClasses ecoreClass="java.ecore#_Wo2YF9z1Ed2bJ_pQViWxFg">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#_Wo2YGNz1Ed2bJ_pQViWxFg"/>
       </genClasses>
       <genClasses image="false" ecoreClass="java.ecore#_Wo2YDNz1Ed2bJ_pQViWxFg">
         <genOperations ecoreOperation="java.ecore#//expressions/Expression/getType"
-            body="return org.emftext.language.java.extensions.expressions.ExpressionExtension.getType((org.emftext.language.java.expressions.Expression) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.expressions.ExpressionExtension.getType((tools.mdsd.jamopp.model.expressions.Expression) this);"/>
         <genOperations ecoreOperation="java.ecore#//expressions/Expression/getAlternativeType"
-            body="return org.emftext.language.java.extensions.expressions.ExpressionExtension.getAlternativeType((org.emftext.language.java.expressions.Expression) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.expressions.ExpressionExtension.getAlternativeType((tools.mdsd.jamopp.model.expressions.Expression) this);"/>
         <genOperations ecoreOperation="java.ecore#//expressions/Expression/getOneType"
-            body="return org.emftext.language.java.extensions.expressions.ExpressionExtension.getOneType((org.emftext.language.java.expressions.Expression) this, alternative);">
+            body="return tools.mdsd.jamopp.model.extensions.expressions.ExpressionExtension.getOneType((tools.mdsd.jamopp.model.expressions.Expression) this, alternative);">
           <genParameters ecoreParameter="java.ecore#//expressions/Expression/getOneType/alternative"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//expressions/Expression/getArrayDimension"
-            body="return org.emftext.language.java.extensions.expressions.ExpressionExtension.getArrayDimension((org.emftext.language.java.expressions.Expression) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.expressions.ExpressionExtension.getArrayDimension((tools.mdsd.jamopp.model.expressions.Expression) this);"/>
         <genOperations ecoreOperation="java.ecore#//expressions/Expression/getOneTypeReference"
-            body="return org.emftext.language.java.extensions.expressions.ExpressionExtension.getOneTypeReference((org.emftext.language.java.expressions.Expression) this, alternative);">
+            body="return tools.mdsd.jamopp.model.extensions.expressions.ExpressionExtension.getOneTypeReference((tools.mdsd.jamopp.model.expressions.Expression) this, alternative);">
           <genParameters ecoreParameter="java.ecore#//expressions/Expression/getOneTypeReference/alternative"/>
         </genOperations>
       </genClasses>
@@ -315,9 +315,9 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#_Wo2YJdz1Ed2bJ_pQViWxFg"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//expressions/ConditionalExpression/generalExpressionElse"/>
         <genOperations ecoreOperation="java.ecore#//expressions/ConditionalExpression/getExpressionElse"
-            body="return org.emftext.language.java.extensions.expressions.ConditionalExpressionExtension.getExpressionElse((org.emftext.language.java.expressions.ConditionalExpression) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.expressions.ConditionalExpressionExtension.getExpressionElse((tools.mdsd.jamopp.model.expressions.ConditionalExpression) this);"/>
         <genOperations ecoreOperation="java.ecore#//expressions/ConditionalExpression/setExpressionChild"
-            body="org.emftext.language.java.extensions.expressions.ConditionalExpressionExtension.setExpressionElse((org.emftext.language.java.expressions.ConditionalExpression) this, newChild);">
+            body="tools.mdsd.jamopp.model.extensions.expressions.ConditionalExpressionExtension.setExpressionElse((tools.mdsd.jamopp.model.expressions.ConditionalExpression) this, newChild);">
           <genParameters ecoreParameter="java.ecore#//expressions/ConditionalExpression/setExpressionChild/newChild"/>
         </genOperations>
       </genClasses>
@@ -387,9 +387,9 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//expressions/CastExpression/additionalBounds"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#_Wo2YXdz1Ed2bJ_pQViWxFg"/>
         <genOperations ecoreOperation="java.ecore#//expressions/CastExpression/getChild"
-            body="return org.emftext.language.java.extensions.expressions.CastExpressionExtension.getChild((org.emftext.language.java.expressions.CastExpression) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.expressions.CastExpressionExtension.getChild((tools.mdsd.jamopp.model.expressions.CastExpression) this);"/>
         <genOperations ecoreOperation="java.ecore#//expressions/CastExpression/setChild"
-            body="org.emftext.language.java.extensions.expressions.CastExpressionExtension.setChild((org.emftext.language.java.expressions.CastExpression) this, newChild);">
+            body="tools.mdsd.jamopp.model.extensions.expressions.CastExpressionExtension.setChild((tools.mdsd.jamopp.model.expressions.CastExpression) this, newChild);">
           <genParameters ecoreParameter="java.ecore#//expressions/CastExpression/setChild/newChild"/>
         </genOperations>
       </genClasses>
@@ -399,9 +399,9 @@
       </genClasses>
       <genClasses image="false" ecoreClass="java.ecore#//expressions/MethodReferenceExpression">
         <genOperations ecoreOperation="java.ecore#//expressions/MethodReferenceExpression/getTargetType"
-            body="return org.emftext.language.java.extensions.expressions.MethodReferenceExpressionExtension.getTargetType((MethodReferenceExpression) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.expressions.MethodReferenceExpressionExtension.getTargetType((MethodReferenceExpression) this);"/>
         <genOperations ecoreOperation="java.ecore#//expressions/MethodReferenceExpression/getTargetTypeReference"
-            body="return org.emftext.language.java.extensions.expressions.MethodReferenceExpressionExtension.getTargetTypeReference((MethodReferenceExpression) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.expressions.MethodReferenceExpressionExtension.getTargetTypeReference((MethodReferenceExpression) this);"/>
       </genClasses>
       <genClasses ecoreClass="java.ecore#//expressions/PrimaryExpressionReferenceExpression">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//expressions/PrimaryExpressionReferenceExpression/child"/>
@@ -414,11 +414,11 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//expressions/LambdaExpression/parameters"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//expressions/LambdaExpression/body"/>
         <genOperations ecoreOperation="java.ecore#//expressions/LambdaExpression/doesLambdaMatchFunctionalInterface"
-            body="return org.emftext.language.java.extensions.expressions.LambdaExpressionExtension.doesLambdaMatchFunctionalInterface((org.emftext.language.java.expressions.LambdaExpression) this, functionalInterface);">
+            body="return tools.mdsd.jamopp.model.extensions.expressions.LambdaExpressionExtension.doesLambdaMatchFunctionalInterface((tools.mdsd.jamopp.model.expressions.LambdaExpression) this, functionalInterface);">
           <genParameters ecoreParameter="java.ecore#//expressions/LambdaExpression/doesLambdaMatchFunctionalInterface/functionalInterface"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//expressions/LambdaExpression/getReturnType"
-            body="return org.emftext.language.java.extensions.expressions.LambdaExpressionExtension.getReturnType((org.emftext.language.java.expressions.LambdaExpression) this, potentialReturnType);">
+            body="return tools.mdsd.jamopp.model.extensions.expressions.LambdaExpressionExtension.getReturnType((tools.mdsd.jamopp.model.expressions.LambdaExpression) this, potentialReturnType);">
           <genParameters ecoreParameter="java.ecore#//expressions/LambdaExpression/getReturnType/potentialReturnType"/>
         </genOperations>
       </genClasses>
@@ -428,8 +428,8 @@
       <genClasses ecoreClass="java.ecore#//expressions/ImplicitlyTypedLambdaParameters"/>
       <genClasses ecoreClass="java.ecore#//expressions/SingleImplicitLambdaParameter"/>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Generics" basePackage="org.emftext.language.java" disposableProviderFactory="true"
-        ecorePackage="java.ecore#//generics">
+    <nestedGenPackages prefix="Generics" basePackage="tools.mdsd.jamopp.model.java"
+        disposableProviderFactory="true" ecorePackage="java.ecore#//generics">
       <genClasses image="false" ecoreClass="java.ecore#//generics/TypeArgument"/>
       <genClasses image="false" ecoreClass="java.ecore#//generics/TypeArgumentable">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//generics/TypeArgumentable/typeArguments"/>
@@ -443,7 +443,7 @@
       <genClasses ecoreClass="java.ecore#//generics/ExtendsTypeArgument">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//generics/ExtendsTypeArgument/extendType"/>
         <genOperations ecoreOperation="java.ecore#//generics/ExtendsTypeArgument/getExtendTypes"
-            body="return org.emftext.language.java.extensions.generics.ExtendsTypeArgumentExtension.getExtendTypes((org.emftext.language.java.generics.ExtendsTypeArgument) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.generics.ExtendsTypeArgumentExtension.getExtendTypes((tools.mdsd.jamopp.model.generics.ExtendsTypeArgument) this);"/>
       </genClasses>
       <genClasses ecoreClass="java.ecore#//generics/QualifiedTypeArgument"/>
       <genClasses ecoreClass="java.ecore#//generics/SuperTypeArgument">
@@ -452,37 +452,37 @@
       <genClasses ecoreClass="java.ecore#//generics/TypeParameter">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//generics/TypeParameter/extendTypes"/>
         <genOperations ecoreOperation="java.ecore#//generics/TypeParameter/getAllSuperClassifiers"
-            body="return org.emftext.language.java.extensions.generics.TypeParameterExtension.getAllSuperClassifiers((org.emftext.language.java.generics.TypeParameter) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.generics.TypeParameterExtension.getAllSuperClassifiers((tools.mdsd.jamopp.model.generics.TypeParameter) this);"/>
         <genOperations ecoreOperation="java.ecore#//generics/TypeParameter/getAllMembers"
-            body="return org.emftext.language.java.extensions.generics.TypeParameterExtension.getAllMembers((org.emftext.language.java.generics.TypeParameter) this, (org.emftext.language.java.commons.Commentable) context);">
+            body="return tools.mdsd.jamopp.model.extensions.generics.TypeParameterExtension.getAllMembers((tools.mdsd.jamopp.model.generics.TypeParameter) this, (tools.mdsd.jamopp.model.commons.Commentable) context);">
           <genParameters ecoreParameter="java.ecore#//generics/TypeParameter/getAllMembers/context"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//generics/TypeParameter/getBoundType"
-            body="return org.emftext.language.java.extensions.generics.TypeParameterExtension.getBoundType((org.emftext.language.java.generics.TypeParameter) this, (org.emftext.language.java.types.TypeReference) typeReference, (org.emftext.language.java.references.Reference) reference);">
+            body="return tools.mdsd.jamopp.model.extensions.generics.TypeParameterExtension.getBoundType((tools.mdsd.jamopp.model.generics.TypeParameter) this, (tools.mdsd.jamopp.model.types.TypeReference) typeReference, (tools.mdsd.jamopp.model.references.Reference) reference);">
           <genParameters ecoreParameter="java.ecore#//generics/TypeParameter/getBoundType/typeReference"/>
           <genParameters ecoreParameter="java.ecore#//generics/TypeParameter/getBoundType/reference"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//generics/TypeParameter/getBoundTypeReference"
-            body="return org.emftext.language.java.extensions.generics.TypeParameterExtension.getBoundTypeReference((org.emftext.language.java.generics.TypeParameter) this, (org.emftext.language.java.types.TypeReference) typeReference, (org.emftext.language.java.references.Reference) reference);">
+            body="return tools.mdsd.jamopp.model.extensions.generics.TypeParameterExtension.getBoundTypeReference((tools.mdsd.jamopp.model.generics.TypeParameter) this, (tools.mdsd.jamopp.model.types.TypeReference) typeReference, (tools.mdsd.jamopp.model.references.Reference) reference);">
           <genParameters ecoreParameter="java.ecore#//generics/TypeParameter/getBoundTypeReference/typeReference"/>
           <genParameters ecoreParameter="java.ecore#//generics/TypeParameter/getBoundTypeReference/reference"/>
         </genOperations>
       </genClasses>
       <genClasses ecoreClass="java.ecore#//generics/UnknownTypeArgument"/>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Imports" basePackage="org.emftext.language.java" disposableProviderFactory="true"
-        ecorePackage="java.ecore#//imports">
+    <nestedGenPackages prefix="Imports" basePackage="tools.mdsd.jamopp.model.java"
+        disposableProviderFactory="true" ecorePackage="java.ecore#//imports">
       <genClasses image="false" ecoreClass="java.ecore#//imports/Import">
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference java.ecore#//imports/Import/classifier"/>
         <genOperations ecoreOperation="java.ecore#//imports/Import/getImportedClassifier"
-            body="return org.emftext.language.java.extensions.imports.ImportExtension.getImportedClassifier((org.emftext.language.java.imports.Import) this, name);">
+            body="return tools.mdsd.jamopp.model.extensions.imports.ImportExtension.getImportedClassifier((tools.mdsd.jamopp.model.imports.Import) this, name);">
           <genParameters ecoreParameter="java.ecore#//imports/Import/getImportedClassifier/name"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//imports/Import/getImportedClassifiers"
-            body="return org.emftext.language.java.extensions.imports.ImportExtension.getImportedClassifiers((org.emftext.language.java.imports.Import) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.imports.ImportExtension.getImportedClassifiers((tools.mdsd.jamopp.model.imports.Import) this);"/>
         <genOperations ecoreOperation="java.ecore#//imports/Import/getImportedMembers"
-            body="return org.emftext.language.java.extensions.imports.ImportExtension.getImportedMembers((org.emftext.language.java.imports.Import) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.imports.ImportExtension.getImportedMembers((tools.mdsd.jamopp.model.imports.Import) this);"/>
       </genClasses>
       <genClasses image="false" ecoreClass="java.ecore#//imports/ImportingElement">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//imports/ImportingElement/imports"/>
@@ -498,7 +498,7 @@
             ecoreFeature="ecore:EReference java.ecore#//imports/StaticMemberImport/staticMembers"/>
       </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Instantiations" basePackage="org.emftext.language.java"
+    <nestedGenPackages prefix="Instantiations" basePackage="tools.mdsd.jamopp.model.java"
         disposableProviderFactory="true" ecorePackage="java.ecore#//instantiations">
       <genClasses image="false" ecoreClass="java.ecore#//instantiations/Initializable">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//instantiations/Initializable/initialValue"/>
@@ -512,10 +512,10 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//instantiations/ExplicitConstructorCall/callTarget"/>
       </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Literals" basePackage="org.emftext.language.java" disposableProviderFactory="true"
-        ecorePackage="java.ecore#_Wo2Yntz1Ed2bJ_pQViWxFg">
+    <nestedGenPackages prefix="Literals" basePackage="tools.mdsd.jamopp.model.java"
+        disposableProviderFactory="true" ecorePackage="java.ecore#_Wo2Yntz1Ed2bJ_pQViWxFg">
       <genClasses image="false" ecoreClass="java.ecore#_Wo2YsNz1Ed2bJ_pQViWxFg">
-        <genOperations ecoreOperation="java.ecore#//literals/Literal/getOneType" body="return org.emftext.language.java.extensions.literals.LiteralExtension.getOneType((org.emftext.language.java.literals.Literal) this);">
+        <genOperations ecoreOperation="java.ecore#//literals/Literal/getOneType" body="return tools.mdsd.jamopp.model.extensions.literals.LiteralExtension.getOneType((tools.mdsd.jamopp.model.literals.Literal) this);">
           <genParameters ecoreParameter="java.ecore#//literals/Literal/getOneType/alternative"/>
         </genOperations>
       </genClasses>
@@ -570,8 +570,8 @@
       <genClasses ecoreClass="java.ecore#//literals/Super"/>
       <genClasses ecoreClass="java.ecore#//literals/This"/>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Members" basePackage="org.emftext.language.java" disposableProviderFactory="true"
-        ecorePackage="java.ecore#//members">
+    <nestedGenPackages prefix="Members" basePackage="tools.mdsd.jamopp.model.java"
+        disposableProviderFactory="true" ecorePackage="java.ecore#//members">
       <genClasses image="false" ecoreClass="java.ecore#//members/ExceptionThrower">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//members/ExceptionThrower/exceptions"/>
       </genClasses>
@@ -580,43 +580,43 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//members/MemberContainer/members"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//members/MemberContainer/defaultMembers"/>
         <genOperations ecoreOperation="java.ecore#//members/MemberContainer/getContainedClassifier"
-            body="return org.emftext.language.java.extensions.members.MemberContainerExtension.getContainedClassifier((org.emftext.language.java.members.MemberContainer) this, name);">
+            body="return tools.mdsd.jamopp.model.extensions.members.MemberContainerExtension.getContainedClassifier((tools.mdsd.jamopp.model.members.MemberContainer) this, name);">
           <genParameters ecoreParameter="java.ecore#//members/MemberContainer/getContainedClassifier/name"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//members/MemberContainer/getContainedField"
-            body="return org.emftext.language.java.extensions.members.MemberContainerExtension.getContainedField((org.emftext.language.java.members.MemberContainer) this, name);">
+            body="return tools.mdsd.jamopp.model.extensions.members.MemberContainerExtension.getContainedField((tools.mdsd.jamopp.model.members.MemberContainer) this, name);">
           <genParameters ecoreParameter="java.ecore#//members/MemberContainer/getContainedField/name"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//members/MemberContainer/getContainedMethod"
-            body="return org.emftext.language.java.extensions.members.MemberContainerExtension.getContainedMethod((org.emftext.language.java.members.MemberContainer) this, name);">
+            body="return tools.mdsd.jamopp.model.extensions.members.MemberContainerExtension.getContainedMethod((tools.mdsd.jamopp.model.members.MemberContainer) this, name);">
           <genParameters ecoreParameter="java.ecore#//members/MemberContainer/getContainedMethod/name"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//members/MemberContainer/getMethods"
-            body="return org.emftext.language.java.extensions.members.MemberContainerExtension.getMethods((org.emftext.language.java.members.MemberContainer) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.members.MemberContainerExtension.getMethods((tools.mdsd.jamopp.model.members.MemberContainer) this);"/>
         <genOperations ecoreOperation="java.ecore#//members/MemberContainer/removeMethods"
-            body="org.emftext.language.java.extensions.members.MemberContainerExtension.removeMethods((org.emftext.language.java.members.MemberContainer) this, name);">
+            body="tools.mdsd.jamopp.model.extensions.members.MemberContainerExtension.removeMethods((tools.mdsd.jamopp.model.members.MemberContainer) this, name);">
           <genParameters ecoreParameter="java.ecore#//members/MemberContainer/removeMethods/name"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//members/MemberContainer/getMembersByName"
-            body="return org.emftext.language.java.extensions.members.MemberContainerExtension.getMembersByName((org.emftext.language.java.members.MemberContainer) this, name);">
+            body="return tools.mdsd.jamopp.model.extensions.members.MemberContainerExtension.getMembersByName((tools.mdsd.jamopp.model.members.MemberContainer) this, name);">
           <genParameters ecoreParameter="java.ecore#//members/MemberContainer/getMembersByName/name"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//members/MemberContainer/createField"
-            body="return org.emftext.language.java.extensions.members.MemberContainerExtension.createField((org.emftext.language.java.members.MemberContainer) this, name, qualifiedTypeName);">
+            body="return tools.mdsd.jamopp.model.extensions.members.MemberContainerExtension.createField((tools.mdsd.jamopp.model.members.MemberContainer) this, name, qualifiedTypeName);">
           <genParameters ecoreParameter="java.ecore#//members/MemberContainer/createField/name"/>
           <genParameters ecoreParameter="java.ecore#//members/MemberContainer/createField/qualifiedTypeName"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//members/MemberContainer/getFields"
-            body="return org.emftext.language.java.extensions.members.MemberContainerExtension.getFields((org.emftext.language.java.members.MemberContainer) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.members.MemberContainerExtension.getFields((tools.mdsd.jamopp.model.members.MemberContainer) this);"/>
         <genOperations ecoreOperation="java.ecore#//members/MemberContainer/getConstructors"
-            body="return org.emftext.language.java.extensions.members.MemberContainerExtension.getConstructors((org.emftext.language.java.members.MemberContainer) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.members.MemberContainerExtension.getConstructors((tools.mdsd.jamopp.model.members.MemberContainer) this);"/>
       </genClasses>
       <genClasses ecoreClass="java.ecore#//members/AdditionalField"/>
       <genClasses ecoreClass="java.ecore#//members/Constructor">
         <genOperations ecoreOperation="java.ecore#//members/Constructor/getStatements"
-            body="return org.emftext.language.java.extensions.members.ConstructorExtension.getStatements((org.emftext.language.java.members.Constructor) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.members.ConstructorExtension.getStatements((tools.mdsd.jamopp.model.members.Constructor) this);"/>
         <genOperations ecoreOperation="java.ecore#//members/Constructor/isConstructorForCall"
-            body="return org.emftext.language.java.extensions.members.ConstructorExtension.isConstructorForCall((Constructor) this, call, needsPerfectMatch);">
+            body="return tools.mdsd.jamopp.model.extensions.members.ConstructorExtension.isConstructorForCall((Constructor) this, call, needsPerfectMatch);">
           <genParameters ecoreParameter="java.ecore#//members/Constructor/isConstructorForCall/call"/>
           <genParameters ecoreParameter="java.ecore#//members/Constructor/isConstructorForCall/needsPerfectMatch"/>
         </genOperations>
@@ -627,24 +627,24 @@
       </genClasses>
       <genClasses image="false" ecoreClass="java.ecore#//members/Method">
         <genOperations ecoreOperation="java.ecore#//members/Method/isMethodForCall"
-            body="return org.emftext.language.java.extensions.members.MethodExtension.isMethodForCall((org.emftext.language.java.members.Method) this, (org.emftext.language.java.references.MethodCall) methodCall, needsPerfectMatch);">
+            body="return tools.mdsd.jamopp.model.extensions.members.MethodExtension.isMethodForCall((tools.mdsd.jamopp.model.members.Method) this, (tools.mdsd.jamopp.model.references.MethodCall) methodCall, needsPerfectMatch);">
           <genParameters ecoreParameter="java.ecore#//members/Method/isMethodForCall/methodCall"/>
           <genParameters ecoreParameter="java.ecore#//members/Method/isMethodForCall/needsPerfectMatch"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//members/Method/isSomeMethodForCall"
-            body="return org.emftext.language.java.extensions.members.MethodExtension.isSomeMethodForCall((org.emftext.language.java.members.Method) this, (org.emftext.language.java.references.MethodCall) methodCall);">
+            body="return tools.mdsd.jamopp.model.extensions.members.MethodExtension.isSomeMethodForCall((tools.mdsd.jamopp.model.members.Method) this, (tools.mdsd.jamopp.model.references.MethodCall) methodCall);">
           <genParameters ecoreParameter="java.ecore#//members/Method/isSomeMethodForCall/methodCall"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//members/Method/isBetterMethodForCall"
-            body="return org.emftext.language.java.extensions.members.MethodExtension.isBetterMethodForCall((org.emftext.language.java.members.Method) this, (org.emftext.language.java.members.Method) otherMethod, (org.emftext.language.java.references.MethodCall) methodCall);">
+            body="return tools.mdsd.jamopp.model.extensions.members.MethodExtension.isBetterMethodForCall((tools.mdsd.jamopp.model.members.Method) this, (tools.mdsd.jamopp.model.members.Method) otherMethod, (tools.mdsd.jamopp.model.references.MethodCall) methodCall);">
           <genParameters ecoreParameter="java.ecore#//members/Method/isBetterMethodForCall/otherMethod"/>
           <genParameters ecoreParameter="java.ecore#//members/Method/isBetterMethodForCall/methodCall"/>
         </genOperations>
-        <genOperations ecoreOperation="java.ecore#//members/Method/getBlock" body="return org.emftext.language.java.extensions.members.MethodExtension.getBlock((org.emftext.language.java.members.Method) this);"/>
+        <genOperations ecoreOperation="java.ecore#//members/Method/getBlock" body="return tools.mdsd.jamopp.model.extensions.members.MethodExtension.getBlock((tools.mdsd.jamopp.model.members.Method) this);"/>
         <genOperations ecoreOperation="java.ecore#//members/Method/getStatements"
-            body="return org.emftext.language.java.extensions.members.MethodExtension.getStatements((org.emftext.language.java.members.Method) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.members.MethodExtension.getStatements((tools.mdsd.jamopp.model.members.Method) this);"/>
         <genOperations ecoreOperation="java.ecore#//members/Method/isSignatureMatching"
-            body="return org.emftext.language.java.extensions.members.MethodExtension.isSignatureMatching((org.emftext.language.java.members.Method) this, otherMethod);">
+            body="return tools.mdsd.jamopp.model.extensions.members.MethodExtension.isSignatureMatching((tools.mdsd.jamopp.model.members.Method) this, otherMethod);">
           <genParameters ecoreParameter="java.ecore#//members/Method/isSignatureMatching/otherMethod"/>
         </genOperations>
       </genClasses>
@@ -656,7 +656,7 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//members/EnumConstant/anonymousClass"/>
       </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Modifiers" basePackage="org.emftext.language.java"
+    <nestedGenPackages prefix="Modifiers" basePackage="tools.mdsd.jamopp.model.java"
         disposableProviderFactory="true" ecorePackage="java.ecore#_Wo2Ystz1Ed2bJ_pQViWxFg">
       <genClasses image="false" ecoreClass="java.ecore#_Wo2Ys9z1Ed2bJ_pQViWxFg"/>
       <genClasses image="false" ecoreClass="java.ecore#//modifiers/AnnotationInstanceOrModifier"/>
@@ -664,41 +664,41 @@
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference java.ecore#//modifiers/AnnotableAndModifiable/annotationsAndModifiers"/>
         <genOperations ecoreOperation="java.ecore#//modifiers/AnnotableAndModifiable/isHidden"
-            body="return org.emftext.language.java.extensions.modifiers.AnnotableAndModifiableExtension.isHidden((org.emftext.language.java.modifiers.AnnotableAndModifiable) this, (org.emftext.language.java.commons.Commentable) context);">
+            body="return tools.mdsd.jamopp.model.extensions.modifiers.AnnotableAndModifiableExtension.isHidden((tools.mdsd.jamopp.model.modifiers.AnnotableAndModifiable) this, (tools.mdsd.jamopp.model.commons.Commentable) context);">
           <genParameters ecoreParameter="java.ecore#//modifiers/AnnotableAndModifiable/isHidden/context"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//modifiers/AnnotableAndModifiable/isStatic"
-            body="return org.emftext.language.java.extensions.modifiers.AnnotableAndModifiableExtension.isStatic((org.emftext.language.java.modifiers.AnnotableAndModifiable) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.modifiers.AnnotableAndModifiableExtension.isStatic((tools.mdsd.jamopp.model.modifiers.AnnotableAndModifiable) this);"/>
         <genOperations ecoreOperation="java.ecore#//modifiers/AnnotableAndModifiable/removeModifier"
-            body="org.emftext.language.java.extensions.modifiers.AnnotableAndModifiableExtension.removeModifier((org.emftext.language.java.modifiers.AnnotableAndModifiable) this, modifierType);">
+            body="tools.mdsd.jamopp.model.extensions.modifiers.AnnotableAndModifiableExtension.removeModifier((tools.mdsd.jamopp.model.modifiers.AnnotableAndModifiable) this, modifierType);">
           <genParameters ecoreParameter="java.ecore#//modifiers/AnnotableAndModifiable/removeModifier/modifierType"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//modifiers/AnnotableAndModifiable/makePublic"
-            body="org.emftext.language.java.extensions.modifiers.AnnotableAndModifiableExtension.makePublic((org.emftext.language.java.modifiers.AnnotableAndModifiable) this);"/>
+            body="tools.mdsd.jamopp.model.extensions.modifiers.AnnotableAndModifiableExtension.makePublic((tools.mdsd.jamopp.model.modifiers.AnnotableAndModifiable) this);"/>
         <genOperations ecoreOperation="java.ecore#//modifiers/AnnotableAndModifiable/makePrivate"
-            body="org.emftext.language.java.extensions.modifiers.AnnotableAndModifiableExtension.makePrivate((org.emftext.language.java.modifiers.AnnotableAndModifiable) this);"/>
+            body="tools.mdsd.jamopp.model.extensions.modifiers.AnnotableAndModifiableExtension.makePrivate((tools.mdsd.jamopp.model.modifiers.AnnotableAndModifiable) this);"/>
         <genOperations ecoreOperation="java.ecore#//modifiers/AnnotableAndModifiable/makeProtected"
-            body="org.emftext.language.java.extensions.modifiers.AnnotableAndModifiableExtension.makeProtected((org.emftext.language.java.modifiers.AnnotableAndModifiable) this);"/>
+            body="tools.mdsd.jamopp.model.extensions.modifiers.AnnotableAndModifiableExtension.makeProtected((tools.mdsd.jamopp.model.modifiers.AnnotableAndModifiable) this);"/>
         <genOperations ecoreOperation="java.ecore#//modifiers/AnnotableAndModifiable/getModifiers"
-            body="return org.emftext.language.java.extensions.modifiers.AnnotableAndModifiableExtension.getModifiers((org.emftext.language.java.modifiers.AnnotableAndModifiable) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.modifiers.AnnotableAndModifiableExtension.getModifiers((tools.mdsd.jamopp.model.modifiers.AnnotableAndModifiable) this);"/>
         <genOperations ecoreOperation="java.ecore#//modifiers/AnnotableAndModifiable/removeAllModifiers"
-            body="org.emftext.language.java.extensions.modifiers.AnnotableAndModifiableExtension.removeAllModifiers((org.emftext.language.java.modifiers.AnnotableAndModifiable) this);"/>
+            body="tools.mdsd.jamopp.model.extensions.modifiers.AnnotableAndModifiableExtension.removeAllModifiers((tools.mdsd.jamopp.model.modifiers.AnnotableAndModifiable) this);"/>
         <genOperations ecoreOperation="java.ecore#//modifiers/AnnotableAndModifiable/hasModifier"
-            body="return org.emftext.language.java.extensions.modifiers.AnnotableAndModifiableExtension.hasModifier((org.emftext.language.java.modifiers.AnnotableAndModifiable) this, type);">
+            body="return tools.mdsd.jamopp.model.extensions.modifiers.AnnotableAndModifiableExtension.hasModifier((tools.mdsd.jamopp.model.modifiers.AnnotableAndModifiable) this, type);">
           <genParameters ecoreParameter="java.ecore#//modifiers/AnnotableAndModifiable/hasModifier/type"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//modifiers/AnnotableAndModifiable/isPublic"
-            body="return org.emftext.language.java.extensions.modifiers.AnnotableAndModifiableExtension.isPublic((org.emftext.language.java.modifiers.AnnotableAndModifiable) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.modifiers.AnnotableAndModifiableExtension.isPublic((tools.mdsd.jamopp.model.modifiers.AnnotableAndModifiable) this);"/>
         <genOperations ecoreOperation="java.ecore#//modifiers/AnnotableAndModifiable/isPrivate"
-            body="return org.emftext.language.java.extensions.modifiers.AnnotableAndModifiableExtension.isPrivate((org.emftext.language.java.modifiers.AnnotableAndModifiable) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.modifiers.AnnotableAndModifiableExtension.isPrivate((tools.mdsd.jamopp.model.modifiers.AnnotableAndModifiable) this);"/>
         <genOperations ecoreOperation="java.ecore#//modifiers/AnnotableAndModifiable/isProtected"
-            body="return org.emftext.language.java.extensions.modifiers.AnnotableAndModifiableExtension.isProtected((org.emftext.language.java.modifiers.AnnotableAndModifiable) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.modifiers.AnnotableAndModifiableExtension.isProtected((tools.mdsd.jamopp.model.modifiers.AnnotableAndModifiable) this);"/>
         <genOperations ecoreOperation="java.ecore#//modifiers/AnnotableAndModifiable/addModifier"
-            body="org.emftext.language.java.extensions.modifiers.AnnotableAndModifiableExtension.addModifier((org.emftext.language.java.modifiers.AnnotableAndModifiable) this, (org.emftext.language.java.modifiers.Modifier) newModifier);">
+            body="tools.mdsd.jamopp.model.extensions.modifiers.AnnotableAndModifiableExtension.addModifier((tools.mdsd.jamopp.model.modifiers.AnnotableAndModifiable) this, (tools.mdsd.jamopp.model.modifiers.Modifier) newModifier);">
           <genParameters ecoreParameter="java.ecore#//modifiers/AnnotableAndModifiable/addModifier/newModifier"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//modifiers/AnnotableAndModifiable/getAnnotationInstances"
-            body="return org.emftext.language.java.extensions.modifiers.AnnotableAndModifiableExtension.getAnnotationInstances((org.emftext.language.java.modifiers.AnnotableAndModifiable) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.modifiers.AnnotableAndModifiableExtension.getAnnotationInstances((tools.mdsd.jamopp.model.modifiers.AnnotableAndModifiable) this);"/>
       </genClasses>
       <genClasses image="false" ecoreClass="java.ecore#//modifiers/Modifiable">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//modifiers/Modifiable/modifiers"/>
@@ -719,7 +719,7 @@
       <genClasses image="false" ecoreClass="java.ecore#//modifiers/ModuleRequiresModifier"/>
       <genClasses ecoreClass="java.ecore#//modifiers/Open"/>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Operators" basePackage="org.emftext.language.java"
+    <nestedGenPackages prefix="Operators" basePackage="tools.mdsd.jamopp.model.java"
         disposableProviderFactory="true" ecorePackage="java.ecore#//operators">
       <genClasses image="false" ecoreClass="java.ecore#//operators/Operator"/>
       <genClasses image="false" ecoreClass="java.ecore#//operators/AdditiveOperator"/>
@@ -761,7 +761,7 @@
       <genClasses ecoreClass="java.ecore#//operators/RightShift"/>
       <genClasses ecoreClass="java.ecore#//operators/UnsignedRightShift"/>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Parameters" basePackage="org.emftext.language.java"
+    <nestedGenPackages prefix="Parameters" basePackage="tools.mdsd.jamopp.model.java"
         disposableProviderFactory="true" ecorePackage="java.ecore#//parameters">
       <genClasses image="false" ecoreClass="java.ecore#//parameters/Parameter"/>
       <genClasses image="false" ecoreClass="java.ecore#//parameters/Parametrizable">
@@ -777,22 +777,22 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//parameters/ReceiverParameter/thisReference"/>
       </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="References" basePackage="org.emftext.language.java"
+    <nestedGenPackages prefix="References" basePackage="tools.mdsd.jamopp.model.java"
         disposableProviderFactory="true" ecorePackage="java.ecore#//references">
       <genClasses image="false" ecoreClass="java.ecore#//references/Reference">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//references/Reference/next"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//references/Reference/arraySelectors"/>
         <genOperations ecoreOperation="java.ecore#//references/Reference/getReferencedType"
-            body="return org.emftext.language.java.extensions.references.ReferenceExtension.getReferencedType((org.emftext.language.java.references.Reference) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.references.ReferenceExtension.getReferencedType((tools.mdsd.jamopp.model.references.Reference) this);"/>
         <genOperations ecoreOperation="java.ecore#//references/Reference/getPrevious"
-            body="return org.emftext.language.java.extensions.references.ReferenceExtension.getPrevious((org.emftext.language.java.references.Reference) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.references.ReferenceExtension.getPrevious((tools.mdsd.jamopp.model.references.Reference) this);"/>
         <genOperations ecoreOperation="java.ecore#//references/Reference/getReferencedTypeReference"
-            body="return org.emftext.language.java.extensions.references.ReferenceExtension.getReferencedTypeReference((org.emftext.language.java.references.Reference) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.references.ReferenceExtension.getReferencedTypeReference((tools.mdsd.jamopp.model.references.Reference) this);"/>
       </genClasses>
       <genClasses image="false" ecoreClass="java.ecore#//references/Argumentable">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//references/Argumentable/arguments"/>
         <genOperations ecoreOperation="java.ecore#//references/Argumentable/getArgumentTypes"
-            body="return org.emftext.language.java.extensions.references.ArgumentableExtension.getArgumentTypes((org.emftext.language.java.references.Argumentable) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.references.ArgumentableExtension.getArgumentTypes((tools.mdsd.jamopp.model.references.Argumentable) this);"/>
       </genClasses>
       <genClasses image="false" ecoreClass="java.ecore#//references/ReferenceableElement"/>
       <genClasses image="false" ecoreClass="java.ecore#//references/ElementReference">
@@ -802,7 +802,7 @@
       </genClasses>
       <genClasses ecoreClass="java.ecore#//references/IdentifierReference">
         <genOperations ecoreOperation="java.ecore#//references/IdentifierReference/getArrayDimension"
-            body="return org.emftext.language.java.extensions.expressions.ExpressionExtension.getArrayDimension((org.emftext.language.java.expressions.Expression) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.expressions.ExpressionExtension.getArrayDimension((tools.mdsd.jamopp.model.expressions.Expression) this);"/>
       </genClasses>
       <genClasses ecoreClass="java.ecore#//references/MethodCall"/>
       <genClasses ecoreClass="java.ecore#//references/ReflectiveClassReference"/>
@@ -820,14 +820,14 @@
       </genClasses>
       <genClasses ecoreClass="java.ecore#//references/PackageReference"/>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Statements" basePackage="org.emftext.language.java"
+    <nestedGenPackages prefix="Statements" basePackage="tools.mdsd.jamopp.model.java"
         disposableProviderFactory="true" ecorePackage="java.ecore#_Wo2Yy9z1Ed2bJ_pQViWxFg">
       <genClasses image="false" ecoreClass="java.ecore#//statements/StatementContainer">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//statements/StatementContainer/statement"/>
       </genClasses>
       <genClasses image="false" ecoreClass="java.ecore#//statements/StatementListContainer">
         <genOperations ecoreOperation="java.ecore#//statements/StatementListContainer/getLocalVariable"
-            body="return org.emftext.language.java.extensions.statements.StatementListContainerExtension.getLocalVariable((org.emftext.language.java.statements.StatementListContainer) this, name);">
+            body="return tools.mdsd.jamopp.model.extensions.statements.StatementListContainerExtension.getLocalVariable((tools.mdsd.jamopp.model.statements.StatementListContainer) this, name);">
           <genParameters ecoreParameter="java.ecore#//statements/StatementListContainer/getLocalVariable/name"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//statements/StatementListContainer/getStatements"/>
@@ -850,7 +850,7 @@
       <genClasses ecoreClass="java.ecore#_Wo2ZD9z1Ed2bJ_pQViWxFg">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#_Wo2ZEdz1Ed2bJ_pQViWxFg"/>
         <genOperations ecoreOperation="java.ecore#//statements/CatchBlock/getStatements"
-            body="return org.emftext.language.java.extensions.statements.CatchBlockExtension.getStatements((org.emftext.language.java.statements.CatchBlock) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.statements.CatchBlockExtension.getStatements((tools.mdsd.jamopp.model.statements.CatchBlock) this);"/>
       </genClasses>
       <genClasses ecoreClass="java.ecore#_Wo2Y1Nz1Ed2bJ_pQViWxFg">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#_Wo2Y2tz1Ed2bJ_pQViWxFg"/>
@@ -891,7 +891,7 @@
       <genClasses ecoreClass="java.ecore#_Wo2ZFdz1Ed2bJ_pQViWxFg">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#_Wo2ZF9z1Ed2bJ_pQViWxFg"/>
         <genOperations ecoreOperation="java.ecore#//statements/SynchronizedBlock/getStatements"
-            body="return org.emftext.language.java.extensions.statements.SynchronizedBlockExtension.getStatements((org.emftext.language.java.statements.SynchronizedBlock) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.statements.SynchronizedBlockExtension.getStatements((tools.mdsd.jamopp.model.statements.SynchronizedBlock) this);"/>
       </genClasses>
       <genClasses ecoreClass="java.ecore#_Wo2ZH9z1Ed2bJ_pQViWxFg">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#_Wo2ZIdz1Ed2bJ_pQViWxFg"/>
@@ -901,9 +901,9 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#_Wo2ZDtz1Ed2bJ_pQViWxFg"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#_Wo2ZDNz1Ed2bJ_pQViWxFg"/>
         <genOperations ecoreOperation="java.ecore#//statements/TryBlock/getCatcheBlocks"
-            body="return org.emftext.language.java.extensions.statements.TryBlockExtension.getCatcheBlocks((org.emftext.language.java.statements.TryBlock) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.statements.TryBlockExtension.getCatcheBlocks((tools.mdsd.jamopp.model.statements.TryBlock) this);"/>
         <genOperations ecoreOperation="java.ecore#//statements/TryBlock/getStatements"
-            body="return org.emftext.language.java.extensions.statements.TryBlockExtension.getStatements((org.emftext.language.java.statements.TryBlock) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.statements.TryBlockExtension.getStatements((tools.mdsd.jamopp.model.statements.TryBlock) this);"/>
       </genClasses>
       <genClasses ecoreClass="java.ecore#_Wo2ZANz1Ed2bJ_pQViWxFg"/>
       <genClasses image="false" ecoreClass="java.ecore#//statements/BlockContainer">
@@ -918,15 +918,15 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//statements/NormalSwitchRule/additionalConditions"/>
       </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Types" basePackage="org.emftext.language.java" disposableProviderFactory="true"
+    <nestedGenPackages prefix="Types" basePackage="tools.mdsd.jamopp.model.java" disposableProviderFactory="true"
         ecorePackage="java.ecore#_Wo2ZOtz1Ed2bJ_pQViWxFg">
       <genClasses image="false" ecoreClass="java.ecore#_Wo2ZO9z1Ed2bJ_pQViWxFg">
-        <genOperations ecoreOperation="java.ecore#//types/Type/equalsType" body="return org.emftext.language.java.extensions.types.TypeExtension.equalsType((org.emftext.language.java.types.Type) this, arrayDimension, (org.emftext.language.java.types.Type) otherType, otherArrayDimension);">
+        <genOperations ecoreOperation="java.ecore#//types/Type/equalsType" body="return tools.mdsd.jamopp.model.extensions.types.TypeExtension.equalsType((tools.mdsd.jamopp.model.types.Type) this, arrayDimension, (tools.mdsd.jamopp.model.types.Type) otherType, otherArrayDimension);">
           <genParameters ecoreParameter="java.ecore#//types/Type/equalsType/arrayDimension"/>
           <genParameters ecoreParameter="java.ecore#//types/Type/equalsType/otherType"/>
           <genParameters ecoreParameter="java.ecore#//types/Type/equalsType/otherArrayDimension"/>
         </genOperations>
-        <genOperations ecoreOperation="java.ecore#//types/Type/isSuperType" body="return org.emftext.language.java.extensions.types.TypeExtension.isSuperType((org.emftext.language.java.types.Type) this, arrayDimension, (org.emftext.language.java.types.Type) otherType, (org.emftext.language.java.arrays.ArrayTypeable) otherArrayType);">
+        <genOperations ecoreOperation="java.ecore#//types/Type/isSuperType" body="return tools.mdsd.jamopp.model.extensions.types.TypeExtension.isSuperType((tools.mdsd.jamopp.model.types.Type) this, arrayDimension, (tools.mdsd.jamopp.model.types.Type) otherType, (tools.mdsd.jamopp.model.arrays.ArrayTypeable) otherArrayType);">
           <genParameters ecoreParameter="java.ecore#//types/Type/isSuperType/arrayDimension"/>
           <genParameters ecoreParameter="java.ecore#//types/Type/isSuperType/otherType"/>
           <genParameters ecoreParameter="java.ecore#//types/Type/isSuperType/otherArrayType"/>
@@ -943,19 +943,19 @@
       </genClasses>
       <genClasses image="false" ecoreClass="java.ecore#_Wo2ZPdz1Ed2bJ_pQViWxFg">
         <genOperations ecoreOperation="java.ecore#//types/TypeReference/getTarget"
-            body="return org.emftext.language.java.extensions.types.TypeReferenceExtension.getBoundTarget((org.emftext.language.java.types.TypeReference) this, null);"/>
+            body="return tools.mdsd.jamopp.model.extensions.types.TypeReferenceExtension.getBoundTarget((tools.mdsd.jamopp.model.types.TypeReference) this, null);"/>
         <genOperations ecoreOperation="java.ecore#//types/TypeReference/setTarget"
-            body="org.emftext.language.java.extensions.types.TypeReferenceExtension.setTarget((org.emftext.language.java.types.TypeReference) this, (org.emftext.language.java.classifiers.Classifier) type);">
+            body="tools.mdsd.jamopp.model.extensions.types.TypeReferenceExtension.setTarget((tools.mdsd.jamopp.model.types.TypeReference) this, (tools.mdsd.jamopp.model.classifiers.Classifier) type);">
           <genParameters ecoreParameter="java.ecore#//types/TypeReference/setTarget/type"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//types/TypeReference/getBoundTarget"
-            body="return org.emftext.language.java.extensions.types.TypeReferenceExtension.getBoundTarget((org.emftext.language.java.types.TypeReference) this, (org.emftext.language.java.references.Reference) reference);">
+            body="return tools.mdsd.jamopp.model.extensions.types.TypeReferenceExtension.getBoundTarget((tools.mdsd.jamopp.model.types.TypeReference) this, (tools.mdsd.jamopp.model.references.Reference) reference);">
           <genParameters ecoreParameter="java.ecore#//types/TypeReference/getBoundTarget/reference"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//types/TypeReference/getPureClassifierReference"
-            body="return org.emftext.language.java.extensions.types.TypeReferenceExtension.getPureClassifierReference((org.emftext.language.java.types.TypeReference) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.types.TypeReferenceExtension.getPureClassifierReference((tools.mdsd.jamopp.model.types.TypeReference) this);"/>
         <genOperations ecoreOperation="java.ecore#//types/TypeReference/getBoundTargetReference"
-            body="return org.emftext.language.java.extensions.types.TypeReferenceExtension.getBoundTargetReference((org.emftext.language.java.types.TypeReference) this, reference);">
+            body="return tools.mdsd.jamopp.model.extensions.types.TypeReferenceExtension.getBoundTargetReference((tools.mdsd.jamopp.model.types.TypeReference) this, reference);">
           <genParameters ecoreParameter="java.ecore#//types/TypeReference/getBoundTargetReference/reference"/>
         </genOperations>
       </genClasses>
@@ -968,11 +968,11 @@
       </genClasses>
       <genClasses image="false" ecoreClass="java.ecore#_Wo2ZR9z1Ed2bJ_pQViWxFg">
         <genOperations ecoreOperation="java.ecore#//types/PrimitiveType/getAllMembers"
-            body="return org.emftext.language.java.extensions.types.PrimitiveTypeExtension.getAllMembers((org.emftext.language.java.types.PrimitiveType) this, (org.emftext.language.java.commons.Commentable) context);">
+            body="return tools.mdsd.jamopp.model.extensions.types.PrimitiveTypeExtension.getAllMembers((tools.mdsd.jamopp.model.types.PrimitiveType) this, (tools.mdsd.jamopp.model.commons.Commentable) context);">
           <genParameters ecoreParameter="java.ecore#//types/PrimitiveType/getAllMembers/context"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//types/PrimitiveType/wrapPrimitiveType"
-            body="return org.emftext.language.java.extensions.types.PrimitiveTypeExtension.wrapPrimitiveType((org.emftext.language.java.types.PrimitiveType) this);"/>
+            body="return tools.mdsd.jamopp.model.extensions.types.PrimitiveTypeExtension.wrapPrimitiveType((tools.mdsd.jamopp.model.types.PrimitiveType) this);"/>
       </genClasses>
       <genClasses ecoreClass="java.ecore#_Wo2ZS9z1Ed2bJ_pQViWxFg"/>
       <genClasses ecoreClass="java.ecore#_Wo2ZT9z1Ed2bJ_pQViWxFg"/>
@@ -985,21 +985,21 @@
       <genClasses ecoreClass="java.ecore#//types/Void"/>
       <genClasses ecoreClass="java.ecore#//types/InferableType">
         <genOperations ecoreOperation="java.ecore#//types/InferableType/getBoundTargetReference"
-            body="return org.emftext.language.java.extensions.types.InferableTypeExtension.getBoundTargetReference((org.emftext.language.java.types.InferableType) this, reference);">
+            body="return tools.mdsd.jamopp.model.extensions.types.InferableTypeExtension.getBoundTargetReference((tools.mdsd.jamopp.model.types.InferableType) this, reference);">
           <genParameters ecoreParameter="java.ecore#//types/InferableType/getBoundTargetReference/reference"/>
         </genOperations>
       </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Variables" basePackage="org.emftext.language.java"
+    <nestedGenPackages prefix="Variables" basePackage="tools.mdsd.jamopp.model.java"
         disposableProviderFactory="true" ecorePackage="java.ecore#//variables">
       <genClasses image="false" ecoreClass="java.ecore#//variables/Variable">
         <genOperations ecoreOperation="java.ecore#//variables/Variable/createMethodCallStatement"
-            body="return org.emftext.language.java.extensions.variables.VariableExtension.createMethodCallStatement((org.emftext.language.java.variables.Variable) this, methodName, arguments);">
+            body="return tools.mdsd.jamopp.model.extensions.variables.VariableExtension.createMethodCallStatement((tools.mdsd.jamopp.model.variables.Variable) this, methodName, arguments);">
           <genParameters ecoreParameter="java.ecore#//variables/Variable/createMethodCallStatement/methodName"/>
           <genParameters ecoreParameter="java.ecore#//variables/Variable/createMethodCallStatement/arguments"/>
         </genOperations>
         <genOperations ecoreOperation="java.ecore#//variables/Variable/createMethodCall"
-            body="return org.emftext.language.java.extensions.variables.VariableExtension.createMethodCall((org.emftext.language.java.variables.Variable) this, methodName, arguments);">
+            body="return tools.mdsd.jamopp.model.extensions.variables.VariableExtension.createMethodCall((tools.mdsd.jamopp.model.variables.Variable) this, methodName, arguments);">
           <genParameters ecoreParameter="java.ecore#//variables/Variable/createMethodCall/methodName"/>
           <genParameters ecoreParameter="java.ecore#//variables/Variable/createMethodCall/arguments"/>
         </genOperations>
@@ -1031,8 +1031,8 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference java.ecore#//modules/ModuleReference/target"/>
       </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Layout" basePackage="org.emftext.commons" disposableProviderFactory="true"
-        ecorePackage="java.ecore#//layout">
+    <nestedGenPackages prefix="Layout" basePackage="tools.mdsd.jamopp.model.commons"
+        disposableProviderFactory="true" ecorePackage="java.ecore#//layout">
       <genClasses image="false" ecoreClass="java.ecore#//layout/LayoutInformation">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute java.ecore#//layout/LayoutInformation/startOffset"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute java.ecore#//layout/LayoutInformation/hiddenTokenText"/>
