@@ -1,4 +1,9 @@
 /*******************************************************************************
+ * Copyright (c) 2020-2023
+ * Modelling for Continuous Software Engineering (MCSE) group,
+ *     Institute of Information Security and Dependability (KASTEL),
+ *     Karlsruhe Institute of Technology (KIT).
+ * 
  * Copyright (c) 2006-2013
  * Software Technology Group, Dresden University of Technology
  * DevBoost GmbH, Berlin, Amtsgericht Charlottenburg, HRB 140026
