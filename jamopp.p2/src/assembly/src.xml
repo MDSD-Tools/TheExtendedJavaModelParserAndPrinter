@@ -10,12 +10,6 @@
         <fileSet>
             <directory>${project.build.directory}/repository</directory>
             <outputDirectory></outputDirectory>
-            <!--<includes>
-                <include>README*</include>
-                <include>LICENSE*</include>
-                <include>NOTICE*</include>
-                <include>pom.xml</include>
-            </includes>-->
             <useDefaultExcludes>false</useDefaultExcludes>
         </fileSet>
     </fileSets>

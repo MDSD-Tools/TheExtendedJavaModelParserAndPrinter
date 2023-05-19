@@ -1,15 +1,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+    <artifactId>jamopp.p2</artifactId>
+    <packaging>pom</packaging>
+    <name>Extended JaMoPP P2 Site</name>
+	<description>This package builds a P2 update site for the extended JaMoPP.</description>
+
     <parent>
         <groupId>tools.mdsd</groupId>
         <artifactId>jamopp.parent</artifactId>
         <version>6.0.0-SNAPSHOT</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
-    <artifactId>jamopp.p2</artifactId>
-    <name>JaMoPP P2</name>
-    <packaging>pom</packaging>
+
     <build>
         <plugins>
             <plugin>
@@ -23,13 +27,13 @@
                             <goal>site</goal>
                         </goals>
                         <configuration>
-                            <categoryFileURL>${project.basedir}/category.xml</categoryFileURL>
+                            <categoryFileURL>${project.basedir}/src/category.xml</categoryFileURL>
                             <artifacts>
                                 <!-- specify your depencies here -->
                                 <!-- groupId:artifactId:version -->
                                 <artifact>
-                                    <id>tools.mdsd:org.emftext.language.java:6.0.0-SNAPSHOT</id>
-                                    <id>tools.mdsd:org.emftext.language.java.edit:6.0.0-SNAPSHOT</id>
+                                    <id>tools.mdsd:jamopp.model:6.0.0-SNAPSHOT</id>
+                                    <id>tools.mdsd:jamopp.model.edit:6.0.0-SNAPSHOT</id>
                                     <id>tools.mdsd:jamopp.parser.jdt.singlefile:6.0.0-SNAPSHOT</id>
                                     <id>tools.mdsd:jamopp.resource:6.0.0-SNAPSHOT</id>
                                     <id>tools.mdsd:jamopp.parser.jdt:6.0.0-SNAPSHOT</id>
@@ -38,16 +42,21 @@
                             </artifacts>
                             <featureDefinitions>
                                 <feature>
-                                    <id>org.emftext.language.java.feature</id>
+                                    <id>tools.mdsd.jamopp.feature</id>
                                     <version>${project.version}</version>
-                                    <label>JaMoPP - Java Model Parser and Printer</label>
-                                    <providerName>${project.groupId}</providerName>
-                                    <description>JaMoPP: Java Model Parser and Printer (EMFText-based Java support for EMF modelling tools).</description>
+                                    <label>Extended Java Model Parser and Printer (JaMoPP)</label>
+                                    <providerName>MC</providerName>
+                                    <description>Extended Java Model Parser and Printer: Eclipse Modeling Framework-based environment for Java code.</description>
                                     <copyright>
-                                        Copyright (c) 2006-2013 Software Technology Group, Dresden University of Technology, Germany; DevBoost GmbH, Dresden, Amtsgericht Dresden, HRB 34001.
+Copyright (c) 2020-2023 Modelling for Continuous Software Engineering (MCSE) group, Institute of Information Security and Dependability (KASTEL), Karlsruhe Institute of Technology (KIT).
+									
+Copyright (c) 2006-2013 Software Technology Group, Dresden University of Technology, Germany; DevBoost GmbH, Dresden, Amtsgericht Dresden, HRB 34001.
                                     </copyright>
                                     <license>
 Eclipse Public License v1.0
+
+Copyright (c) 2020-2023
+Modelling for Continuous Software Engineering (MCSE) group, Institute of Information Security and Dependability (KASTEL), Karlsruhe Institute of Technology (KIT).
 
 Copyright (c) 2006-2013
 Software Technology Group, Dresden University of Technology
@@ -59,16 +68,18 @@ Contributors:
   Software Technology Group - TU Dresden, Germany;
   DevBoost GmbH - Dresden, Germany
      - initial API and implementation
+  MCSE, KASTEL, KIT
+     - Extension for Java 7-15, further independent maintenance
                                     </license>
-                                    <generateSourceFeature>true</generateSourceFeature>
+                                    <generateSourceFeature>false</generateSourceFeature>
                                     <artifacts>
                                         <artifact>
-                                            <id>tools.mdsd:org.emftext.language.java:6.0.0-SNAPSHOT</id>
+                                            <id>tools.mdsd:jamopp.model:6.0.0-SNAPSHOT</id>
                                             <transitive>false</transitive>
                                             <source>false</source>
                                         </artifact>
                                         <artifact>
-                                            <id>tools.mdsd:org.emftext.language.java.edit:6.0.0-SNAPSHOT</id>
+                                            <id>tools.mdsd:jamopp.model.edit:6.0.0-SNAPSHOT</id>
                                             <transitive>false</transitive>
                                             <source>false</source>
                                         </artifact>
@@ -133,13 +144,22 @@ Contributors:
             </plugin>
         </plugins>
     </build>
+    <!-- The dependencies are to make sure this project is build after all relevant artifacts are created. -->
     <dependencies>
-        <!-- This dependency is to make sure this projects is build after all relevant artifacts are created -->
         <dependency>
             <groupId>tools.mdsd</groupId>
-            <artifactId>org.emftext.language.java.edit</artifactId>
+            <artifactId>jamopp.tests</artifactId>
             <version>6.0.0-SNAPSHOT</version>
-            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>tools.mdsd</groupId>
+            <artifactId>jamopp.model.edit</artifactId>
+            <version>6.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>tools.mdsd</groupId>
+            <artifactId>jamopp.standalone</artifactId>
+            <version>6.0.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>

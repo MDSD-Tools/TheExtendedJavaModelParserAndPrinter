@@ -1,24 +1,24 @@
 [submodule "tests/org.emftext.language.java.test/JaMoPP-BulkTest"]
-	path = tests/org.emftext.language.java.test/target/src-bulk/JaMoPP-BulkTest
+	path = jamopp.tests/target/src-bulk/JaMoPP-BulkTest
 	url = https://github.com/DevBoost/JaMoPP-BulkTest
 [submodule "tests/org.emftext.language.java.test/TeaStore"]
-	path = tests/org.emftext.language.java.test/target/src-bulk/TeaStore
+	path = jamopp.tests/target/src-bulk/TeaStore
 	url = https://github.com/DescartesResearch/TeaStore
 [submodule "tests/org.emftext.language.java.test/teammates"]
-	path = tests/org.emftext.language.java.test/target/src-bulk/teammates
+	path = jamopp.tests/target/src-bulk/teammates
 	url = https://github.com/TEAMMATES/teammates
 [submodule "tests/org.emftext.language.java.test/microservice"]
-	path = tests/org.emftext.language.java.test/target/src-bulk/microservice
+	path = jamopp.tests/target/src-bulk/microservice
 	url = https://github.com/ewolff/microservice
 [submodule "tests/org.emftext.language.java.test/esda"]
-	path = tests/org.emftext.language.java.test/target/src-bulk/esda
+	path = jamopp.tests/target/src-bulk/esda
 	url = https://github.com/kit-sdq/esda
 [submodule "tests/org.emftext.language.java.test/acmeair"]
-	path = tests/org.emftext.language.java.test/target/src-bulk/acmeair
+	path = jamopp.tests/target/src-bulk/acmeair
 	url = https://github.com/acmeair/acmeair.git
 [submodule "tests/org.emftext.language.java.test/piggymetrics"]
-	path = tests/org.emftext.language.java.test/target/src-bulk/piggymetrics
+	path = jamopp.tests/target/src-bulk/piggymetrics
 	url = https://github.com/sqshq/piggymetrics.git
 [submodule "tests/org.emftext.language.java.test/petclinic"]
-	path = tests/org.emftext.language.java.test/target/src-bulk/petclinic
+	path = jamopp.tests/target/src-bulk/petclinic
 	url = https://github.com/spring-petclinic/spring-petclinic-microservices.git
