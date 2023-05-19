@@ -16,6 +16,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Minimum required Java version: Java 17
 - Supported Eclipse version: 2022-12
 - Third variant: bindings of parameters and local variables are also resolved
+- Migration to MDSD Tools organization
+    - Converted Maven Tycho-based build to pure Maven build
+- Upgraded dependency versions to:
+    - Apache Commons Bytecode Engineering Library 6.7.0
+	- Apache Log4j 2 2.20.0 including the Log4j 1.x bridge
 
 ### Deprecated
 
@@ -27,7 +32,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [5.1.0] - 2022-01-21
 
-From here, independent development by the Institute of Information Security and Dependability (KASTEL) at the Karlsruher Institute of Technology (KIT) resulting in the following changes.
+From here, independent development by the Modelling for Continuous Software Engineering (MCSE) group at the Institute of Information Security and Dependability (KASTEL) at the Karlsruher Institute of Technology (KIT) resulting in the following changes.
 
 ### Added
 
@@ -88,7 +93,7 @@ Originally, developed by DevBoost GmbH and Software Technology Group, Dresden Un
 - Tests for the parsing (checks if generated model contains the expected elements)
 - Tests for the parsing and printing (checks if printed code is equal to parsed code by parsing both source codes with Eclipse JDT and comparing the resulting ASTs)
 
-[Unreleased]: https://github.com/PalladioSimulator/Palladio-Supporting-EclipseJavaDevelopmentTools/compare/releases/5.1.0...HEAD
-[5.1.0]: https://github.com/PalladioSimulator/Palladio-Supporting-EclipseJavaDevelopmentTools/compare/8bc07...releases/5.1.0
-[development after 1.4.0]: https://github.com/PalladioSimulator/Palladio-Supporting-EclipseJavaDevelopmentTools/compare/e46b0...8bc07
-[1.4.0]: https://github.com/PalladioSimulator/Palladio-Supporting-EclipseJavaDevelopmentTools/commit/e46b0003803a8ccda7c3aa380ff2c759937d1ccb
+[Unreleased]: https://github.com/MDSD-Tools/TheExtendedJavaModelParserAndPrinter/compare/releases/5.1.0...HEAD
+[5.1.0]: https://github.com/MDSD-Tools/TheExtendedJavaModelParserAndPrinter/compare/8bc07...releases/5.1.0
+[development after 1.4.0]: https://github.com/MDSD-Tools/TheExtendedJavaModelParserAndPrinter/compare/e46b0...8bc07
+[1.4.0]: https://github.com/MDSD-Tools/TheExtendedJavaModelParserAndPrinter/commit/e46b0003803a8ccda7c3aa380ff2c759937d1ccb
