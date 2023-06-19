@@ -19,7 +19,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Migration to MDSD Tools organization
     - Converted Maven Tycho-based build to pure Maven build
     - Unification and renaming of packages to: `tools.mdsd.jamopp`
-    - Renaming of meta-model namespace URI to: `https://mdsd.tools/jamopp/java`
+    - Renaming of meta-model namespace URI to: `https://mdsd.tools/jamopp/6.0.0/java`
+    - Versioned the meta-model
 - Upgraded dependency versions to:
     - Apache Commons Bytecode Engineering Library 6.7.0
 	- Apache Log4j 2 2.20.0

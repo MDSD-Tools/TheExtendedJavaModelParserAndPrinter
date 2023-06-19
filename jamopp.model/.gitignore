@@ -1,1 +1,4 @@
 /src/main/generated
+build.properties
+plugin.properties
+plugin.xml
