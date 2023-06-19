@@ -33,11 +33,43 @@
                                 <!-- groupId:artifactId:version -->
                                 <artifact>
                                     <id>tools.mdsd:jamopp.model:6.0.0-SNAPSHOT</id>
+                                    <transitive>false</transitive>
+                                </artifact>
+                                <artifact>
                                     <id>tools.mdsd:jamopp.model.edit:6.0.0-SNAPSHOT</id>
+                                    <transitive>false</transitive>
+                                </artifact>
+                                <artifact>
                                     <id>tools.mdsd:jamopp.parser.jdt.singlefile:6.0.0-SNAPSHOT</id>
+                                    <transitive>false</transitive>
+                                </artifact>
+                                <artifact>
                                     <id>tools.mdsd:jamopp.resource:6.0.0-SNAPSHOT</id>
+                                    <transitive>false</transitive>
+                                </artifact>
+                                <artifact>
                                     <id>tools.mdsd:jamopp.parser.jdt:6.0.0-SNAPSHOT</id>
+                                    <transitive>false</transitive>
+                                </artifact>
+								<artifact>
+                                    <id>tools.mdsd:jamopp.parser.bcel:6.0.0-SNAPSHOT</id>
+                                    <transitive>false</transitive>
+                                </artifact>
+                                <artifact>
                                     <id>tools.mdsd:jamopp.standalone:6.0.0-SNAPSHOT</id>
+                                    <transitive>false</transitive>
+                                </artifact>
+                                <artifact>
+                                    <id>org.apache.logging.log4j:log4j-api:2.20.0</id>
+                                    <transitive>false</transitive>
+                                </artifact>
+                                <artifact>
+                                    <id>org.apache.bcel:bcel:6.7.0</id>
+                                    <transitive>false</transitive>
+                                </artifact>
+                                <artifact>
+                                    <id>org.apache.commons:commons-lang3:3.12.0</id>
+                                    <transitive>false</transitive>
                                 </artifact>
                             </artifacts>
                             <featureDefinitions>

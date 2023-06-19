@@ -27,7 +27,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -51,7 +52,7 @@ import tools.mdsd.jamopp.resolution.bindings.CentralBindingBasedResolver;
 import tools.mdsd.jamopp.resolution.resolver.CentralReferenceResolver;
 
 public class JaMoPPJDTSingleFileParser implements JaMoPPParserAPI {
-	private static final Logger logger = Logger.getLogger("jamopp."
+	private static final Logger logger = LogManager.getLogger("jamopp."
 			+ JaMoPPJDTSingleFileParser.class.getSimpleName());
 	private final String DEFAULT_ENCODING = StandardCharsets.UTF_8.toString();
 	private ResourceSet resourceSet;

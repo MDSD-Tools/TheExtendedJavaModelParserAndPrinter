@@ -20,7 +20,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -48,7 +49,7 @@ import tools.mdsd.jamopp.resolution.resolver.result.IJavaURIMapping;
 
 public class JavaResource2 extends XMIResourceImpl {
 	public static final String JAVAXMI_FILE_EXTENSION = LogicalJavaURIGenerator.JAVAXMI_FILE_EXTENSION_NAME;
-	private static final Logger LOGGER = Logger.getLogger("jamopp." + JavaResource2.class.getSimpleName());
+	private static final Logger LOGGER = LogManager.getLogger("jamopp." + JavaResource2.class.getSimpleName());
 	private Map<String, IJavaContextDependentURIFragment> internalURIFragmentMap =
 			IJavaContextDependentURIFragmentCollector.GLOBAL_INSTANCE
 			.getContextDependentURIFragmentMap();

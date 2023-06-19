@@ -46,10 +46,10 @@ import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-import org.apache.log4j.ConsoleAppender;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
-import org.apache.log4j.PatternLayout;
+//import org.apache.log4j.ConsoleAppender;
+//import org.apache.log4j.Level;
+//import org.apache.log4j.Logger;
+//import org.apache.log4j.PatternLayout;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -102,8 +102,8 @@ public abstract class AbstractJaMoPPTests {
 
 	@BeforeAll
 	public static void initLogging() {
-		Logger logger = Logger.getLogger("jamopp");
-		logger.setLevel(Level.ALL);
+//		Logger logger = Logger.getLogger("jamopp");
+//		logger.setLevel(Level.ALL);
 //		ConsoleAppender ca = new ConsoleAppender(new PatternLayout("[%d{DATE}] %-5p: %c - %m%n"),
 //				ConsoleAppender.SYSTEM_OUT);
 //		logger.addAppender(ca);
