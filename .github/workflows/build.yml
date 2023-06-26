@@ -9,7 +9,10 @@ on:
         type: boolean
 jobs:
   build:
-    runs-on: [ubuntu-22.04, windows-2022]
+    strategy:
+      matrix:
+        os: [ubuntu-22.04, windows-2022]
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
