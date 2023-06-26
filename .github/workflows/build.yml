@@ -1,0 +1,22 @@
+name: build-wf
+on: [pull_request, workflow_call]
+jobs:
+  build:
+    runs-on: [ubuntu-22.04, windows-2022]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: 17
+      - name: Build Packages
+        run: ./mvnw clean package
+      - name: Store P2 Repository
+        if: runner.os == 'Linux'
+        uses: actions/upload-artifact@v3
+        with:
+          name: p2-jamopp
+          path: jamopp.p2/target/repository
+          retention-days: 1
