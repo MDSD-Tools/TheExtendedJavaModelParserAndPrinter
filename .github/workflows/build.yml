@@ -14,6 +14,8 @@ jobs:
         os: [ubuntu-22.04, windows-2022]
     runs-on: ${{ matrix.os }}
     steps:
+      - name: Enable Long Paths in Git
+        run: git config --system core.longpaths true
       - name: Checkout
         uses: actions/checkout@v3
         with:
