@@ -2,11 +2,6 @@ name: build-wf
 on: 
   pull_request:
   workflow_call:
-    inputs:
-      upload_p2_only:
-        default: true
-        required: false
-        type: boolean
 jobs:
   build:
     strategy:
@@ -29,19 +24,13 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: 17
+          cache: 'maven'
       - name: Build Packages
         run: ./mvnw clean package
       - name: Store P2 Repository
-        if: runner.os == 'Linux' && inputs.upload_p2_only
+        if: runner.os == 'Linux'
         uses: actions/upload-artifact@v3
         with:
           name: p2-jamopp
           path: jamopp.p2/target/repository
-          retention-days: 1
-      - name: Store All
-        if: runner.os == 'Linux' && !inputs.upload_p2_only
-        uses: actions/upload-artifact@v3
-        with:
-          name: full-jamopp
-          path: .
           retention-days: 1
