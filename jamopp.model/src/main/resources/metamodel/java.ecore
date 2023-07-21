@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmi:id="_WosmsNz1Ed2bJ_pQViWxFg" name="java" nsURI="https://mdsd.tools/jamopp/java"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmi:id="_WosmsNz1Ed2bJ_pQViWxFg" name="java" nsURI="https://mdsd.tools/jamopp/6.0.0/java"
     nsPrefix="java">
-  <eSubpackages xmi:id="_Wosmsdz1Ed2bJ_pQViWxFg" name="annotations" nsURI="https://mdsd.tools/jamopp/java/annotations"
+  <eSubpackages xmi:id="_Wosmsdz1Ed2bJ_pQViWxFg" name="annotations" nsURI="https://mdsd.tools/jamopp/6.0.0/java/annotations"
       nsPrefix="annotations">
     <eClassifiers xsi:type="ecore:EClass" name="Annotable" abstract="true" eSuperTypes="#//commons/Commentable">
       <eStructuralFeatures xsi:type="ecore:EReference" name="annotations" upperBound="-1"
@@ -34,7 +34,8 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="AnnotationValue" abstract="true" eSuperTypes="#//commons/Commentable"/>
   </eSubpackages>
-  <eSubpackages name="arrays" nsURI="https://mdsd.tools/jamopp/java/arrays" nsPrefix="arrays">
+  <eSubpackages name="arrays" nsURI="https://mdsd.tools/jamopp/6.0.0/java/arrays"
+      nsPrefix="arrays">
     <eClassifiers xsi:type="ecore:EClass" name="ArrayTypeable" abstract="true" eSuperTypes="#//commons/Commentable">
       <eOperations name="getArrayDimension" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -83,7 +84,7 @@
           containment="true"/>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages name="classifiers" nsURI="https://mdsd.tools/jamopp/java/classifiers"
+  <eSubpackages name="classifiers" nsURI="https://mdsd.tools/jamopp/6.0.0/java/classifiers"
       nsPrefix="classifiers">
     <eClassifiers xsi:type="ecore:EClass" name="Classifier" abstract="true" eSuperTypes="#_Wo2ZO9z1Ed2bJ_pQViWxFg #//references/ReferenceableElement">
       <eOperations name="getAllSuperClassifiers" upperBound="-1" eType="#//classifiers/ConcreteClassifier">
@@ -241,7 +242,8 @@
       </eOperations>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages name="commons" nsURI="https://mdsd.tools/jamopp/java/commons" nsPrefix="commons">
+  <eSubpackages name="commons" nsURI="https://mdsd.tools/jamopp/6.0.0/java/commons"
+      nsPrefix="commons">
     <eClassifiers xsi:type="ecore:EClass" name="Commentable" abstract="true">
       <eOperations name="getConcreteClassifier" eType="#//classifiers/ConcreteClassifier">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -437,7 +439,7 @@
           upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages name="containers" nsURI="https://mdsd.tools/jamopp/java/containers"
+  <eSubpackages name="containers" nsURI="https://mdsd.tools/jamopp/6.0.0/java/containers"
       nsPrefix="containers">
     <eClassifiers xsi:type="ecore:EClass" name="JavaRoot" abstract="true" eSuperTypes="#//commons/NamedElement #//commons/NamespaceAwareElement #//imports/ImportingElement #//annotations/Annotable">
       <eOperations name="getClassifiersInSamePackage" upperBound="-1" eType="#//classifiers/ConcreteClassifier">
@@ -525,7 +527,7 @@
       <eLiterals name="BINDING" value="3"/>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages xmi:id="_Wo2YC9z1Ed2bJ_pQViWxFg" name="expressions" nsURI="https://mdsd.tools/jamopp/java/expressions"
+  <eSubpackages xmi:id="_Wo2YC9z1Ed2bJ_pQViWxFg" name="expressions" nsURI="https://mdsd.tools/jamopp/6.0.0/java/expressions"
       nsPrefix="expressions">
     <eClassifiers xsi:type="ecore:EClass" xmi:id="_Wo2YF9z1Ed2bJ_pQViWxFg" name="ExpressionList"
         eSuperTypes="#_Wo2Y9tz1Ed2bJ_pQViWxFg">
@@ -797,7 +799,8 @@
     <eClassifiers xsi:type="ecore:EClass" name="ImplicitlyTypedLambdaParameters" eSuperTypes="#//expressions/LambdaParameters"/>
     <eClassifiers xsi:type="ecore:EClass" name="SingleImplicitLambdaParameter" eSuperTypes="#//expressions/ImplicitlyTypedLambdaParameters"/>
   </eSubpackages>
-  <eSubpackages name="generics" nsURI="https://mdsd.tools/jamopp/java/generics" nsPrefix="generics">
+  <eSubpackages name="generics" nsURI="https://mdsd.tools/jamopp/6.0.0/java/generics"
+      nsPrefix="generics">
     <eClassifiers xsi:type="ecore:EClass" name="TypeArgument" abstract="true" eSuperTypes="#//arrays/ArrayTypeable"/>
     <eClassifiers xsi:type="ecore:EClass" name="TypeArgumentable" abstract="true"
         eSuperTypes="#//commons/Commentable">
@@ -865,7 +868,8 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="UnknownTypeArgument" eSuperTypes="#//generics/TypeArgument #//annotations/Annotable"/>
   </eSubpackages>
-  <eSubpackages name="imports" nsURI="https://mdsd.tools/jamopp/java/imports" nsPrefix="imports">
+  <eSubpackages name="imports" nsURI="https://mdsd.tools/jamopp/6.0.0/java/imports"
+      nsPrefix="imports">
     <eClassifiers xsi:type="ecore:EClass" name="Import" abstract="true" eSuperTypes="#//commons/NamespaceAwareElement">
       <eOperations name="getImportedClassifier" eType="#//classifiers/ConcreteClassifier">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -904,7 +908,7 @@
           upperBound="-1" eType="#//references/ReferenceableElement"/>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages name="instantiations" nsURI="https://mdsd.tools/jamopp/java/instantiations"
+  <eSubpackages name="instantiations" nsURI="https://mdsd.tools/jamopp/6.0.0/java/instantiations"
       nsPrefix="instantiations">
     <eClassifiers xsi:type="ecore:EClass" name="Initializable" abstract="true" eSuperTypes="#//commons/Commentable">
       <eStructuralFeatures xsi:type="ecore:EReference" name="initialValue" eType="#_Wo2YDNz1Ed2bJ_pQViWxFg"
@@ -922,7 +926,7 @@
           eType="#//literals/Self" containment="true"/>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages xmi:id="_Wo2Yntz1Ed2bJ_pQViWxFg" name="literals" nsURI="https://mdsd.tools/jamopp/java/literals"
+  <eSubpackages xmi:id="_Wo2Yntz1Ed2bJ_pQViWxFg" name="literals" nsURI="https://mdsd.tools/jamopp/6.0.0/java/literals"
       nsPrefix="literals">
     <eClassifiers xsi:type="ecore:EClass" xmi:id="_Wo2YsNz1Ed2bJ_pQViWxFg" name="Literal"
         abstract="true" eSuperTypes="#//expressions/PrimaryExpression">
@@ -1004,7 +1008,8 @@
     <eClassifiers xsi:type="ecore:EClass" name="Super" eSuperTypes="#//literals/Self"/>
     <eClassifiers xsi:type="ecore:EClass" name="This" eSuperTypes="#//literals/Self"/>
   </eSubpackages>
-  <eSubpackages name="members" nsURI="https://mdsd.tools/jamopp/java/members" nsPrefix="members">
+  <eSubpackages name="members" nsURI="https://mdsd.tools/jamopp/6.0.0/java/members"
+      nsPrefix="members">
     <eClassifiers xsi:type="ecore:EClass" name="ExceptionThrower" abstract="true"
         eSuperTypes="#//commons/Commentable">
       <eStructuralFeatures xsi:type="ecore:EReference" name="exceptions" upperBound="-1"
@@ -1155,7 +1160,7 @@
           containment="true"/>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages xmi:id="_Wo2Ystz1Ed2bJ_pQViWxFg" name="modifiers" nsURI="https://mdsd.tools/jamopp/java/modifiers"
+  <eSubpackages xmi:id="_Wo2Ystz1Ed2bJ_pQViWxFg" name="modifiers" nsURI="https://mdsd.tools/jamopp/6.0.0/java/modifiers"
       nsPrefix="modifiers">
     <eClassifiers xsi:type="ecore:EClass" xmi:id="_Wo2Ys9z1Ed2bJ_pQViWxFg" name="Modifier"
         abstract="true" eSuperTypes="#//modifiers/AnnotationInstanceOrModifier"/>
@@ -1294,7 +1299,7 @@
         eSuperTypes="#//commons/Commentable"/>
     <eClassifiers xsi:type="ecore:EClass" name="Open" eSuperTypes="#//commons/Commentable"/>
   </eSubpackages>
-  <eSubpackages name="operators" nsURI="https://mdsd.tools/jamopp/java/operators"
+  <eSubpackages name="operators" nsURI="https://mdsd.tools/jamopp/6.0.0/java/operators"
       nsPrefix="operators">
     <eClassifiers xsi:type="ecore:EClass" name="Operator" abstract="true" eSuperTypes="#//commons/Commentable"/>
     <eClassifiers xsi:type="ecore:EClass" name="AdditiveOperator" abstract="true"
@@ -1342,7 +1347,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="RightShift" eSuperTypes="#//operators/ShiftOperator"/>
     <eClassifiers xsi:type="ecore:EClass" name="UnsignedRightShift" eSuperTypes="#//operators/ShiftOperator"/>
   </eSubpackages>
-  <eSubpackages name="parameters" nsURI="https://mdsd.tools/jamopp/java/parameters"
+  <eSubpackages name="parameters" nsURI="https://mdsd.tools/jamopp/6.0.0/java/parameters"
       nsPrefix="parameters">
     <eClassifiers xsi:type="ecore:EClass" name="Parameter" abstract="true" eSuperTypes="#//variables/Variable #//modifiers/AnnotableAndModifiable"/>
     <eClassifiers xsi:type="ecore:EClass" name="Parametrizable" abstract="true" eSuperTypes="#//commons/Commentable">
@@ -1362,7 +1367,7 @@
           eType="#//literals/This" containment="true"/>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages name="references" nsURI="https://mdsd.tools/jamopp/java/references"
+  <eSubpackages name="references" nsURI="https://mdsd.tools/jamopp/6.0.0/java/references"
       nsPrefix="references">
     <eClassifiers xsi:type="ecore:EClass" name="Reference" abstract="true" eSuperTypes="#//expressions/PrimaryExpression #//generics/TypeArgumentable #//types/TypedElementExtension">
       <eOperations name="getReferencedType" eType="#_Wo2ZO9z1Ed2bJ_pQViWxFg">
@@ -1433,7 +1438,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="PackageReference" eSuperTypes="#//references/ReferenceableElement #//commons/NamespaceAwareElement"/>
   </eSubpackages>
-  <eSubpackages xmi:id="_Wo2Yy9z1Ed2bJ_pQViWxFg" name="statements" nsURI="https://mdsd.tools/jamopp/java/statements"
+  <eSubpackages xmi:id="_Wo2Yy9z1Ed2bJ_pQViWxFg" name="statements" nsURI="https://mdsd.tools/jamopp/6.0.0/java/statements"
       nsPrefix="statements">
     <eClassifiers xsi:type="ecore:EClass" name="StatementContainer" abstract="true"
         eSuperTypes="#//commons/Commentable">
@@ -1612,7 +1617,7 @@
           upperBound="-1" eType="#_Wo2YDNz1Ed2bJ_pQViWxFg" containment="true"/>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages xmi:id="_Wo2ZOtz1Ed2bJ_pQViWxFg" name="types" nsURI="https://mdsd.tools/jamopp/java/types"
+  <eSubpackages xmi:id="_Wo2ZOtz1Ed2bJ_pQViWxFg" name="types" nsURI="https://mdsd.tools/jamopp/6.0.0/java/types"
       nsPrefix="types">
     <eClassifiers xsi:type="ecore:EClass" xmi:id="_Wo2ZO9z1Ed2bJ_pQViWxFg" name="Type"
         abstract="true" eSuperTypes="#//commons/Commentable">
@@ -1739,7 +1744,7 @@
       </eOperations>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages name="variables" nsURI="https://mdsd.tools/jamopp/java/variables"
+  <eSubpackages name="variables" nsURI="https://mdsd.tools/jamopp/6.0.0/java/variables"
       nsPrefix="variables">
     <eClassifiers xsi:type="ecore:EClass" name="Variable" abstract="true" eSuperTypes="#//commons/NamedElement #_Wo2ZP9z1Ed2bJ_pQViWxFg #//references/ReferenceableElement #//generics/TypeArgumentable">
       <eOperations name="createMethodCallStatement" eType="#_Wo2YzNz1Ed2bJ_pQViWxFg">
@@ -1767,7 +1772,8 @@
     <eClassifiers xsi:type="ecore:EClass" name="Resource" abstract="true" interface="true"
         eSuperTypes="#//commons/Commentable"/>
   </eSubpackages>
-  <eSubpackages name="modules" nsURI="https://mdsd.tools/jamopp/java/modules" nsPrefix="modules">
+  <eSubpackages name="modules" nsURI="https://mdsd.tools/jamopp/6.0.0/java/modules"
+      nsPrefix="modules">
     <eClassifiers xsi:type="ecore:EClass" name="ModuleDirective" abstract="true" eSuperTypes="#//commons/Commentable"/>
     <eClassifiers xsi:type="ecore:EClass" name="UsesModuleDirective" eSuperTypes="#//modules/ModuleDirective #_Wo2ZP9z1Ed2bJ_pQViWxFg"/>
     <eClassifiers xsi:type="ecore:EClass" name="ProvidesModuleDirective" eSuperTypes="#_Wo2ZP9z1Ed2bJ_pQViWxFg #//modules/ModuleDirective">
@@ -1792,7 +1798,8 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//containers/Module"/>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages name="layout" nsURI="https://mdsd.tools/jamopp/commons/layout" nsPrefix="layout">
+  <eSubpackages name="layout" nsURI="https://mdsd.tools/jamopp/6.0.0/commons/layout"
+      nsPrefix="layout">
     <eClassifiers xsi:type="ecore:EClass" name="LayoutInformation" abstract="true">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="startOffset" lowerBound="1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>

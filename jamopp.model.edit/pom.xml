@@ -97,6 +97,11 @@
                         <goals>
                             <goal>bundle</goal>
                         </goals>
+                        <configuration>
+							<instructions>
+								<Bundle-SymbolicName>${project.groupId}.${project.artifactId};singleton:=true</Bundle-SymbolicName>
+							</instructions>
+						</configuration>
                     </execution>
                 </executions>
             </plugin>

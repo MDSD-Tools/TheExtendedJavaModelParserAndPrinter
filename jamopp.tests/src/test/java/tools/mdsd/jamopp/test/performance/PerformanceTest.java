@@ -22,7 +22,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.Set;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -40,7 +41,7 @@ import tools.mdsd.jamopp.test.bulk.SingleFileParserBulkTests;
  */
 @Disabled
 public class PerformanceTest extends AbstractJaMoPPTests {
-	private static final Logger LOGGER = Logger.getLogger("jamopp."
+	private static final Logger LOGGER = LogManager.getLogger("jamopp."
 			+ SingleFileParserBulkTests.class.getSimpleName());
 	private final String inputFolder = "target" + File.separator + "src-bulk" + File.separator + "TeaStore";
 	private final Path parentOutput = Paths.get("output_performance");

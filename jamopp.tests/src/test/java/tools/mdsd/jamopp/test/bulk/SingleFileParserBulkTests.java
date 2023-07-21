@@ -36,7 +36,8 @@ import java.util.Set;
 import org.apache.commons.compress.archivers.ArchiveException;
 import org.apache.commons.compress.archivers.ArchiveStreamFactory;
 import org.apache.commons.compress.archivers.examples.Expander;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.junit.jupiter.api.Disabled;
@@ -48,7 +49,7 @@ import tools.mdsd.jamopp.test.AbstractJaMoPPTests;
 
 @Disabled("Requires initialization of all submodules and dependency resolution.")
 public class SingleFileParserBulkTests extends AbstractJaMoPPTests {
-	private static final Logger LOGGER = Logger.getLogger("jamopp."
+	private static final Logger LOGGER = LogManager.getLogger("jamopp."
 			+ SingleFileParserBulkTests.class.getSimpleName());
 	// TODO: Adjust path.
 	private static final String BASE_ZIP = "JaMoPP-BulkTest" + File.separator + "Tests" + File.separator

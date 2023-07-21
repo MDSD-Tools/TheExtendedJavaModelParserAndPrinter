@@ -47,7 +47,7 @@ public interface JavaPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.emftext.org/java";
+	String eNS_URI = "https://mdsd.tools/jamopp/6.0.0/java";
 
 	/**
 	 * The package namespace name.
