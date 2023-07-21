@@ -1,0 +1,32 @@
+name: nightly-on-develop-wf
+on:
+  push:
+    branches:
+      - 'develop'
+  workflow_dispatch:
+jobs:
+  build:
+    uses: ./.github/workflows/build.yml
+  deploy-nightly:
+    needs: build
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Download P2 Repository
+        uses: actions/download-artifact@v3
+        with:
+          name: p2-jamopp
+          path: p2-jamopp
+      - name: Build Deploy Path
+        shell: bash
+        run: echo "DEPLOY_PATH=$( echo '${{ secrets.DEPLOYMENT_REMOTE_TARGET }}/extended-java-model-parser-and-printer' )" >> $GITHUB_ENV
+      - name: Deploy to Updatesite
+        uses: PalladioSimulator/Palladio-Build-ActionsPipeline-Deployment@v3
+        with:
+          remote-user: ${{ secrets.REMOTE_USER }}
+          remote-host: ${{ secrets.REMOTE_HOST }}
+          remote-port: ${{ secrets.REMOTE_PORT }}
+          server-ssh-key: ${{ secrets.SERVER_SSH_KEY }}
+          local-source: './p2-jamopp/*'
+          remote-target: '${{ env.DEPLOY_PATH }}/nightly'
+          release-version: '0.0.0'
+          link-path: ${{ env.DEPLOY_PATH }}

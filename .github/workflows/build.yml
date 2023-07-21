@@ -1,0 +1,36 @@
+name: build-wf
+on: 
+  pull_request:
+  workflow_call:
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-22.04, windows-2022]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Enable Long Paths in Git (Linux)
+        if: runner.os == 'Linux'
+        run: sudo git config --system core.longpaths true
+      - name: Enable Long Paths in Git (Windows)
+        if: runner.os == 'Windows'
+        run: git config --system core.longpaths true
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+      - name: Setup JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: 17
+          cache: 'maven'
+      - name: Build Packages
+        run: ./mvnw clean package
+      - name: Store P2 Repository
+        if: runner.os == 'Linux'
+        uses: actions/upload-artifact@v3
+        with:
+          name: p2-jamopp
+          path: jamopp.p2/target/repository
+          retention-days: 1

@@ -1,0 +1,54 @@
+name: release-wf
+on:
+  workflow_dispatch:
+    inputs:
+      release-version:
+        description: 'The Version to be released'
+        required: true
+        default: '0.0.0'
+        type: string
+jobs:
+  release:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: 17
+          cache: 'maven'
+      - name: Build Packages (without tests)
+        run: ./mvnw clean package -Dmaven.test.skip=true
+      - name: Build Deploy Path
+        shell: bash
+        run: echo "DEPLOY_PATH=$( echo '${{ secrets.DEPLOYMENT_REMOTE_TARGET }}/extended-java-model-parser-and-printer' )" >> $GITHUB_ENV
+      - name: Release Update Site
+        uses: PalladioSimulator/Palladio-Build-ActionsPipeline-Deployment@v3
+        with:
+          remote-user: ${{ secrets.REMOTE_USER }}
+          remote-host: ${{ secrets.REMOTE_HOST }}
+          remote-port: ${{ secrets.REMOTE_PORT }}
+          server-ssh-key: ${{ secrets.SERVER_SSH_KEY }}
+          local-source: './jamopp.p2/target/repository/*'
+          remote-target: '${{ env.DEPLOY_PATH }}/release/${{ inputs.release-version }}'
+          release-version: ${{ inputs.release-version }}
+          link-path: ${{ env.DEPLOY_PATH }}
+      - name: Setup Apache Maven Central
+        uses: actions/setup-java@3.6.0
+        with:
+          java-version: 17
+          distribution: 'temurin'
+          server-id: ossrh
+          server-username: OSSRH_USERNAME
+          server-password: OSSRH_PASSWORD
+          gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
+          gpg-passphrase: MAVEN_GPG_PASSPHRASE
+          cache: 'maven'
+      - name: Deploy to Apache Maven Central
+        run: mvn -Pdeploy-mvn-central deploy
+        env:
+          OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+          OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+          MAVEN_GPG_PASSPHRASE: $${{ secrets.MAVEN_GPG_PASSPHRASE }}
