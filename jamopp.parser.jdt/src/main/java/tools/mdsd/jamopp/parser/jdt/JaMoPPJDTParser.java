@@ -37,6 +37,8 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.FileASTRequestor;
 
 import tools.mdsd.jamopp.model.java.JavaClasspath;
+import tools.mdsd.jamopp.model.java.containers.ContainersFactory;
+import tools.mdsd.jamopp.model.java.containers.EmptyModel;
 import tools.mdsd.jamopp.model.java.containers.JavaRoot;
 import tools.mdsd.jamopp.parser.api.JaMoPPParserAPI;
 
@@ -46,22 +48,26 @@ public class JaMoPPJDTParser implements JaMoPPParserAPI {
 
 	@Override
 	public JavaRoot parse(String fileName, InputStream input) {
-		this.setUpResourceSet();
-		StringBuilder builder = new StringBuilder();
-		String lineSep = System.getProperty("line.separator");
-		try(InputStreamReader inReader = new InputStreamReader(input); BufferedReader buffReader = new BufferedReader(inReader)) {
-			buffReader.lines().forEach(line -> builder.append(line + lineSep));
-		} catch (IOException e) {
-		}
-		String src = builder.toString();
-		ASTNode ast = parseFileWithJDT(src, fileName);
-		OrdinaryCompilationUnitJDTASTVisitorAndConverter converter = new OrdinaryCompilationUnitJDTASTVisitorAndConverter();
-		converter.setSource(src);
-		ast.accept(converter);
-		TypeInstructionSeparationUtility.convertAll();
-		JDTResolverUtility.completeResolution();
+//		this.setUpResourceSet();
+//		StringBuilder builder = new StringBuilder();
+//		String lineSep = System.getProperty("line.separator");
+//		try(InputStreamReader inReader = new InputStreamReader(input); BufferedReader buffReader = new BufferedReader(inReader)) {
+//			buffReader.lines().forEach(line -> builder.append(line + lineSep));
+//		} catch (IOException e) {
+//		}
+//		String src = builder.toString();
+//		ASTNode ast = parseFileWithJDT(src, fileName);
+//		OrdinaryCompilationUnitJDTASTVisitorAndConverter converter = new OrdinaryCompilationUnitJDTASTVisitorAndConverter();
+//		converter.setSource(src);
+//		ast.accept(converter);
+//		TypeInstructionSeparationUtility.convertAll();
+//		JDTResolverUtility.completeResolution();
+//		this.resourceSet = null;
+//		return converter.getConvertedElement();
+		
+		var model = this.createEmptyModel();
 		this.resourceSet = null;
-		return converter.getConvertedElement();
+		return model;
 	}
 	
 	private ASTNode parseFileWithJDT(String fileContent, String fileName) {
@@ -74,29 +80,38 @@ public class JaMoPPJDTParser implements JaMoPPParserAPI {
 	
 	@Override
 	public Resource parseFile(Path file) {
-		this.setUpResourceSet();
-		Resource result = this.parseFilesWithJDT(new String[] {}, new String[] { file.toAbsolutePath().toString() },
-			new String[] { DEFAULT_ENCODING }).get(0).eResource();
+//		this.setUpResourceSet();
+//		Resource result = this.parseFilesWithJDT(new String[] {}, new String[] { file.toAbsolutePath().toString() },
+//			new String[] { DEFAULT_ENCODING }).get(0).eResource();
+//		this.resourceSet = null;
+//		return result;
+		
+		var model = this.createEmptyModel();
 		this.resourceSet = null;
-		return result;
+		return model.eResource();
 	}
 	
 	@Override
 	public ResourceSet parseDirectory(Path dir) {
-		this.setUpResourceSet();
-		try {
-			String[] sources = Files.walk(dir).filter(path -> Files.isRegularFile(path) && path.getFileName().toString().endsWith("java"))
-				.map(Path::toAbsolutePath).map(Path::toString).toArray(i -> new String[i]);
-			String[] encodings = new String[sources.length];
-			for (int index = 0; index < encodings.length; index++) {
-				encodings[index] = DEFAULT_ENCODING;
-			}
-			String[] classpathEntries = Files.walk(dir).filter(path -> Files.isRegularFile(path) && path.getFileName().toString().endsWith("jar"))
-				.map(Path::toAbsolutePath).map(Path::toString).toArray(i -> new String[i]);
-			this.parseFilesWithJDT(classpathEntries, sources, encodings);
-		} catch (IOException e) {
-		}
-		ResourceSet result = this.resourceSet;
+//		this.setUpResourceSet();
+//		try {
+//			String[] sources = Files.walk(dir).filter(path -> Files.isRegularFile(path) && path.getFileName().toString().endsWith("java"))
+//				.map(Path::toAbsolutePath).map(Path::toString).toArray(i -> new String[i]);
+//			String[] encodings = new String[sources.length];
+//			for (int index = 0; index < encodings.length; index++) {
+//				encodings[index] = DEFAULT_ENCODING;
+//			}
+//			String[] classpathEntries = Files.walk(dir).filter(path -> Files.isRegularFile(path) && path.getFileName().toString().endsWith("jar"))
+//				.map(Path::toAbsolutePath).map(Path::toString).toArray(i -> new String[i]);
+//			this.parseFilesWithJDT(classpathEntries, sources, encodings);
+//		} catch (IOException e) {
+//		}
+//		ResourceSet result = this.resourceSet;
+//		this.resourceSet = null;
+//		return result;
+		
+		this.createEmptyModel();
+		var result = this.resourceSet;
 		this.resourceSet = null;
 		return result;
 	}
@@ -137,6 +152,14 @@ public class JaMoPPJDTParser implements JaMoPPParserAPI {
 			}
 		}
 		return result;
+	}
+	
+	private EmptyModel createEmptyModel() {
+		this.setUpResourceSet();
+		var container = this.resourceSet.createResource(URI.createURI("model://empty.java"));
+		EmptyModel model = ContainersFactory.eINSTANCE.createEmptyModel();
+		container.getContents().add(model);
+		return model;
 	}
 	
 	private void setUpResourceSet() {
