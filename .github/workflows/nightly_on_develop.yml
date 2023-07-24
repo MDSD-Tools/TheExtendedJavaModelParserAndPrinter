@@ -22,10 +22,10 @@ jobs:
       - name: Deploy to Updatesite
         uses: PalladioSimulator/Palladio-Build-ActionsPipeline-Deployment@v3
         with:
-          remote-user: ${{ secrets.REMOTE_USER }}
-          remote-host: ${{ secrets.REMOTE_HOST }}
-          remote-port: ${{ secrets.REMOTE_PORT }}
-          server-ssh-key: ${{ secrets.SERVER_SSH_KEY }}
+          remote-user: ${{ secrets.DEPLOYMENT_REMOTE_USER }}
+          remote-host: ${{ secrets.DEPLOYMENT_REMOTE_HOST }}
+          remote-port: ${{ secrets.DEPLOYMENT_REMOTE_PORT }}
+          server-ssh-key: ${{ secrets.DEPLOYMENT_SERVER_SSH_KEY }}
           local-source: './p2-jamopp/*'
           remote-target: '${{ env.DEPLOY_PATH }}/nightly'
           release-version: '0.0.0'
