@@ -15,12 +15,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Minimum required Java version: Java 17
 - Supported Eclipse version: 2022-12
+- First variant: always returns an empty model (previous implementation resulted in an endless loop)
 - Third variant: bindings of parameters and local variables are also resolved
 - Migration to MDSD Tools organization
     - Converted Maven Tycho-based build to pure Maven build
     - Unification and renaming of packages to: `tools.mdsd.jamopp`
     - Renaming of meta-model namespace URI to: `https://mdsd.tools/jamopp/6.0.0/java`
     - Versioned the meta-model
+	- GitHub Actions for building and publishing artifacts
 - Upgraded dependency versions to:
     - Apache Commons Bytecode Engineering Library 6.7.0
 	- Apache Log4j 2 2.20.0
@@ -30,6 +32,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Removed
 
 ### Fixed
+
+- First variant: always returns an empty model (temporary fix to not end in an endless loop)
 
 ### Security
 
