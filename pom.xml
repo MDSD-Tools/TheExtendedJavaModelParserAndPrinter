@@ -148,6 +148,16 @@
                 <artifactId>commons-compress</artifactId>
                 <version>1.23.0</version>
             </dependency>
+            <dependency>
+			    <groupId>commons-io</groupId>
+			    <artifactId>commons-io</artifactId>
+			    <version>2.13.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.emfcloud</groupId>
+				<artifactId>emfjson-jackson</artifactId>
+				<version>2.2.0</version>
+			</dependency>
         </dependencies>
     </dependencyManagement>
 
