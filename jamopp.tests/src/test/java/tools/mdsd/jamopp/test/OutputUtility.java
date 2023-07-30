@@ -70,7 +70,7 @@ public class OutputUtility {
 			srcTrgMap.put(javaResource, targetResource);
 		}
 		
-		for (Resource targetResource : targetSet.getResources()) {
+		for (Resource targetResource : new ArrayList<>(targetSet.getResources())) {
 			try {
 				targetResource.save(targetSet.getLoadOptions());
 			} catch (Exception e) {
