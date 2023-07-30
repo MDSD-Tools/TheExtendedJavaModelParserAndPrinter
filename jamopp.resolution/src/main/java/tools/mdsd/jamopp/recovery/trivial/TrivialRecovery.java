@@ -174,11 +174,18 @@ public class TrivialRecovery {
 	}
 	
 	private tools.mdsd.jamopp.model.java.classifiers.Class findObjectClass() {
-		return this.set.getResources().stream().filter(resource -> !resource.getContents().isEmpty()
+		var optionalResult = this.set.getResources().stream().filter(resource -> !resource.getContents().isEmpty()
 				&& resource.getContents().get(0) instanceof CompilationUnit)
 			.map(resource -> (CompilationUnit) resource.getContents().get(0))
 			.filter(cu -> cu.getNamespaces().size() == 2 && cu.getNamespaces().get(0).equals("java")
 					&& cu.getNamespaces().get(1).equals("lang") && cu.getName().equals("Object"))
-			.map(cu -> (tools.mdsd.jamopp.model.java.classifiers.Class) cu.getClassifiers().get(0)).findFirst().get();
+			.map(cu -> (tools.mdsd.jamopp.model.java.classifiers.Class) cu.getClassifiers().get(0)).findFirst();
+		if (optionalResult.isPresent()) {
+			return optionalResult.get();
+		}
+		tools.mdsd.jamopp.model.java.classifiers.Class ownObjectClass = ClassifiersFactory.eINSTANCE.createClass();
+		ownObjectClass.setName("Object");
+		this.artificialCU.getClassifiers().add(ownObjectClass);
+		return ownObjectClass;
 	}
 }
