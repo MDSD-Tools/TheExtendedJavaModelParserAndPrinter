@@ -39,6 +39,7 @@ import org.junit.jupiter.api.Test;
 
 import tools.mdsd.jamopp.options.ParserOptions;
 import tools.mdsd.jamopp.parser.jdt.singlefile.JaMoPPJDTSingleFileParser;
+import tools.mdsd.jamopp.recovery.trivial.TrivialRecovery;
 import tools.mdsd.jamopp.resource.JavaResource2;
 import tools.mdsd.jamopp.test.AbstractJaMoPPTests;
 import tools.mdsd.jamopp.test.OutputUtility;
@@ -84,7 +85,7 @@ public class PerformanceTest extends AbstractJaMoPPTests {
 		ParserOptions.RESOLVE_BINDINGS_OF_INFERABLE_TYPES.setValue(Boolean.TRUE);
 		ParserOptions.RESOLVE_EVERYTHING.setValue(Boolean.TRUE);
 		ParserOptions.RESOLVE_ALL_BINDINGS.setValue(Boolean.TRUE);
-		measurePerformance("teastore-full-resolution", 100, true);
+		measurePerformance("teastore-full-resolution", 100, true, false);
 	}
 	
 	@Test
@@ -96,11 +97,10 @@ public class PerformanceTest extends AbstractJaMoPPTests {
 		ParserOptions.RESOLVE_BINDINGS_OF_INFERABLE_TYPES.setValue(Boolean.TRUE);
 		ParserOptions.RESOLVE_EVERYTHING.setValue(Boolean.FALSE);
 		ParserOptions.RESOLVE_ALL_BINDINGS.setValue(Boolean.TRUE);
-		measurePerformance("teastore-without-resolving-everything", 100, true);
+		measurePerformance("teastore-without-resolving-everything", 100, true, false);
 	}
 	
-	@Test
-	public void measureTeaStoreWithOneLevelResolution() {
+	private void prepareParserOptionsForOneLevelResolution() {
 		ParserOptions.CREATE_LAYOUT_INFORMATION.setValue(Boolean.TRUE);
 		ParserOptions.REGISTER_LOCAL.setValue(Boolean.TRUE);
 		ParserOptions.PREFER_BINDING_CONVERSION.setValue(Boolean.TRUE);
@@ -108,11 +108,22 @@ public class PerformanceTest extends AbstractJaMoPPTests {
 		ParserOptions.RESOLVE_BINDINGS_OF_INFERABLE_TYPES.setValue(Boolean.TRUE);
 		ParserOptions.RESOLVE_EVERYTHING.setValue(Boolean.FALSE);
 		ParserOptions.RESOLVE_ALL_BINDINGS.setValue(Boolean.FALSE);
-		measurePerformance("teastore-one-level-resolution", 100, false);
 	}
 	
 	@Test
-	public void measureTeaStoreSecondVariant() {
+	public void measureTeaStoreWithOneLevelResolution() {
+		prepareParserOptionsForOneLevelResolution();
+		measurePerformance("teastore-one-level-resolution", 100, false, true);
+	}
+	
+	@Disabled("Takes several hours.")
+	@Test
+	public void measureTeaStoreWithOneLevelResolutionAndFullResolution() {
+		prepareParserOptionsForOneLevelResolution();
+		measurePerformance("teastore-one-level-resolution-full", 1, true, false);
+	}
+	
+	private void prepareParserOptionsForSecondVariant() {
 		ParserOptions.CREATE_LAYOUT_INFORMATION.setValue(Boolean.TRUE);
 		ParserOptions.REGISTER_LOCAL.setValue(Boolean.TRUE);
 		ParserOptions.PREFER_BINDING_CONVERSION.setValue(Boolean.TRUE);
@@ -120,7 +131,19 @@ public class PerformanceTest extends AbstractJaMoPPTests {
 		ParserOptions.RESOLVE_BINDINGS_OF_INFERABLE_TYPES.setValue(Boolean.FALSE);
 		ParserOptions.RESOLVE_EVERYTHING.setValue(Boolean.FALSE);
 		ParserOptions.RESOLVE_ALL_BINDINGS.setValue(Boolean.FALSE);
-		measurePerformance("teastore-second-variant", 100, false);
+	}
+	
+	@Test
+	public void measureTeaStoreSecondVariant() {
+		prepareParserOptionsForSecondVariant();
+		measurePerformance("teastore-second-variant", 1, false, true);
+	}
+	
+	@Disabled("Takes several hours.")
+	@Test
+	public void measureTeaStoreSecondVariantAndFullResolution() {
+		prepareParserOptionsForSecondVariant();
+		measurePerformance("teastore-second-variant-resolution", 1, true, false);
 	}
 	
 	@Test
@@ -159,7 +182,7 @@ public class PerformanceTest extends AbstractJaMoPPTests {
 		return inputFolder;
 	}
 	
-	private void measurePerformance(String name, int max, boolean fullResolution) {
+	private void measurePerformance(String name, int max, boolean fullResolution, boolean recover) {
 		String testInput = getTestInputFolder();
 		LOGGER.debug("Executing performance measurements for " + name);
 		Path target = Paths.get(testInput);
@@ -175,6 +198,7 @@ public class PerformanceTest extends AbstractJaMoPPTests {
 		}
 		int actualMax = Math.min(max, max - result.getPoints().size());
 		for (int i = 0; i < actualMax; i++) {
+			System.out.println("Measurement " + i + " for " + name);
 			PerformanceDataPoint point = new PerformanceDataPoint();
 			long millis = System.currentTimeMillis();
 			ResourceSet set = parser.parseDirectory(target);
@@ -193,6 +217,14 @@ public class PerformanceTest extends AbstractJaMoPPTests {
 				millis = System.currentTimeMillis() - millis;
 			}
 			point.setResolutionTime(millis);
+			
+			if (recover) {
+				millis = System.currentTimeMillis();
+				new TrivialRecovery(set).recover();
+				millis = System.currentTimeMillis() - millis;
+				point.setRecoverTime(millis);
+			}
+			
 			Set<Resource> parsedFiles = new HashSet<>(set.getResources());
 			LOGGER.debug("Asserting the resolution of all proxy objects.");
 			for (Resource res : parsedFiles) {
@@ -219,7 +251,7 @@ public class PerformanceTest extends AbstractJaMoPPTests {
 			result.addPoint(point);
 			PerformanceData.save(result, outputMeasurement);
 			
-			if (i == 0 && fullResolution) {
+			if (i == 0 && (fullResolution || recover)) {
 				try {
 					result.setStorage(measureStorage(set));
 				} catch (IOException e) {

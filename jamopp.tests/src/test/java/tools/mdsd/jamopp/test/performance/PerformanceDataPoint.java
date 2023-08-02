@@ -19,6 +19,7 @@ package tools.mdsd.jamopp.test.performance;
 public class PerformanceDataPoint {
 	private long parseTime;
 	private long resolutionTime;
+	private long recoverTime;
 	
 	public long getParseTime() {
 		return parseTime;
@@ -34,5 +35,13 @@ public class PerformanceDataPoint {
 	
 	public void setResolutionTime(long resolutionTime) {
 		this.resolutionTime = resolutionTime;
+	}
+	
+	public long getRecoverTime() {
+		return recoverTime;
+	}
+	
+	public void setRecoverTime(long recoverTime) {
+		this.recoverTime = recoverTime;
 	}
 }
