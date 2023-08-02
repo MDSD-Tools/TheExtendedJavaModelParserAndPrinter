@@ -10,6 +10,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Trivial recovery strategy to generate model elements for unresolved proxy objects
 - Parser: `TextBlock`s are converted to `TextBockReference`s so that model elements are generated for text blocks
+- Performance Test:
+    - Performs trivial recovery
+	- Measures model storage
 
 ### Changed
 
@@ -34,6 +37,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Fixed
 
 - First variant: always returns an empty model (temporary fix to not end in an endless loop)
+- Class file parser: creates bodies for methods and constructors
 
 ### Security
 
