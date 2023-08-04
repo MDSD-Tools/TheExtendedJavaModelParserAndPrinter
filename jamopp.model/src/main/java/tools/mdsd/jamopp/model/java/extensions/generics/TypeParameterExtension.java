@@ -738,6 +738,9 @@ public class TypeParameterExtension {
 				&& targetReference instanceof TypeArgumentable) {
 			TypeArgumentable typeArg = (TypeArgumentable) searchReference;
 			TypeArgumentable targetArg = (TypeArgumentable) targetReference;
+			if (targetArg.getTypeArguments().size() != typeArg.getTypeArguments().size()) {
+				return null;
+			}
 			for (int i = 0; i < typeArg.getTypeArguments().size(); i++) {
 				TypeArgument arg = typeArg.getTypeArguments().get(i);
 				TypeReference refOfArg = TypeReferenceExtension.getTypeReferenceOfTypeArgument(arg);
