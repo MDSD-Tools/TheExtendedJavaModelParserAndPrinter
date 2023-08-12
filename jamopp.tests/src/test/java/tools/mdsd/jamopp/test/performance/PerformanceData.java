@@ -60,6 +60,10 @@ public class PerformanceData {
 		return (double) points.stream().mapToLong(p -> p.getResolutionTime()).sum() / points.size();
 	}
 	
+	public double getAverageRecoveryTime() {
+		return (double) points.stream().mapToLong(p -> p.getRecoverTime()).sum() / points.size();
+	}
+	
 	public static PerformanceData load(Path file) {
 		try (BufferedReader reader = Files.newBufferedReader(file)) {
 			Gson gson = new Gson();

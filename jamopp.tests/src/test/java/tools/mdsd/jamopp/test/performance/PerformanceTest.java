@@ -39,6 +39,7 @@ import org.junit.jupiter.api.Test;
 
 import tools.mdsd.jamopp.options.ParserOptions;
 import tools.mdsd.jamopp.parser.jdt.singlefile.JaMoPPJDTSingleFileParser;
+import tools.mdsd.jamopp.proxy.IJavaContextDependentURIFragmentCollector;
 import tools.mdsd.jamopp.recovery.trivial.TrivialRecovery;
 import tools.mdsd.jamopp.resource.JavaResource2;
 import tools.mdsd.jamopp.test.AbstractJaMoPPTests;
@@ -154,6 +155,7 @@ public class PerformanceTest extends AbstractJaMoPPTests {
 				System.out.println(path.getFileName().toString());
 				System.out.println("Average parsing time (ms): " + data.getAverageParseTime());
 				System.out.println("Average resolution time (ms): " + data.getAverageResolutionTime());
+				System.out.println("Average recovery time (ms): " + data.getAverageRecoveryTime());
 				for (var storage : data.getStorage()) {
 					System.out.println("Storage ("
 							+ storage.getId()
@@ -263,6 +265,8 @@ public class PerformanceTest extends AbstractJaMoPPTests {
 			for (Resource res : parsedFiles) {
 				res.unload();
 			}
+			IJavaContextDependentURIFragmentCollector.GLOBAL_INSTANCE
+				.getContextDependentURIFragmentMap().clear();
 		}
 		LOGGER.debug("Finished meausring " + name);
 	}
