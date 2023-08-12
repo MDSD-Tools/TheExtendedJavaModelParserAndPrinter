@@ -66,6 +66,7 @@
                         </goals>
                         <configuration>
 							<instructions>
+								<Export-Package>tools.mdsd.*</Export-Package>
 								<Bundle-SymbolicName>${project.groupId}.${project.artifactId};singleton:=true</Bundle-SymbolicName>
 							</instructions>
 						</configuration>
