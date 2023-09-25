@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gson.Gson;
 
@@ -27,13 +28,28 @@ import com.google.gson.Gson;
  */
 public class PerformanceData {
 	private ArrayList<PerformanceDataPoint> points = new ArrayList<>();
+	private ArrayList<StoragePerformance> storage = new ArrayList<>();
 	
-	public ArrayList<PerformanceDataPoint> getPoints() {
-		return points;
+	public List<PerformanceDataPoint> getPoints() {
+		return (List<PerformanceDataPoint>) points.clone();
+	}
+	
+	public void addPoint(PerformanceDataPoint newPoint) {
+		this.points.add(newPoint);
 	}
 
-	public void setPoints(ArrayList<PerformanceDataPoint> points) {
-		this.points = points;
+	public void setPoints(List<PerformanceDataPoint> points) {
+		this.points.clear();
+		this.points.addAll(points);
+	}
+	
+	public List<StoragePerformance> getStorage() {
+		return (List<StoragePerformance>) storage.clone();
+	}
+	
+	public void setStorage(List<StoragePerformance> storage) {
+		this.storage.clear();
+		this.storage.addAll(storage);
 	}
 	
 	public double getAverageParseTime() {

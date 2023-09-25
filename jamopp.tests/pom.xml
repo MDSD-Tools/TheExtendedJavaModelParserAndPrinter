@@ -123,5 +123,13 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-compress</artifactId>
         </dependency>
+        <dependency>
+		    <groupId>commons-io</groupId>
+		    <artifactId>commons-io</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.emfcloud</groupId>
+			<artifactId>emfjson-jackson</artifactId>
+		</dependency>
     </dependencies>
 </project>

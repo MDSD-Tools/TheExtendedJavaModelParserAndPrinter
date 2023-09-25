@@ -24,9 +24,11 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import tools.mdsd.jamopp.model.java.classifiers.Annotation;
 import tools.mdsd.jamopp.model.java.classifiers.ClassifiersFactory;
+import tools.mdsd.jamopp.model.java.classifiers.Enumeration;
 import tools.mdsd.jamopp.model.java.containers.CompilationUnit;
 import tools.mdsd.jamopp.model.java.containers.ContainersFactory;
 import tools.mdsd.jamopp.model.java.members.ClassMethod;
+import tools.mdsd.jamopp.model.java.members.EnumConstant;
 import tools.mdsd.jamopp.model.java.members.Field;
 import tools.mdsd.jamopp.model.java.members.InterfaceMethod;
 import tools.mdsd.jamopp.model.java.members.MembersFactory;
@@ -42,6 +44,7 @@ public class TrivialRecovery {
 	private ResourceSet set;
 	private Resource artificialResource;
 	private CompilationUnit artificialCU;
+	private Enumeration artificialEnum;
 	private tools.mdsd.jamopp.model.java.classifiers.Class artificialClass;
 	private tools.mdsd.jamopp.model.java.classifiers.Class objectClass;
 	private HashMap<String, tools.mdsd.jamopp.model.java.classifiers.Class> artClasses = new HashMap<>();
@@ -49,6 +52,7 @@ public class TrivialRecovery {
 	private HashMap<String, Field> artFields = new HashMap<>();
 	private HashMap<String, ClassMethod> artClassMethods = new HashMap<>();
 	private HashMap<String, InterfaceMethod> artInterfaceMethods = new HashMap<>();
+	private HashMap<String, EnumConstant> artEnumConstants = new HashMap<>();
 	private HashMap<String, tools.mdsd.jamopp.model.java.containers.Package> artPackages = new HashMap<>();
 	private HashMap<String, tools.mdsd.jamopp.model.java.containers.Module> artModules = new HashMap<>();
 	
@@ -66,6 +70,9 @@ public class TrivialRecovery {
 					EList<EObject> list = (EList<EObject>) setting.getEObject()
 							.eGet(setting.getEStructuralFeature());
 					var idx = list.indexOf(proxy);
+					if (idx == -1) {
+						continue;
+					}
 					list.set(idx, actualElement);
 				} else {
 					setting.getEObject().eSet(setting.getEStructuralFeature(), actualElement);
@@ -152,6 +159,15 @@ public class TrivialRecovery {
 			this.artificialResource.getContents().add(result);
 			this.artModules.put(name, result);
 			return result;
+		} else if (obj instanceof EnumConstant) {
+			if (this.artEnumConstants.containsKey(name)) {
+				return this.artEnumConstants.get(name);
+			}
+			var result = MembersFactory.eINSTANCE.createEnumConstant();
+			result.setName(name);
+			this.artificialEnum.getConstants().add(result);
+			this.artEnumConstants.put(name, result);
+			return result;
 		}
 		return null;
 	}
@@ -168,17 +184,28 @@ public class TrivialRecovery {
 			this.artificialClass.setName("SyntheticClass");
 			this.artificialCU.getClassifiers().add(this.artificialClass);
 			
+			this.artificialEnum = ClassifiersFactory.eINSTANCE.createEnumeration();
+			this.artificialEnum.setName("SyntheticEnum");
+			this.artificialCU.getClassifiers().add(this.artificialEnum);
+			
 			this.objectClass = findObjectClass();
 			this.artClasses.put("Object", objectClass);
 		}
 	}
 	
 	private tools.mdsd.jamopp.model.java.classifiers.Class findObjectClass() {
-		return this.set.getResources().stream().filter(resource -> !resource.getContents().isEmpty()
+		var optionalResult = this.set.getResources().stream().filter(resource -> !resource.getContents().isEmpty()
 				&& resource.getContents().get(0) instanceof CompilationUnit)
 			.map(resource -> (CompilationUnit) resource.getContents().get(0))
 			.filter(cu -> cu.getNamespaces().size() == 2 && cu.getNamespaces().get(0).equals("java")
 					&& cu.getNamespaces().get(1).equals("lang") && cu.getName().equals("Object"))
-			.map(cu -> (tools.mdsd.jamopp.model.java.classifiers.Class) cu.getClassifiers().get(0)).findFirst().get();
+			.map(cu -> (tools.mdsd.jamopp.model.java.classifiers.Class) cu.getClassifiers().get(0)).findFirst();
+		if (optionalResult.isPresent()) {
+			return optionalResult.get();
+		}
+		tools.mdsd.jamopp.model.java.classifiers.Class ownObjectClass = ClassifiersFactory.eINSTANCE.createClass();
+		ownObjectClass.setName("Object");
+		this.artificialCU.getClassifiers().add(ownObjectClass);
+		return ownObjectClass;
 	}
 }
