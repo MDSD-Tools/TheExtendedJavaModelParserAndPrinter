@@ -153,6 +153,10 @@ public class PerformanceTest extends AbstractJaMoPPTests {
 			Files.walk(parentOutput).forEach(path -> {
 				var data = PerformanceData.load(path);
 				System.out.println(path.getFileName().toString());
+				var stat = data.getStatistics();
+				System.out.println("Average time (ms): " + stat.getMean() + " (with std. " + + stat.getStandardDeviation() + " ms)");
+				stat = data.getStatistics();
+				System.out.println("Average time without resolution (ms): " + stat.getMean() + " (with std. " + + stat.getStandardDeviation() + " ms)");
 				System.out.println("Average parsing time (ms): " + data.getAverageParseTime());
 				System.out.println("Average resolution time (ms): " + data.getAverageResolutionTime());
 				System.out.println("Average recovery time (ms): " + data.getAverageRecoveryTime());
