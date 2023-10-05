@@ -130,6 +130,9 @@
 		<dependency>
 			<groupId>org.eclipse.emfcloud</groupId>
 			<artifactId>emfjson-jackson</artifactId>
-		</dependency>
+		</dependency><dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math4-legacy</artifactId>
+        </dependency>
     </dependencies>
 </project>
