@@ -138,6 +138,7 @@ public class TrivialRecovery {
 				return this.artPackages.get(name);
 			}
 			var result = ContainersFactory.eINSTANCE.createPackage();
+			result.setName("");
 			p.getNamespaces().forEach(ns -> result.getNamespaces().add(ns));
 			this.artificialResource.getContents().add(result);
 			this.artPackages.put(name, result);
@@ -161,6 +162,7 @@ public class TrivialRecovery {
 					URI.createURI("pathmap:/javaclass/ArtificialResource.java"));
 			
 			this.artificialCU = ContainersFactory.eINSTANCE.createCompilationUnit();
+			this.artificialCU.setName("");
 			this.artificialResource.getContents().add(this.artificialCU);
 			
 			this.artificialClass = ClassifiersFactory.eINSTANCE.createClass();
