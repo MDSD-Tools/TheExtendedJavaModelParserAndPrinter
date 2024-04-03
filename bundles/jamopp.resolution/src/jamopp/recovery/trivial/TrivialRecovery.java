@@ -23,9 +23,11 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.emftext.language.java.classifiers.Annotation;
 import org.emftext.language.java.classifiers.ClassifiersFactory;
+import org.emftext.language.java.classifiers.Enumeration;
 import org.emftext.language.java.containers.CompilationUnit;
 import org.emftext.language.java.containers.ContainersFactory;
 import org.emftext.language.java.members.ClassMethod;
+import org.emftext.language.java.members.EnumConstant;
 import org.emftext.language.java.members.Field;
 import org.emftext.language.java.members.InterfaceMethod;
 import org.emftext.language.java.members.MembersFactory;
@@ -42,10 +44,12 @@ public class TrivialRecovery {
 	private Resource artificialResource;
 	private CompilationUnit artificialCU;
 	private org.emftext.language.java.classifiers.Class artificialClass;
+	private Enumeration artificialEnum;
 	private org.emftext.language.java.classifiers.Class objectClass;
 	private HashMap<String, org.emftext.language.java.classifiers.Class> artClasses = new HashMap<>();
 	private HashMap<String, Annotation> artAnnotations = new HashMap<>();
 	private HashMap<String, Field> artFields = new HashMap<>();
+	private HashMap<String, EnumConstant> artConstants = new HashMap<>();
 	private HashMap<String, ClassMethod> artClassMethods = new HashMap<>();
 	private HashMap<String, InterfaceMethod> artInterfaceMethods = new HashMap<>();
 	private HashMap<String, org.emftext.language.java.containers.Package> artPackages = new HashMap<>();
@@ -106,6 +110,15 @@ public class TrivialRecovery {
 			result.setName(name);
 			this.artificialClass.getMembers().add(result);
 			this.artFields.put(name, result);
+			return result;
+		} else if (obj instanceof EnumConstant) {
+			if (this.artConstants.containsKey(obj)) {
+				return this.artConstants.get(obj);
+			}
+			var result = MembersFactory.eINSTANCE.createEnumConstant();
+			result.setName(name);
+			this.artificialEnum.getConstants().add(result);
+			this.artConstants.put(name, result);
 			return result;
 		} else if (obj instanceof ClassMethod) {
 			if (this.artClassMethods.containsKey(name)) {
@@ -171,6 +184,10 @@ public class TrivialRecovery {
 			
 			this.objectClass = findObjectClass();
 			this.artClasses.put("Object", objectClass);
+			
+			this.artificialEnum = ClassifiersFactory.eINSTANCE.createEnumeration();
+			this.artificialEnum.setName("SyntheticEnum");
+			this.artificialCU.getClassifiers().add(this.artificialEnum);
 		}
 	}
 	
