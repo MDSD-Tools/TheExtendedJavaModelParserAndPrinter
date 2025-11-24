@@ -1,8 +1,9 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const { themes } = require('prism-react-renderer');
+const lightCodeTheme = themes.github;
+const darkCodeTheme = themes.dracula;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -14,7 +15,7 @@ const config = {
   url: 'https://mdsd-tools.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/TheExtendedJavaModelParserAndPrinter/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -22,11 +23,14 @@ const config = {
   projectName: 'TheExtendedJavaModelParserAndPrinter', // Usually your repo name.
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
 
   markdown: {
-    mermaid: true
+    mermaid: true,
+    hooks: {
+      onBrokenMarkdownLinks: 'warn'
+    }
   },
+  trailingSlash: false,
   themes: ['@docusaurus/theme-mermaid'],
 
   // Even if you don't use internalization, you can use this field to set useful
@@ -93,15 +97,6 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Documentation',
-                to: '/docs/intro',
-              },
-            ],
-          },
-          {
             title: 'More',
             items: [
               {
@@ -115,7 +110,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © 2023 Modelling for Continuous Software Engineering (MCSE) group, Institute of Information Security and Dependability (KASTEL), Karlsruhe Institute of Technology (KIT).`,
+        copyright: `Copyright © 2023-2025 Modelling for Continuous Software Engineering (MCSE) group, Institute of Information Security and Dependability (KASTEL), Karlsruhe Institute of Technology (KIT).`,
       },
       prism: {
         theme: lightCodeTheme,

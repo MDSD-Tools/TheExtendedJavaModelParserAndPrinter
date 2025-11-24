@@ -11,7 +11,7 @@ The extended JaMoPP provides three variants to resolve the references between di
 
 Due to technical issues, the first variant is currently not available.
 
-:::caution
+:::warning
 The corresponding class (`JaMoPPJDTParser`) is still included in the artifacts. However, it only returns empty models.
 :::
 
@@ -29,7 +29,7 @@ When using the [`JaMoPPJDTSingleFileParser`](./parsing.md), the second variant i
 
 During parsing, the second variant creates a proxy object for every reference. The generated proxy URI has the format &lt;`Base URI`&gt;`/EMFTEXT_INTERNAL_URI_FRAGMENT_`&lt;`counter`&gt;`_`&lt;`identifier`&gt; where `Base URI` equals the URI of the model in which the proxy object is located, `counter` is the value of a proxy object counter incremented for every proxy object, and `identifier` is the identifier in the Java source code pointing to the actual Java element. In addition, the second variant stores the context of the proxy object independently from the models, including, for instance, the container of the proxy object or the reference for which the proxy object is set.
 
-:::caution
+:::warning
 If Java models with proxy objects are saved on disk, the proxy objects' context is not stored. As a result, if such models are loaded again in a new process, the context is not available, and the proxy objects can potentially be not resolved.
 :::
 

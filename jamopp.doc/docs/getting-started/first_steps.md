@@ -7,7 +7,7 @@ sidebar_label: First Steps
 
 This document provides a minimal tutorial on how to use the extended JaMoPP to create your first models from Java code.
 
-:::caution
+:::warning
 This tutorial assumes that you are familiar with the Eclipse Modeling Framework (EMF). In case you want more information about EMF or Eclipse, we provide a [list of external resources and tutorials](./resources).
 :::
 
@@ -65,7 +65,7 @@ packageElement.getNamespaces().add(packageName);
 cu.getClassifiers().get(0).setPackage(packageElement);
 ```
 
-:::caution
+:::warning
 The created package element must be contained within a `Resource`. For simplicity, we left this part out.
 :::
 

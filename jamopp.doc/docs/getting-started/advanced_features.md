@@ -159,7 +159,7 @@ classDiagram
 
 Compared to the first visualization without the `calc` method, the model now includes the method. As a consequence, the parameters, return type (`typeReference` in the actual model), and the statements of the method are also represented with corresponding model elements. In particular, the `AdditiveExpression` for the addition of `a` and `b` contains `IdentifierReference` elements signaling that identifiers are present at this position in the Java code. The actual referenced elements (the method parameters) can be accessed via the `target` EMF reference.
 
-:::caution
+:::warning
 The term `Reference` has a double meaning here:
 
 1. It refers to identifiers (referencing types, fields, methods, ...) in Java code which are usually represented by `Reference` elements in the Java meta-model.

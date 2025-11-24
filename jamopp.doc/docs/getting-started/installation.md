@@ -21,7 +21,7 @@ Additionally, there is the following nightly P2 update site which provides artif
 
 * [Nightly P2 Update Site](https://updatesite.mdsd.tools/extended-java-model-parser-and-printer/nightly/)
 
-:::caution
+:::warning
 
 The nightly update site can have different requirements (e.g., on the minimum Java version) compared to the latest release. So, before using it, please check the [`CHANGELOG` on the `develop` branch](https://github.com/MDSD-Tools/TheExtendedJavaModelParserAndPrinter/blob/develop/CHANGELOG.md) for the latest changes.
 
