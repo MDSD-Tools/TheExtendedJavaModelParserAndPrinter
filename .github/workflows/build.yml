@@ -1,16 +1,36 @@
-name: Build Pipeline
-
-on: [push, pull_request, workflow_dispatch]
-
+name: build-wf
+on: 
+  pull_request:
+  workflow_call:
 jobs:
-  Palladio-Supporting-EclipseJavaDevelopmentTools:
-    uses: PalladioSimulator/Palladio-Build-ActionsPipeline/.github/workflows/build.yml@v3.2
-    with:
-      use-display-output: true
-      deploy-updatesite: 'releng/org.palladiosimulator.jdt.updatesite/target/repository'
-    secrets:
-      SERVER_SSH_KEY: ${{ secrets.DEPLOYMENT_SERVER_SSH_KEY }}
-      REMOTE_HOST: ${{ secrets.DEPLOYMENT_REMOTE_HOST }}
-      REMOTE_PORT: ${{ secrets.DEPLOYMENT_REMOTE_PORT }}
-      REMOTE_USER: ${{ secrets.DEPLOYMENT_REMOTE_USER }}
-      REMOTE_TARGET: ${{ secrets.DEPLOYMENT_REMOTE_TARGET }}
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-22.04, windows-2022]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Enable Long Paths in Git (Linux)
+        if: runner.os == 'Linux'
+        run: sudo git config --system core.longpaths true
+      - name: Enable Long Paths in Git (Windows)
+        if: runner.os == 'Windows'
+        run: git config --system core.longpaths true
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+      - name: Setup JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: 17
+          cache: 'maven'
+      - name: Build Packages
+        run: ./mvnw clean package
+      - name: Store P2 Repository
+        if: runner.os == 'Linux'
+        uses: actions/upload-artifact@v3
+        with:
+          name: p2-jamopp
+          path: jamopp.p2/target/repository
+          retention-days: 1
