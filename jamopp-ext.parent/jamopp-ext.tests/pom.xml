@@ -4,14 +4,14 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>jamopp.tests</artifactId>
+    <artifactId>jamopp-ext.tests</artifactId>
     <packaging>jar</packaging>
     <name>Extended JaMoPP Tests</name>
 	<description>This package contains only tests for the extended JaMoPP.</description>
 
     <parent>
         <groupId>tools.mdsd</groupId>
-        <artifactId>jamopp.parent</artifactId>
+        <artifactId>jamopp-ext.parent</artifactId>
         <version>6.0.0-SNAPSHOT</version>
     </parent>
 
@@ -75,32 +75,32 @@
         </dependency>
         <dependency>
             <groupId>tools.mdsd</groupId>
-            <artifactId>jamopp.model</artifactId>
+            <artifactId>jamopp-ext.model</artifactId>
             <version>6.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>tools.mdsd</groupId>
-            <artifactId>jamopp.parser</artifactId>
+            <artifactId>jamopp-ext.parser</artifactId>
             <version>6.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>tools.mdsd</groupId>
-            <artifactId>jamopp.parser.jdt</artifactId>
+            <artifactId>jamopp-ext.parser.jdt</artifactId>
             <version>6.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>tools.mdsd</groupId>
-            <artifactId>jamopp.parser.jdt.singlefile</artifactId>
+            <artifactId>jamopp-ext.parser.jdt.singlefile</artifactId>
             <version>6.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>tools.mdsd</groupId>
-            <artifactId>jamopp.resolution</artifactId>
+            <artifactId>jamopp-ext.resolution</artifactId>
             <version>6.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>tools.mdsd</groupId>
-            <artifactId>jamopp.resource</artifactId>
+            <artifactId>jamopp-ext.resource</artifactId>
             <version>6.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>

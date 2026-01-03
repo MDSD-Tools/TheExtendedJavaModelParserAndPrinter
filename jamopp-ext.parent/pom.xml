@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>tools.mdsd</groupId>
-    <artifactId>jamopp.parent</artifactId>
+    <artifactId>jamopp-ext.parent</artifactId>
     <version>6.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Extended JaMoPP Parent</name>
@@ -20,20 +20,20 @@
     </properties>
 
     <modules>
-        <module>jamopp.model</module>
-        <module>jamopp.model.edit</module>
+        <module>jamopp-ext.model</module>
+        <module>jamopp-ext.model.edit</module>
 		<!--Ignored because of missing dependency-->
-		<!--<module>jamopp.model.editor</module>-->
-        <module>jamopp.p2</module>
-		<module>jamopp.parser</module>
-		<module>jamopp.parser.bcel</module>
-		<module>jamopp.parser.jdt</module>
-		<module>jamopp.parser.jdt.singlefile</module>
-		<module>jamopp.printer</module>
-		<module>jamopp.resolution</module>
-		<module>jamopp.resource</module>
-		<module>jamopp.standalone</module>
-		<module>jamopp.tests</module>
+		<!--<module>jamopp-ext.model.editor</module>-->
+        <module>jamopp-ext.p2</module>
+		<module>jamopp-ext.parser</module>
+		<module>jamopp-ext.parser.bcel</module>
+		<module>jamopp-ext.parser.jdt</module>
+		<module>jamopp-ext.parser.jdt.singlefile</module>
+		<module>jamopp-ext.printer</module>
+		<module>jamopp-ext.resolution</module>
+		<module>jamopp-ext.resource</module>
+		<module>jamopp-ext.standalone</module>
+		<module>jamopp-ext.tests</module>
     </modules>
     
     <dependencyManagement>

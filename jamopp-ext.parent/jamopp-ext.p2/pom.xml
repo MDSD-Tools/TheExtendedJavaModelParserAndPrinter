@@ -3,14 +3,14 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-    <artifactId>jamopp.p2</artifactId>
+    <artifactId>jamopp-ext.p2</artifactId>
     <packaging>pom</packaging>
     <name>Extended JaMoPP P2 Site</name>
 	<description>This package builds a P2 update site for the extended JaMoPP.</description>
 
     <parent>
         <groupId>tools.mdsd</groupId>
-        <artifactId>jamopp.parent</artifactId>
+        <artifactId>jamopp-ext.parent</artifactId>
         <version>6.0.0-SNAPSHOT</version>
     </parent>
 
@@ -32,31 +32,31 @@
                                 <!-- specify your depencies here -->
                                 <!-- groupId:artifactId:version -->
                                 <artifact>
-                                    <id>tools.mdsd:jamopp.model:6.0.0-SNAPSHOT</id>
+                                    <id>tools.mdsd:jamopp-ext.model:6.0.0-SNAPSHOT</id>
                                     <transitive>false</transitive>
                                 </artifact>
                                 <artifact>
-                                    <id>tools.mdsd:jamopp.model.edit:6.0.0-SNAPSHOT</id>
+                                    <id>tools.mdsd:jamopp-ext.model.edit:6.0.0-SNAPSHOT</id>
                                     <transitive>false</transitive>
                                 </artifact>
                                 <artifact>
-                                    <id>tools.mdsd:jamopp.parser.jdt.singlefile:6.0.0-SNAPSHOT</id>
+                                    <id>tools.mdsd:jamopp-ext.parser.jdt.singlefile:6.0.0-SNAPSHOT</id>
                                     <transitive>false</transitive>
                                 </artifact>
                                 <artifact>
-                                    <id>tools.mdsd:jamopp.resource:6.0.0-SNAPSHOT</id>
+                                    <id>tools.mdsd:jamopp-ext.resource:6.0.0-SNAPSHOT</id>
                                     <transitive>false</transitive>
                                 </artifact>
                                 <artifact>
-                                    <id>tools.mdsd:jamopp.parser.jdt:6.0.0-SNAPSHOT</id>
+                                    <id>tools.mdsd:jamopp-ext.parser.jdt:6.0.0-SNAPSHOT</id>
                                     <transitive>false</transitive>
                                 </artifact>
 								<artifact>
-                                    <id>tools.mdsd:jamopp.parser.bcel:6.0.0-SNAPSHOT</id>
+                                    <id>tools.mdsd:jamopp-ext.parser.bcel:6.0.0-SNAPSHOT</id>
                                     <transitive>false</transitive>
                                 </artifact>
                                 <artifact>
-                                    <id>tools.mdsd:jamopp.standalone:6.0.0-SNAPSHOT</id>
+                                    <id>tools.mdsd:jamopp-ext.standalone:6.0.0-SNAPSHOT</id>
                                     <transitive>false</transitive>
                                 </artifact>
                                 <artifact>
@@ -106,47 +106,47 @@ Contributors:
                                     <generateSourceFeature>false</generateSourceFeature>
                                     <artifacts>
                                         <artifact>
-                                            <id>tools.mdsd:jamopp.model:6.0.0-SNAPSHOT</id>
+                                            <id>tools.mdsd:jamopp-ext.model:6.0.0-SNAPSHOT</id>
                                             <transitive>false</transitive>
                                             <source>false</source>
                                         </artifact>
                                         <artifact>
-                                            <id>tools.mdsd:jamopp.model.edit:6.0.0-SNAPSHOT</id>
+                                            <id>tools.mdsd:jamopp-ext.model.edit:6.0.0-SNAPSHOT</id>
                                             <transitive>false</transitive>
                                             <source>false</source>
                                         </artifact>
                                         <artifact>
-                                            <id>tools.mdsd:jamopp.parser:6.0.0-SNAPSHOT</id>
+                                            <id>tools.mdsd:jamopp-ext.parser:6.0.0-SNAPSHOT</id>
                                             <transitive>false</transitive>
                                             <source>false</source>
                                         </artifact>
                                         <artifact>
-                                            <id>tools.mdsd:jamopp.parser.jdt:6.0.0-SNAPSHOT</id>
+                                            <id>tools.mdsd:jamopp-ext.parser.jdt:6.0.0-SNAPSHOT</id>
                                             <transitive>false</transitive>
                                             <source>false</source>
                                         </artifact>
                                         <artifact>
-                                            <id>tools.mdsd:jamopp.parser.jdt.singlefile:6.0.0-SNAPSHOT</id>
+                                            <id>tools.mdsd:jamopp-ext.parser.jdt.singlefile:6.0.0-SNAPSHOT</id>
                                             <transitive>false</transitive>
                                             <source>false</source>
                                         </artifact>
                                         <artifact>
-                                            <id>tools.mdsd:jamopp.printer:6.0.0-SNAPSHOT</id>
+                                            <id>tools.mdsd:jamopp-ext.printer:6.0.0-SNAPSHOT</id>
                                             <transitive>false</transitive>
                                             <source>false</source>
                                         </artifact>
                                         <artifact>
-                                            <id>tools.mdsd:jamopp.resolution:6.0.0-SNAPSHOT</id>
+                                            <id>tools.mdsd:jamopp-ext.resolution:6.0.0-SNAPSHOT</id>
                                             <transitive>false</transitive>
                                             <source>false</source>
                                         </artifact>
                                         <artifact>
-                                            <id>tools.mdsd:jamopp.resource:6.0.0-SNAPSHOT</id>
+                                            <id>tools.mdsd:jamopp-ext.resource:6.0.0-SNAPSHOT</id>
                                             <transitive>false</transitive>
                                             <source>false</source>
                                         </artifact>
                                         <artifact>
-                                            <id>tools.mdsd:jamopp.standalone:6.0.0-SNAPSHOT</id>
+                                            <id>tools.mdsd:jamopp-ext.standalone:6.0.0-SNAPSHOT</id>
                                             <transitive>false</transitive>
                                             <source>false</source>
                                         </artifact>
@@ -180,17 +180,17 @@ Contributors:
     <dependencies>
         <dependency>
             <groupId>tools.mdsd</groupId>
-            <artifactId>jamopp.tests</artifactId>
+            <artifactId>jamopp-ext.tests</artifactId>
             <version>6.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>tools.mdsd</groupId>
-            <artifactId>jamopp.model.edit</artifactId>
+            <artifactId>jamopp-ext.model.edit</artifactId>
             <version>6.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>tools.mdsd</groupId>
-            <artifactId>jamopp.standalone</artifactId>
+            <artifactId>jamopp-ext.standalone</artifactId>
             <version>6.0.0-SNAPSHOT</version>
         </dependency>
     </dependencies>

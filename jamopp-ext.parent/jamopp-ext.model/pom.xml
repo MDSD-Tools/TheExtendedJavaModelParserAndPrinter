@@ -4,14 +4,14 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>jamopp.model</artifactId>
+    <artifactId>jamopp-ext.model</artifactId>
     <packaging>jar</packaging>
     <name>Extended Java Model Parser and Printer (JaMoPP) Metamodel</name>
 	<description>This package provides the metamodel and generated metamodel code for the extended JaMoPP to model Java source code in the Eclipse Modeling Framework.</description>
 
     <parent>
         <groupId>tools.mdsd</groupId>
-        <artifactId>jamopp.parent</artifactId>
+        <artifactId>jamopp-ext.parent</artifactId>
         <version>6.0.0-SNAPSHOT</version>
     </parent>
 
@@ -102,10 +102,10 @@
                                     <directory>${project.basedir}/src/main/generated</directory>
                                 </fileset>
                                 <fileset>
-                                    <directory>${project.basedir}/../jamopp.model.edit/src/main/generated</directory>
+                                    <directory>${project.basedir}/../jamopp-ext.model.edit/src/main/generated</directory>
                                 </fileset>
                                 <fileset>
-                                    <directory>${project.basedir}/../jamopp.model.edit/src/main/resources</directory>
+                                    <directory>${project.basedir}/../jamopp-ext.model.edit/src/main/resources</directory>
                                 </fileset>
                             </filesets>
                         </configuration>

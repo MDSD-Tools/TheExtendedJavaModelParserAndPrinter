@@ -4,14 +4,14 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>jamopp.printer</artifactId>
+    <artifactId>jamopp-ext.printer</artifactId>
     <packaging>jar</packaging>
     <name>Extended JaMoPP Printer</name>
 	<description>This package provides a printer for the extended JaMoPP which generates Java source code from Java models.</description>
 
     <parent>
         <groupId>tools.mdsd</groupId>
-        <artifactId>jamopp.parent</artifactId>
+        <artifactId>jamopp-ext.parent</artifactId>
         <version>6.0.0-SNAPSHOT</version>
     </parent>
 
@@ -38,7 +38,7 @@
         </dependency>
         <dependency>
             <groupId>tools.mdsd</groupId>
-            <artifactId>jamopp.model</artifactId>
+            <artifactId>jamopp-ext.model</artifactId>
             <version>6.0.0-SNAPSHOT</version>
         </dependency>
     </dependencies>

@@ -12,18 +12,18 @@ Workflow {
 		scanClassPath = false
 		platformUri = workspaceRoot
 		projectMapping = {
-			projectName = "jamopp.model"
-			path = "jamopp.model"
+			projectName = "jamopp-ext.model"
+			path = "jamopp-ext.model"
 		}
 		projectMapping = {
-		    projectName = "jamopp.model.edit"
-			path = "jamopp.model.edit"
+		    projectName = "jamopp-ext.model.edit"
+			path = "jamopp-ext.model.edit"
 		}
 	}
 	
 	component = EcoreGenerator {
-		genModel = "platform:/resource/jamopp.model/src/main/resources/metamodel/java.genmodel"
-		srcPath = "platform:/resource/jamopp.model/src/main/generated"
+		genModel = "platform:/resource/jamopp-ext.model/src/main/resources/metamodel/java.genmodel"
+		srcPath = "platform:/resource/jamopp-ext.model/src/main/generated"
 		generateEdit = true
 	}
 }

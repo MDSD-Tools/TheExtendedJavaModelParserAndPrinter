@@ -26,11 +26,11 @@ jobs:
           java-version: 17
           cache: 'maven'
       - name: Build Packages
-        run: ./mvnw clean package
+        run: cd jamopp-ext.parent && ./mvnw clean package
       - name: Store P2 Repository
         if: runner.os == 'Linux'
         uses: actions/upload-artifact@v3
         with:
           name: p2-jamopp
-          path: jamopp.p2/target/repository
+          path: jamopp-ext.parent/jamopp-ext.p2/target/repository
           retention-days: 1
