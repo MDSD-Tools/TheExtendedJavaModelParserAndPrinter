@@ -11,6 +11,29 @@
     <packaging>pom</packaging>
     <name>Extended JaMoPP Parent</name>
 	<description>This package acts as the parent module for all extended JaMoPP modules.</description>
+    <url>https://github.com/MDSD-Tools/TheExtendedJavaModelParserAndPrinter</url>
+
+    <licenses>
+        <license>
+            <name>Eclipse Public License - v 1.0</name>
+            <url>https://www.eclipse.org/org/documents/epl-v10.html</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Martin Armbruster</name>
+            <email>martin.armbruster@kit.edu</email>
+            <organization>MCSE, KIT</organization>
+            <organizationUrl>https://mcse.kastel.kit.edu</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/MDSD-Tools/TheExtendedJavaModelParserAndPrinter.git</connection>
+        <developerConnection>scm:git:https://github.com/MDSD-Tools/TheExtendedJavaModelParserAndPrinter.git</developerConnection>
+        <url>https://github.com/MDSD-Tools/TheExtendedJavaModelParserAndPrinter/tree/main</url>
+    </scm>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -161,8 +184,8 @@
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-sources-plugin</artifactId>
-                    <version>3.2.1</version>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>3.4.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -199,29 +222,75 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>3.1.0</version>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>3.12.0</version>
+                </plugin>
             </plugins>
         </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
     </build>
 
     <profiles>
         <profile>
+            <id>build-deploy</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <tags>
+                                <tag>
+                                    <name>model</name>
+                                    <placement>a</placement>
+                                    <head>Model</head>
+                                </tag>
+                                <tag>
+                                    <name>generated</name>
+                                    <placement>a</placement>
+                                    <head>Generated</head>
+                                </tag>
+                                <tag>
+                                    <name>ordered</name>
+                                    <placement>a</placement>
+                                    <head>Ordered</head>
+                                </tag>
+                            </tags>
+                            <doclint>all,-missing</doclint>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
             <id>deploy-mvn-central</id>
-			<distributionManagement>
-				<snapshotRepository>
-					<id>ossrh</id>
-					<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-				</snapshotRepository>
-				<repository>
-					<id>ossrh</id>
-					<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-				</repository>
-			</distributionManagement>
 			<build>
 				<plugins>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-gpg-plugin</artifactId>
-						<version>1.6</version>
+						<version>3.2.7</version>
 						<executions>
 							<execution>
 								<id>sign-artifacts</id>
@@ -238,6 +307,17 @@
 							</gpgArguments>
 						</configuration>
 					</plugin>
+                    <plugin>
+                        <groupId>org.sonatype.central</groupId>
+                        <artifactId>central-publishing-maven-plugin</artifactId>
+                        <version>0.9.0</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <publishingServerId>central</publishingServerId>
+                            <autoPublish>true</autoPublish>
+                            <waitUntil>published</waitUntil>
+                        </configuration>
+                    </plugin>
 				</plugins>
 			</build>
         </profile>
