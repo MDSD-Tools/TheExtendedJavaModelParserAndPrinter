@@ -9,10 +9,10 @@ jobs:
     uses: ./.github/workflows/build.yml
   deploy-nightly:
     needs: build
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Download P2 Repository
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v6
         with:
           name: p2-jamopp
           path: p2-jamopp
