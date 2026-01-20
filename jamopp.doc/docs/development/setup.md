@@ -15,7 +15,7 @@ Currently, only the Eclipse IDE is supported for developing the extended JaMoPP.
 
    Hint: You can install the Maven plugin by opening the software installation panel (menu "Help" -> "Install New Software"). Then, you can show a list of update sites for the field "Work with:". From this list, select "2022-12 - https://download.eclipse.org/releases/2022-12", search for "Maven", and select "M2E - Maven Integration for Eclipse" for installation. Afterward, proceed with the installation.
 1. After Eclipse is prepared, the Maven modules of the extended JaMoPP can be easily imported from the top-level directory into Eclipse. However, the source code for the Java metamodel is not generated yet.
-1. There are two possibilities to generate the source code for the metamodel.
+1. There are two possibilities to (re-)generate the source code for the metamodel.
 
    a. Run the build pipeline locally by executing the command `./mvnw clean package` (Linux) or `.\mvnw.cmd clean package` (Windows).
    
