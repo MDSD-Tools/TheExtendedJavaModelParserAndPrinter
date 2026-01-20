@@ -27,8 +27,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -52,8 +52,8 @@ import tools.mdsd.jamopp.resolution.bindings.CentralBindingBasedResolver;
 import tools.mdsd.jamopp.resolution.resolver.CentralReferenceResolver;
 
 public class JaMoPPJDTSingleFileParser implements JaMoPPParserAPI {
-	private static final Logger logger = LogManager.getLogger("jamopp."
-			+ JaMoPPJDTSingleFileParser.class.getSimpleName());
+//	private static final Logger logger = LogManager.getLogger("jamopp."
+//			+ JaMoPPJDTSingleFileParser.class.getSimpleName());
 	private final String DEFAULT_ENCODING = StandardCharsets.UTF_8.toString();
 	private ResourceSet resourceSet;
 	private ArrayList<String> exclusionPatterns = new ArrayList<>();
@@ -113,19 +113,19 @@ public class JaMoPPJDTSingleFileParser implements JaMoPPParserAPI {
 				encodings[index] = DEFAULT_ENCODING;
 			}
 			String[] classpathEntries = findClasspathEntries(dir);
-			logger.debug("Parsing the directory " + dir.toString() + " with "
-					+ sources.length + " source files and " + classpathEntries.length
-					+ " classpath entries.");
+//			logger.debug("Parsing the directory " + dir.toString() + " with "
+//					+ sources.length + " source files and " + classpathEntries.length
+//					+ " classpath entries.");
 			this.parseFilesWithJDT(classpathEntries, sources, encodings);
-			logger.debug("Resolving the parsed files.");
+//			logger.debug("Resolving the parsed files.");
 			resolveBindings();
 			resolveEverything();
-			logger.debug("Resolved the parsed files.");
+//			logger.debug("Resolved the parsed files.");
 		} catch (IOException e) {
 		}
 		ResourceSet result = this.resourceSet;
 		this.resourceSet = null;
-		logger.debug("Parsed the directory.");
+//		logger.debug("Parsed the directory.");
 		return result;
 	}
 	
@@ -254,7 +254,7 @@ public class JaMoPPJDTSingleFileParser implements JaMoPPParserAPI {
 	
 	private void resolveEverything() {
 		if (ParserOptions.RESOLVE_EVERYTHING.isTrue()) {
-			logger.debug("Resolving everything.");
+//			logger.debug("Resolving everything.");
 			int oldSize;
 			do {
 				oldSize = resourceSet.getResources().size();
