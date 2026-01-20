@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+sidebar_label: Workflow
+---
+
 # Workflow
 
 For the development of the extended JaMoPP, we base the workflow on the Gitflow (cf., [the original](https://nvie.com/posts/a-successful-git-branching-model/) or [Atlassian blog post](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) for more information).
