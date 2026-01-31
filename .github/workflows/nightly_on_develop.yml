@@ -20,7 +20,7 @@ jobs:
         shell: bash
         run: echo "DEPLOY_PATH=$( echo '${{ secrets.DEPLOYMENT_REMOTE_TARGET }}/extended-java-model-parser-and-printer' )" >> $GITHUB_ENV
       - name: Deploy to Updatesite
-        uses: PalladioSimulator/Palladio-Build-ActionsPipeline-Deployment@v3
+        uses: PalladioSimulator/Palladio-Build-ActionsPipeline-Deployment@master
         with:
           remote-user: ${{ secrets.DEPLOYMENT_REMOTE_USER }}
           remote-host: ${{ secrets.DEPLOYMENT_REMOTE_HOST }}
