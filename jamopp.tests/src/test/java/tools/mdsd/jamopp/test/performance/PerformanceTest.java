@@ -50,7 +50,6 @@ import tools.mdsd.jamopp.test.bulk.SingleFileParserBulkTests;
 /**
  * Class to perform performance tests and measurements.
  */
-@Disabled
 public class PerformanceTest extends AbstractJaMoPPTests {
 	private static final Logger LOGGER = LogManager.getLogger("jamopp."
 			+ SingleFileParserBulkTests.class.getSimpleName());
@@ -86,7 +85,7 @@ public class PerformanceTest extends AbstractJaMoPPTests {
 		ParserOptions.RESOLVE_BINDINGS_OF_INFERABLE_TYPES.setValue(Boolean.TRUE);
 		ParserOptions.RESOLVE_EVERYTHING.setValue(Boolean.TRUE);
 		ParserOptions.RESOLVE_ALL_BINDINGS.setValue(Boolean.TRUE);
-		measurePerformance("teastore-full-resolution", 100, true, false);
+		measurePerformance("teastore-full-resolution", getNumberOfRepetitions(), true, false);
 	}
 	
 	@Test
@@ -98,7 +97,7 @@ public class PerformanceTest extends AbstractJaMoPPTests {
 		ParserOptions.RESOLVE_BINDINGS_OF_INFERABLE_TYPES.setValue(Boolean.TRUE);
 		ParserOptions.RESOLVE_EVERYTHING.setValue(Boolean.FALSE);
 		ParserOptions.RESOLVE_ALL_BINDINGS.setValue(Boolean.TRUE);
-		measurePerformance("teastore-without-resolving-everything", 100, true, false);
+		measurePerformance("teastore-without-resolving-everything", getNumberOfRepetitions(), true, false);
 	}
 	
 	private void prepareParserOptionsForOneLevelResolution() {
@@ -114,7 +113,7 @@ public class PerformanceTest extends AbstractJaMoPPTests {
 	@Test
 	public void measureTeaStoreWithOneLevelResolution() {
 		prepareParserOptionsForOneLevelResolution();
-		measurePerformance("teastore-one-level-resolution", 100, false, true);
+		measurePerformance("teastore-one-level-resolution", getNumberOfRepetitions(), false, true);
 	}
 	
 	@Disabled("Takes several hours.")
@@ -137,7 +136,7 @@ public class PerformanceTest extends AbstractJaMoPPTests {
 	@Test
 	public void measureTeaStoreSecondVariant() {
 		prepareParserOptionsForSecondVariant();
-		measurePerformance("teastore-second-variant", 1, false, true);
+		measurePerformance("teastore-second-variant", getNumberOfRepetitions(), false, true);
 	}
 	
 	@Disabled("Takes several hours.")
@@ -186,6 +185,10 @@ public class PerformanceTest extends AbstractJaMoPPTests {
 	@Override
 	protected String getTestInputFolder() {
 		return inputFolder;
+	}
+
+	protected int getNumberOfRepetitions() {
+		return 100;
 	}
 	
 	private void measurePerformance(String name, int max, boolean fullResolution, boolean recover) {
