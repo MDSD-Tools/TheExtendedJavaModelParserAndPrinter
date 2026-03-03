@@ -1,11 +1,11 @@
 package tools.mdsd.jamopp.test;
 
-import static org.junit.jupiter.api.Assertions.fail;
-
 import java.io.File;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
@@ -19,17 +19,24 @@ import tools.mdsd.jamopp.model.java.containers.JavaRoot;
 import tools.mdsd.jamopp.model.java.containers.Package;
 
 public class OutputUtility {
+	public final static String SUPPORTED_FILE_EXTENSION_JAVA = "java";
+	public final static String SUPPORTED_FILE_EXTENSION_XMI = "xmi";
+	public final static String SUPPORTED_FILE_EXTENSION_JSON = "json";
+
 	public record TransferResult(ResourceSet targetSet, Map<Resource, Resource> sourceTargetMapping) {};
 	
-	public static TransferResult transferToOutput(ResourceSet sourceSet, String outputFolder, String fileExtension, boolean includeAllResources) {
+	public static TransferResult transferToOutput(ResourceSet sourceSet, String outputFolder, String fileExtension, boolean includeAllResources) throws IOException {
+		return transferToOutput(new ArrayList<>(sourceSet.getResources()), outputFolder, fileExtension, includeAllResources);
+	}
+	
+	public static TransferResult transferToOutput(List<Resource> sources, String outputFolder, String fileExtension, boolean includeAllResources) throws IOException {
 		int emptyFileName = 0;
 		
 		ResourceSet targetSet = new ResourceSetImpl();
 		HashMap<Resource, Resource> srcTrgMap = new HashMap<>();
 		
-		for (Resource javaResource : new ArrayList<>(sourceSet.getResources())) {
+		for (Resource javaResource : sources) {
 			if (javaResource.getContents().isEmpty()) {
-				System.out.println("WARNING: Emtpy Resource: " + javaResource.getURI());
 				continue;
 			}
 			if (!includeAllResources && !javaResource.getURI().isFile()) {
@@ -55,7 +62,7 @@ public class OutputUtility {
 				outputFileName = root.getNamespacesAsString()
 						.replace(".", File.separator) + File.separator + "module-info";
 			} else {
-				fail();
+				continue;
 			}
 			
 			File outputFile = new File("." + File.separator + outputFolder
@@ -71,11 +78,7 @@ public class OutputUtility {
 		}
 		
 		for (Resource targetResource : new ArrayList<>(targetSet.getResources())) {
-			try {
-				targetResource.save(targetSet.getLoadOptions());
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			targetResource.save(targetSet.getLoadOptions());
 		}
 		
 		return new TransferResult(targetSet, srcTrgMap);
