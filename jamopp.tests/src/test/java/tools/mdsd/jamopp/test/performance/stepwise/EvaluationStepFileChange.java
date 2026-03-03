@@ -18,7 +18,7 @@ package tools.mdsd.jamopp.test.performance.stepwise;
 
 public class EvaluationStepFileChange {
 	private String path;
-	private int newSize;
+	private long newSize;
 
 	public String getPath() {
 		return path;
@@ -28,11 +28,11 @@ public class EvaluationStepFileChange {
 		this.path = path;
 	}
 	
-	public int getNewSize() {
+	public long getNewSize() {
 		return newSize;
 	}
 	
-	public void setNewSize(int newSize) {
+	public void setNewSize(long newSize) {
 		this.newSize = newSize;
 	}
 }

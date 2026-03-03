@@ -22,6 +22,7 @@ import java.util.List;
 public class StepwiseEvaluationResult {
 	private String name;
 	private List<EvaluationStepResult> steps = new ArrayList<>();
+	private long parsingTime;
 
 	public String getName() {
 		return name;
@@ -37,5 +38,13 @@ public class StepwiseEvaluationResult {
 	
 	public void addStep(EvaluationStepResult step) {
 		this.steps.add(step);
+	}
+
+	public long getParsingTime() {
+		return parsingTime;
+	}
+
+	public void setParsingTime(long parsingTime) {
+		this.parsingTime = parsingTime;
 	}
 }

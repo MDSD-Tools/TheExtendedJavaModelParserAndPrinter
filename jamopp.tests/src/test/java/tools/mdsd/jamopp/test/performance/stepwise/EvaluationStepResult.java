@@ -20,10 +20,9 @@ import java.util.List;
 
 public class EvaluationStepResult {
 	private int step;
-	private int totalDuration;
-	private int totalFiles;
-	private int totalSize;
-	private int totalProxies;
+	private long timeResolution;
+	private long timeModelSaving;
+	private long totalProxies;
 	private List<EvaluationStepFileChange> changedFiles;
 
 	public int getStep() {
@@ -34,35 +33,27 @@ public class EvaluationStepResult {
 		this.step = step;
 	}
 	
-	public int getTotalDuration() {
-		return totalDuration;
+	public long getTimeResolution() {
+		return timeResolution;
 	}
 	
-	public void setTotalDuration(int totalDuration) {
-		this.totalDuration = totalDuration;
+	public void setTimeResolution(long totalDuration) {
+		this.timeResolution = totalDuration;
+	}
+
+	public long getTimeModelSaving() {
+		return timeModelSaving;
+	}
+
+	public void setTimeModelSaving(long timeModelSaving) {
+		this.timeModelSaving = timeModelSaving;
 	}
 	
-	public int getTotalFiles() {
-		return totalFiles;
-	}
-	
-	public void setTotalFiles(int totalFiles) {
-		this.totalFiles = totalFiles;
-	}
-	
-	public int getTotalSize() {
-		return totalSize;
-	}
-	
-	public void setTotalSize(int totalSize) {
-		this.totalSize = totalSize;
-	}
-	
-	public int getTotalProxies() {
+	public long getTotalProxies() {
 		return totalProxies;
 	}
 	
-	public void setTotalProxies(int totalProxies) {
+	public void setTotalProxies(long totalProxies) {
 		this.totalProxies = totalProxies;
 	}
 	
