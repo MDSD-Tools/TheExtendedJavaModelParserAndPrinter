@@ -65,6 +65,27 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>test-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>**/tools/mdsd/jamopp/test/performance/**/*</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
@@ -130,7 +151,8 @@
 		<dependency>
 			<groupId>org.eclipse.emfcloud</groupId>
 			<artifactId>emfjson-jackson</artifactId>
-		</dependency><dependency>
+		</dependency>
+        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-math4-legacy</artifactId>
         </dependency>
