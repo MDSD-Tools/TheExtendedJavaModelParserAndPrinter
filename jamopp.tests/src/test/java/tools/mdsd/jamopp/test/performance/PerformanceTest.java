@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emfcloud.jackson.resource.JsonResourceFactory;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -54,24 +55,25 @@ public class PerformanceTest extends AbstractJaMoPPTests {
 	private static final Logger LOGGER = LogManager.getLogger("jamopp."
 			+ SingleFileParserBulkTests.class.getSimpleName());
 	private final String inputFolder = "target" + File.separator + "src-bulk" + File.separator + "TeaStore";
-	private final Path parentOutput = Paths.get("target", "tests", "output_performance");
-	private final Path javaOutput = parentOutput.resolve("java");
-	private final Path xmiOutput = parentOutput.resolve("xmi");
-	private final Path jsonOutput = parentOutput.resolve("json");
+	private static final Path PARENT_OUTPUT = Paths.get("target", "tests", "output_performance");
+	private static final Path JAVA_OUTPUT = PARENT_OUTPUT.resolve(OutputUtility.SUPPORTED_FILE_EXTENSION_JAVA);
+	private static final Path XMI_OUTPUT = PARENT_OUTPUT.resolve(OutputUtility.SUPPORTED_FILE_EXTENSION_XMI);
+	private static final Path JSON_OUTPUT = PARENT_OUTPUT.resolve(OutputUtility.SUPPORTED_FILE_EXTENSION_JSON);
+	private static final Path SUMMARY_FILE_PATH = PARENT_OUTPUT.resolve("summary.md");
 	
 	@BeforeEach
 	public void setup() throws IOException {
 		super.initResourceFactory();
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("json", new JsonResourceFactory());
-		if (Files.exists(javaOutput)) {
-			PathUtils.deleteDirectory(javaOutput);
-			PathUtils.deleteDirectory(xmiOutput);
-			PathUtils.deleteDirectory(jsonOutput);
+		if (Files.exists(JAVA_OUTPUT)) {
+			PathUtils.deleteDirectory(JAVA_OUTPUT);
+			PathUtils.deleteDirectory(XMI_OUTPUT);
+			PathUtils.deleteDirectory(JSON_OUTPUT);
 		}
 		try {
-			Files.createDirectories(javaOutput);
-			Files.createDirectories(xmiOutput);
-			Files.createDirectories(jsonOutput);
+			Files.createDirectories(JAVA_OUTPUT);
+			Files.createDirectories(XMI_OUTPUT);
+			Files.createDirectories(JSON_OUTPUT);
 		} catch (IOException e1) {
 		}
 	}
@@ -145,22 +147,33 @@ public class PerformanceTest extends AbstractJaMoPPTests {
 		prepareParserOptionsForSecondVariant();
 		measurePerformance("teastore-second-variant-resolution", 1, true, false);
 	}
+
+	@AfterAll
+	public static void clean() throws IOException {
+		calculateAndSaveAllStatistics();
+	}
 	
-	@Test
-	public void printAllAverageTimes() {
-		try {
-			Files.walk(parentOutput).forEach(path -> {
+	private static void calculateAndSaveAllStatistics() throws IOException {
+		StringBuilder builder = new StringBuilder();
+
+		Files
+			.walk(PARENT_OUTPUT, 1)
+			.filter(path -> Files.isRegularFile(path))
+			.forEach(path -> {
+				builder.append("# Results for " + path.getFileName().toString());
+
 				var data = PerformanceData.load(path);
-				System.out.println(path.getFileName().toString());
 				var stat = data.getStatistics();
-				System.out.println("Average time (ms): " + stat.getMean() + " (with std. " + + stat.getStandardDeviation() + " ms)");
-				stat = data.getStatistics();
-				System.out.println("Average time without resolution (ms): " + stat.getMean() + " (with std. " + + stat.getStandardDeviation() + " ms)");
-				System.out.println("Average parsing time (ms): " + data.getAverageParseTime());
-				System.out.println("Average resolution time (ms): " + data.getAverageResolutionTime());
-				System.out.println("Average recovery time (ms): " + data.getAverageRecoveryTime());
+				builder.append("\n\nAverage time (ms): " + stat.getMean() + " (with std. " + + stat.getStandardDeviation() + " ms)\n");
+
+				stat = data.getStatisticsWithoutResolution();
+				builder.append("Average time without resolution (ms): " + stat.getMean() + " (with std. " + + stat.getStandardDeviation() + " ms)\n");
+				builder.append("Average parsing time (ms): " + data.getAverageParseTime());
+				builder.append("\nAverage resolution time (ms): " + data.getAverageResolutionTime());
+				builder.append("\nAverage recovery time (ms): " + data.getAverageRecoveryTime());
+
 				for (var storage : data.getStorage()) {
-					System.out.println("Storage ("
+					builder.append("\n\nStorage ("
 							+ storage.getId()
 							+ "): "
 							+ storage.getCodeFiles()
@@ -172,9 +185,10 @@ public class PerformanceTest extends AbstractJaMoPPTests {
 							+ storage.getTakenStorage()
 							+ " Bytes.");
 				}
+				builder.append("\n\n");
 			});
-		} catch (IOException e) {
-		}
+
+		Files.writeString(SUMMARY_FILE_PATH, builder.toString());
 	}
 	
 	@Override
@@ -198,7 +212,7 @@ public class PerformanceTest extends AbstractJaMoPPTests {
 		JaMoPPJDTSingleFileParser parser = new JaMoPPJDTSingleFileParser();
 		parser.setExclusionPatterns(".*?src/test/.*?");
 		
-		Path outputMeasurement = parentOutput.resolve(name + ".json");
+		Path outputMeasurement = PARENT_OUTPUT.resolve(name + ".json");
 		PerformanceData result;
 		if (Files.exists(outputMeasurement)) {
 			result = PerformanceData.load(outputMeasurement);
@@ -280,26 +294,26 @@ public class PerformanceTest extends AbstractJaMoPPTests {
 	
 	private List<StoragePerformance> measureStorage(ResourceSet resourceSet) throws IOException {
 		StoragePerformance javaStorage = new StoragePerformance();
-		javaStorage.setId("java");
-		var result = OutputUtility.transferToOutput(resourceSet, javaOutput.toString(), "java", true);
-		fillStorageInformationFromTransfer(javaStorage, javaOutput, result);
+		javaStorage.setId(OutputUtility.SUPPORTED_FILE_EXTENSION_JAVA);
+		var result = OutputUtility.transferToOutput(resourceSet, JAVA_OUTPUT.toString(), OutputUtility.SUPPORTED_FILE_EXTENSION_JAVA, true);
+		fillStorageInformationFromTransfer(javaStorage, JAVA_OUTPUT, result);
 		
 		result.sourceTargetMapping().forEach((key, value) -> {
 			key.getContents().addAll(value.getContents());
 		});
 		
 		StoragePerformance xmiStorage = new StoragePerformance();
-		xmiStorage.setId("xmi");
-		result = OutputUtility.transferToOutput(resourceSet, xmiOutput.toString(), "xmi", true);
-		fillStorageInformationFromTransfer(xmiStorage, xmiOutput, result);
+		xmiStorage.setId(OutputUtility.SUPPORTED_FILE_EXTENSION_XMI);
+		result = OutputUtility.transferToOutput(resourceSet, XMI_OUTPUT.toString(), OutputUtility.SUPPORTED_FILE_EXTENSION_XMI, true);
+		fillStorageInformationFromTransfer(xmiStorage, XMI_OUTPUT, result);
 		
 		result.sourceTargetMapping().forEach((key, value) -> {
 			key.getContents().addAll(value.getContents());
 		});
 		
 		StoragePerformance jsonStorage = new StoragePerformance();
-		jsonStorage.setId("json");
-		fillStorageInformationFromTransfer(jsonStorage, jsonOutput, OutputUtility.transferToOutput(resourceSet, jsonOutput.toString(), "json", true));
+		jsonStorage.setId(OutputUtility.SUPPORTED_FILE_EXTENSION_JSON);
+		fillStorageInformationFromTransfer(jsonStorage, JSON_OUTPUT, OutputUtility.transferToOutput(resourceSet, JSON_OUTPUT.toString(), OutputUtility.SUPPORTED_FILE_EXTENSION_JSON, true));
 		
 		return List.of(javaStorage, xmiStorage, jsonStorage);
 	}
