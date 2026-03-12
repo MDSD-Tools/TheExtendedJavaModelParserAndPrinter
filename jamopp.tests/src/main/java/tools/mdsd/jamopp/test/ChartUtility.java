@@ -45,12 +45,14 @@ public final class ChartUtility {
         double[] parsingTimes = new double[data.getPoints().size()];
         double[] resolutionTimes = new double[parsingTimes.length];
         double[] recoveryTimes = new double[resolutionTimes.length];
+        double[] overallTimes = new double[recoveryTimes.length];
 
         int index = 0;
         for (var dataPoint : data.getPoints()) {
             parsingTimes[index] = dataPoint.getParseTime();
             resolutionTimes[index] = dataPoint.getResolutionTime();
             recoveryTimes[index] = dataPoint.getRecoverTime();
+            overallTimes[index] = dataPoint.getParseTime() + dataPoint.getResolutionTime() + dataPoint.getRecoverTime();
             index++;
         }
 
@@ -60,6 +62,8 @@ public final class ChartUtility {
             DEFAULT_X_AXIS_TITLE, "Resolution Time (" + adjustDataUnit(resolutionTimes) + ")", outputDirectory.resolve(dataName + "-resolution.pdf"));
         buildAndSaveChart(recoveryTimes, dataName + " - Recovery",
             DEFAULT_X_AXIS_TITLE, "Recovery Time (" + adjustDataUnit(recoveryTimes) + ")", outputDirectory.resolve(dataName + "-recovery.pdf"));
+        buildAndSaveChart(overallTimes, dataName + " - Sum of Parsing, Resolution, and Recovery",
+            DEFAULT_X_AXIS_TITLE, "Overall Time (" + adjustDataUnit(overallTimes) + ")", outputDirectory.resolve(dataName + "-overall.pdf"));
     }
 
     public static void buildAndSaveChart(double[] data, String title, String xAxisTitle, String yAxisTitle, Path chartFile) throws IOException {
