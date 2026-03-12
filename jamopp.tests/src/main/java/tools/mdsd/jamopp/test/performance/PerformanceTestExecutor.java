@@ -38,6 +38,7 @@ import tools.mdsd.jamopp.parser.jdt.singlefile.JaMoPPJDTSingleFileParser;
 import tools.mdsd.jamopp.proxy.IJavaContextDependentURIFragmentCollector;
 import tools.mdsd.jamopp.recovery.trivial.TrivialRecovery;
 import tools.mdsd.jamopp.resource.JavaResource2Factory;
+import tools.mdsd.jamopp.test.ChartUtility;
 import tools.mdsd.jamopp.test.OutputUtility;
 import tools.mdsd.jamopp.test.OutputUtility.TransferResult;
 
@@ -162,9 +163,11 @@ public class PerformanceTestExecutor {
 
 		Files
 			.walk(outputFolder, 1)
-			.filter(path -> Files.isRegularFile(path))
+			.filter(Files::isRegularFile)
+			.filter(path -> path.toString().endsWith(OutputUtility.SUPPORTED_FILE_EXTENSION_JSON))
 			.forEach(path -> {
-				builder.append("# Results for " + path.getFileName().toString());
+				String name = path.getFileName().toString();
+				builder.append("# Results for " + name);
 
 				var data = PerformanceData.load(path);
 				var stat = data.getStatistics();
@@ -190,6 +193,12 @@ public class PerformanceTestExecutor {
 							+ " Bytes.");
 				}
 				builder.append("\n\n");
+
+				try {
+					ChartUtility.buildAndSaveChartsForPerformanceData(name, data, outputFolder);
+				} catch (IOException e) {
+					LOGGER.info("Could not create and store charts for: " + name);
+				}
 			});
 
 		Files.writeString(summaryFile, builder.toString());
