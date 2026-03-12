@@ -19,7 +19,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.List;
 
@@ -48,12 +47,21 @@ import tools.mdsd.jamopp.test.OutputUtility.TransferResult;
 public class PerformanceTestExecutor {
 	private static final Logger LOGGER = LogManager.getLogger("jamopp."
 			+ PerformanceTestExecutor.class.getSimpleName());
-	private final String inputFolder = "target" + File.separator + "src-bulk" + File.separator + "TeaStore";
-	private static final Path PARENT_OUTPUT = Paths.get("target", "tests", "output_performance");
-	private static final Path JAVA_OUTPUT = PARENT_OUTPUT.resolve(OutputUtility.SUPPORTED_FILE_EXTENSION_JAVA);
-	private static final Path XMI_OUTPUT = PARENT_OUTPUT.resolve(OutputUtility.SUPPORTED_FILE_EXTENSION_XMI);
-	private static final Path JSON_OUTPUT = PARENT_OUTPUT.resolve(OutputUtility.SUPPORTED_FILE_EXTENSION_JSON);
-	private static final Path SUMMARY_FILE_PATH = PARENT_OUTPUT.resolve("summary.md");
+	private final Path inputFolder;
+	private final Path outputFolder;
+	private final Path javaOutput;
+	private final Path xmiOutput;
+	private final Path jsonOutput;
+	private final Path summaryFile;
+
+	public PerformanceTestExecutor(Path inputFolder, Path outputFolder) {
+		this.inputFolder = inputFolder;
+		this.outputFolder = outputFolder;
+		this.javaOutput = outputFolder.resolve(OutputUtility.SUPPORTED_FILE_EXTENSION_JAVA);
+		this.xmiOutput = outputFolder.resolve(OutputUtility.SUPPORTED_FILE_EXTENSION_XMI);
+		this.jsonOutput = outputFolder.resolve(OutputUtility.SUPPORTED_FILE_EXTENSION_JSON);
+		this.summaryFile = outputFolder.resolve("summary.md");
+	}
 	
 	public void setupTestEnvironment() throws IOException {
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("java", new JavaResource2Factory());
@@ -61,15 +69,15 @@ public class PerformanceTestExecutor {
 		JavaClasspath.get().clear();
 		JavaClasspath.get().registerStdLib();
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("json", new JsonResourceFactory());
-		if (Files.exists(JAVA_OUTPUT)) {
-			PathUtils.deleteDirectory(JAVA_OUTPUT);
-			PathUtils.deleteDirectory(XMI_OUTPUT);
-			PathUtils.deleteDirectory(JSON_OUTPUT);
+		if (Files.exists(javaOutput)) {
+			PathUtils.deleteDirectory(javaOutput);
+			PathUtils.deleteDirectory(xmiOutput);
+			PathUtils.deleteDirectory(jsonOutput);
 		}
 		try {
-			Files.createDirectories(JAVA_OUTPUT);
-			Files.createDirectories(XMI_OUTPUT);
-			Files.createDirectories(JSON_OUTPUT);
+			Files.createDirectories(javaOutput);
+			Files.createDirectories(xmiOutput);
+			Files.createDirectories(jsonOutput);
 		} catch (IOException e1) {
 		}
 	}
@@ -145,15 +153,15 @@ public class PerformanceTestExecutor {
 		measurePerformance("teastore-second-variant-resolution", 1, true, false);
 	}
 
-	public static void cleanEverything() throws IOException {
+	public void cleanEverything() throws IOException {
 		calculateAndSaveAllStatistics();
 	}
 	
-	private static void calculateAndSaveAllStatistics() throws IOException {
+	private void calculateAndSaveAllStatistics() throws IOException {
 		StringBuilder builder = new StringBuilder();
 
 		Files
-			.walk(PARENT_OUTPUT, 1)
+			.walk(outputFolder, 1)
 			.filter(path -> Files.isRegularFile(path))
 			.forEach(path -> {
 				builder.append("# Results for " + path.getFileName().toString());
@@ -184,7 +192,7 @@ public class PerformanceTestExecutor {
 				builder.append("\n\n");
 			});
 
-		Files.writeString(SUMMARY_FILE_PATH, builder.toString());
+		Files.writeString(summaryFile, builder.toString());
 	}
 
 	protected int getNumberOfRepetitions() {
@@ -193,11 +201,10 @@ public class PerformanceTestExecutor {
 	
 	private void measurePerformance(String name, int max, boolean fullResolution, boolean recover) {
 		LOGGER.debug("Executing performance measurements for " + name);
-		Path target = Paths.get(this.inputFolder);
 		JaMoPPJDTSingleFileParser parser = new JaMoPPJDTSingleFileParser();
 		parser.setExclusionPatterns(".*?src/test/.*?");
 		
-		Path outputMeasurement = PARENT_OUTPUT.resolve(name + ".json");
+		Path outputMeasurement = outputFolder.resolve(name + ".json");
 		PerformanceData result;
 		if (Files.exists(outputMeasurement)) {
 			result = PerformanceData.load(outputMeasurement);
@@ -209,7 +216,7 @@ public class PerformanceTestExecutor {
 			System.out.println("Measurement " + i + " for " + name);
 			PerformanceDataPoint point = new PerformanceDataPoint();
 			long millis = System.currentTimeMillis();
-			ResourceSet set = parser.parseDirectory(target);
+			ResourceSet set = parser.parseDirectory(inputFolder);
 			millis = System.currentTimeMillis() - millis;
 			point.setParseTime(millis);
 			if (fullResolution) {
@@ -257,8 +264,8 @@ public class PerformanceTestExecutor {
 	private List<StoragePerformance> measureStorage(ResourceSet resourceSet) throws IOException {
 		StoragePerformance javaStorage = new StoragePerformance();
 		javaStorage.setId(OutputUtility.SUPPORTED_FILE_EXTENSION_JAVA);
-		var result = OutputUtility.transferToOutput(resourceSet, JAVA_OUTPUT.toString(), OutputUtility.SUPPORTED_FILE_EXTENSION_JAVA, true);
-		fillStorageInformationFromTransfer(javaStorage, JAVA_OUTPUT, result);
+		var result = OutputUtility.transferToOutput(resourceSet, javaOutput.toString(), OutputUtility.SUPPORTED_FILE_EXTENSION_JAVA, true);
+		fillStorageInformationFromTransfer(javaStorage, javaOutput, result);
 		
 		result.sourceTargetMapping().forEach((key, value) -> {
 			key.getContents().addAll(value.getContents());
@@ -266,8 +273,8 @@ public class PerformanceTestExecutor {
 		
 		StoragePerformance xmiStorage = new StoragePerformance();
 		xmiStorage.setId(OutputUtility.SUPPORTED_FILE_EXTENSION_XMI);
-		result = OutputUtility.transferToOutput(resourceSet, XMI_OUTPUT.toString(), OutputUtility.SUPPORTED_FILE_EXTENSION_XMI, true);
-		fillStorageInformationFromTransfer(xmiStorage, XMI_OUTPUT, result);
+		result = OutputUtility.transferToOutput(resourceSet, xmiOutput.toString(), OutputUtility.SUPPORTED_FILE_EXTENSION_XMI, true);
+		fillStorageInformationFromTransfer(xmiStorage, xmiOutput, result);
 		
 		result.sourceTargetMapping().forEach((key, value) -> {
 			key.getContents().addAll(value.getContents());
@@ -275,7 +282,7 @@ public class PerformanceTestExecutor {
 		
 		StoragePerformance jsonStorage = new StoragePerformance();
 		jsonStorage.setId(OutputUtility.SUPPORTED_FILE_EXTENSION_JSON);
-		fillStorageInformationFromTransfer(jsonStorage, JSON_OUTPUT, OutputUtility.transferToOutput(resourceSet, JSON_OUTPUT.toString(), OutputUtility.SUPPORTED_FILE_EXTENSION_JSON, true));
+		fillStorageInformationFromTransfer(jsonStorage, jsonOutput, OutputUtility.transferToOutput(resourceSet, jsonOutput.toString(), OutputUtility.SUPPORTED_FILE_EXTENSION_JSON, true));
 		
 		return List.of(javaStorage, xmiStorage, jsonStorage);
 	}
