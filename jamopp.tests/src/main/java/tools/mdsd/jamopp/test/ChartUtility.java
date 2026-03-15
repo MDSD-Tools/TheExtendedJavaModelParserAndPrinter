@@ -57,23 +57,43 @@ public final class ChartUtility {
         }
 
         buildAndSaveChart(parsingTimes, dataName + " - Parsing",
-            DEFAULT_X_AXIS_TITLE, "Parsing Time (" + adjustDataUnit(parsingTimes) + ")", outputDirectory.resolve(dataName + "-parsing.pdf"));
+            DEFAULT_X_AXIS_TITLE, "Parsing Time (" + adjustTimeMillisecondsUnit(parsingTimes) + ")", outputDirectory.resolve(dataName + "-parsing.pdf"));
         buildAndSaveChart(resolutionTimes, dataName + " - Resolution",
-            DEFAULT_X_AXIS_TITLE, "Resolution Time (" + adjustDataUnit(resolutionTimes) + ")", outputDirectory.resolve(dataName + "-resolution.pdf"));
+            DEFAULT_X_AXIS_TITLE, "Resolution Time (" + adjustTimeMillisecondsUnit(resolutionTimes) + ")", outputDirectory.resolve(dataName + "-resolution.pdf"));
         buildAndSaveChart(recoveryTimes, dataName + " - Recovery",
-            DEFAULT_X_AXIS_TITLE, "Recovery Time (" + adjustDataUnit(recoveryTimes) + ")", outputDirectory.resolve(dataName + "-recovery.pdf"));
+            DEFAULT_X_AXIS_TITLE, "Recovery Time (" + adjustTimeMillisecondsUnit(recoveryTimes) + ")", outputDirectory.resolve(dataName + "-recovery.pdf"));
         buildAndSaveChart(overallTimes, dataName + " - Sum of Parsing, Resolution, and Recovery",
-            DEFAULT_X_AXIS_TITLE, "Overall Time (" + adjustDataUnit(overallTimes) + ")", outputDirectory.resolve(dataName + "-overall.pdf"));
+            DEFAULT_X_AXIS_TITLE, "Overall Time (" + adjustTimeMillisecondsUnit(overallTimes) + ")", outputDirectory.resolve(dataName + "-overall.pdf"));
+    }
+
+    public static void buildAndSaveChartWithDiff(double[] data, String title, String xAxisTitle, String yAxisTitle, Path chartFile) throws IOException {
+        double[] diffData = new double[data.length - 1];
+        for (var index = 0; index < diffData.length; index++) {
+            diffData[index] = data[index + 1] - data[index];
+        }
+
+        buildAndSaveChart(data, title, xAxisTitle, yAxisTitle, chartFile);
+        buildAndSaveChart(diffData, title + " (Diff)", xAxisTitle, yAxisTitle, chartFile.resolveSibling(chartFile.getFileName().toString() + "-diff.pdf"));
     }
 
     public static void buildAndSaveChart(double[] data, String title, String xAxisTitle, String yAxisTitle, Path chartFile) throws IOException {
+        buildAndSaveChart(null, data, title, xAxisTitle, yAxisTitle, chartFile);
+    }
+
+    public static void buildAndSaveChart(double[] xData, double[] yData, String title, String xAxisTitle, String yAxisTitle, Path chartFile) throws IOException {
         var chart = new XYChartBuilder().title(title).xAxisTitle(xAxisTitle).yAxisTitle(yAxisTitle).build();
         chart.getStyler().setDefaultSeriesRenderStyle(XYSeriesRenderStyle.Line).setLegendVisible(false);
-        chart.addSeries(yAxisTitle, data);
+
+        if (xData == null) {
+            chart.addSeries(yAxisTitle, yData);
+        } else {
+            chart.addSeries(yAxisTitle, xData, yData);
+        }
+
         VectorGraphicsEncoder.saveVectorGraphic(chart, chartFile.toAbsolutePath().toString(), VectorGraphicsFormat.PDF);
     }
 
-    private static String adjustDataUnit(double[] data) {
+    public static String adjustTimeMillisecondsUnit(double[] data) {
         var min = Arrays.stream(data).min().getAsDouble();
         var minMaxDiff = Arrays.stream(data).max().getAsDouble() - min;
         double unitAdjustingFactor = 0.0;

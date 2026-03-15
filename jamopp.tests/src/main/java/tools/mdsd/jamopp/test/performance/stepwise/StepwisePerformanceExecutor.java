@@ -20,7 +20,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.apache.logging.log4j.Logger;
@@ -39,6 +41,7 @@ import com.google.gson.Gson;
 
 import tools.mdsd.jamopp.parser.jdt.singlefile.JaMoPPJDTSingleFileParser;
 import tools.mdsd.jamopp.proxy.IJavaContextDependentURIFragmentCollector;
+import tools.mdsd.jamopp.test.ChartUtility;
 import tools.mdsd.jamopp.test.OutputUtility;
 
 public class StepwisePerformanceExecutor {
@@ -47,6 +50,21 @@ public class StepwisePerformanceExecutor {
 	private static final String GIT_AUTHOR_MAIL = "noreply@null.localhost";
 	private static final String GIT_DIRECTORY_NAME = "models";
 	private static final String RESULTS_FILE_NAME = "results.json";
+	private static final String CHARTS_DEFAULT_X_AXIS_NAME = "# Iteration";
+	private static final String CHARTS_PROXY_COUNT_Y_AXIS_NAME = "# Proxy Objects";
+	private static final String CHARTS_PROXY_COUNT_TITLE = "Proxy Objects";
+	private static final String CHARTS_PROXY_COUNT_FILE_NAME = "chart-proxies.pdf";
+	private static final String CHARTS_DEFAULT_TIME_Y_AXIS_NAME = "Execution Time (%s)";
+	private static final String CHARTS_RESOLUTION_TIME_TITLE = "Resolution Time";
+	private static final String CHARTS_RESOLUTION_TIME_FILE_NAME = "chart-resolution-time.pdf";
+	private static final String CHARTS_MODEL_SAVING_TIME_TITLE = "Model Saving Time";
+	private static final String CHARTS_MODEL_SAVING_TIME_FILE_NAME = "chart-model-saving-time.pdf";
+	private static final String CHARTS_MODEL_COUNT_TITLE = "Models";
+	private static final String CHARTS_MODEL_COUNT_Y_AXIS_NAME = "# Models";
+	private static final String CHARTS_MODEL_COUNT_FILE_NAME = "chart-model-count.pdf";
+	private static final String CHARTS_MODEL_SIZE_TITLE = "Model Size";
+	private static final String CHARTS_MODEL_SIZE_Y_AXIS_NAME = "Model Size";
+	private static final String CHARTS_MODEL_SIZE_FILE_NAME = "chart-model-size.pdf";
 	private Git git;
 	private RevCommit lastCommit;
 	
@@ -129,11 +147,9 @@ public class StepwisePerformanceExecutor {
 			res.unload();
 		}
 		IJavaContextDependentURIFragmentCollector.GLOBAL_INSTANCE.getContextDependentURIFragmentMap().clear();
-		
+
+		buildAndSaveCharts(result, outputDirectory);
 		LOGGER.info("Finished measuring: " + name);
-		// Planned graphs: iteration number (x axis) vs. following numbers on y axis
-		// Number of proxy objects, change (netto) in proxy objects, file size, change (netto) in file size,
-		// number of files, change (netto) in number of files, duration of resolution, duration of saving files, memory consumption
 	}
 	
 	private Pair<List<EvaluationStepFileChange>, Long> storeModelsAndCalculateSizeChanges(ResourceSet resourceSet, Path output) throws GitAPIException, IOException {
@@ -181,5 +197,41 @@ public class StepwisePerformanceExecutor {
 	private void saveResults(StepwiseEvaluationResult results, Path file) throws IOException {
 		Gson gson = new Gson();
 		Files.writeString(file, gson.toJson(results));
+	}
+
+	private void buildAndSaveCharts(StepwiseEvaluationResult result, Path outputDir) throws IOException {
+		// Planned graphs: iteration number (x axis) vs. following numbers on y axis
+		// memory consumption
+		var currentData = result.getSteps().stream().mapToDouble(EvaluationStepResult::getTotalProxies).toArray();
+		ChartUtility.buildAndSaveChartWithDiff(currentData, CHARTS_PROXY_COUNT_TITLE, CHARTS_DEFAULT_X_AXIS_NAME,
+			CHARTS_PROXY_COUNT_Y_AXIS_NAME, outputDir.resolve(CHARTS_PROXY_COUNT_FILE_NAME));
+
+		currentData = result.getSteps().stream().mapToDouble(EvaluationStepResult::getTimeResolution).toArray();
+		ChartUtility.buildAndSaveChart(currentData, CHARTS_RESOLUTION_TIME_TITLE, CHARTS_DEFAULT_X_AXIS_NAME,
+			String.format(CHARTS_DEFAULT_TIME_Y_AXIS_NAME, ChartUtility.adjustTimeMillisecondsUnit(currentData)),
+			outputDir.resolve(CHARTS_RESOLUTION_TIME_FILE_NAME));
+
+		currentData = result.getSteps().stream().mapToDouble(EvaluationStepResult::getTimeModelSaving).toArray();
+		ChartUtility.buildAndSaveChart(currentData, CHARTS_MODEL_SAVING_TIME_TITLE, CHARTS_DEFAULT_X_AXIS_NAME,
+			String.format(CHARTS_DEFAULT_TIME_Y_AXIS_NAME, ChartUtility.adjustTimeMillisecondsUnit(currentData)),
+			outputDir.resolve(CHARTS_MODEL_SAVING_TIME_FILE_NAME));
+
+		double[] sizes = new double[currentData.length];
+		Map<String, Long> filesToSizes = new HashMap<>();
+
+		for (var index = 0; index < currentData.length; index++) {
+			var step = result.getSteps().get(index);
+			step.getChangedFiles().forEach(file -> {
+				filesToSizes.put(file.getPath(), file.getNewSize());
+			});
+
+			currentData[index] = filesToSizes.size();
+			sizes[index] = filesToSizes.entrySet().stream().mapToDouble(Map.Entry::getValue).sum();
+		}
+
+		ChartUtility.buildAndSaveChartWithDiff(currentData, CHARTS_MODEL_COUNT_TITLE, CHARTS_DEFAULT_X_AXIS_NAME,
+			CHARTS_MODEL_COUNT_Y_AXIS_NAME, outputDir.resolve(CHARTS_MODEL_COUNT_FILE_NAME));
+		ChartUtility.buildAndSaveChartWithDiff(sizes, CHARTS_MODEL_SIZE_TITLE, CHARTS_DEFAULT_X_AXIS_NAME,
+			CHARTS_MODEL_SIZE_Y_AXIS_NAME, outputDir.resolve(CHARTS_MODEL_SIZE_FILE_NAME));
 	}
 }
