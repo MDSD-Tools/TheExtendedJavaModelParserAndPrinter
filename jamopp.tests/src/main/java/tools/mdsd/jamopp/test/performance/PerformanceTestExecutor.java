@@ -29,15 +29,11 @@ import org.apache.logging.log4j.LogManager;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.eclipse.emfcloud.jackson.resource.JsonResourceFactory;
 
-import tools.mdsd.jamopp.model.java.JavaClasspath;
 import tools.mdsd.jamopp.options.ParserOptions;
 import tools.mdsd.jamopp.parser.jdt.singlefile.JaMoPPJDTSingleFileParser;
 import tools.mdsd.jamopp.proxy.IJavaContextDependentURIFragmentCollector;
 import tools.mdsd.jamopp.recovery.trivial.TrivialRecovery;
-import tools.mdsd.jamopp.resource.JavaResource2Factory;
 import tools.mdsd.jamopp.test.ChartUtility;
 import tools.mdsd.jamopp.test.OutputUtility;
 import tools.mdsd.jamopp.test.OutputUtility.TransferResult;
@@ -54,6 +50,7 @@ public class PerformanceTestExecutor {
 	private final Path xmiOutput;
 	private final Path jsonOutput;
 	private final Path summaryFile;
+	private int numberOfRepetitions;
 
 	public PerformanceTestExecutor(Path inputFolder, Path outputFolder) {
 		this.inputFolder = inputFolder;
@@ -62,14 +59,10 @@ public class PerformanceTestExecutor {
 		this.xmiOutput = outputFolder.resolve(OutputUtility.SUPPORTED_FILE_EXTENSION_XMI);
 		this.jsonOutput = outputFolder.resolve(OutputUtility.SUPPORTED_FILE_EXTENSION_JSON);
 		this.summaryFile = outputFolder.resolve("summary.md");
+		this.numberOfRepetitions = 100;
 	}
 	
 	public void setupTestEnvironment() throws IOException {
-		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("java", new JavaResource2Factory());
-		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
-		JavaClasspath.get().clear();
-		JavaClasspath.get().registerStdLib();
-		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("json", new JsonResourceFactory());
 		if (Files.exists(javaOutput)) {
 			PathUtils.deleteDirectory(javaOutput);
 			PathUtils.deleteDirectory(xmiOutput);
@@ -204,8 +197,12 @@ public class PerformanceTestExecutor {
 		Files.writeString(summaryFile, builder.toString());
 	}
 
+	protected void setNumberOfRepetitions(int noRepetitions) {
+		this.numberOfRepetitions = noRepetitions;
+	}
+
 	protected int getNumberOfRepetitions() {
-		return 100;
+		return this.numberOfRepetitions;
 	}
 	
 	private void measurePerformance(String name, int max, boolean fullResolution, boolean recover) {
