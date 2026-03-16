@@ -16,13 +16,16 @@
 
 package tools.mdsd.jamopp.test.performance;
 
+import org.junit.jupiter.api.BeforeAll;
+
 /**
  * This class provides a reduced extent of the performance tests to save time and resources.
  * It acts more as a demonstration for the performance test execution.
  */
 public class ReducedPerformanceTest extends PerformanceTest {
-    @Override
-    protected int getNumberOfRepetitions() {
-        return 1;
+    @BeforeAll()
+    public static void setupEverything() {
+        PerformanceTest.setupEverything();
+        TEST_EXECUTOR.setNumberOfRepetitions(1);
     }
 }
