@@ -65,8 +65,7 @@ public class OutputUtility {
 				continue;
 			}
 			
-			File outputFile = new File("." + File.separator + outputFolder
-					+ File.separator + outputFileName);
+			File outputFile = new File(outputFolder + File.separator + outputFileName);
 			URI fileURI = URI.createFileURI(outputFile.getAbsolutePath()).appendFileExtension(fileExtension);	
 			
 			Resource targetResource = targetSet.createResource(fileURI);
