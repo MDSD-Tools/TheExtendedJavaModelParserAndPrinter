@@ -16,6 +16,7 @@
 
 package tools.mdsd.jamopp.test.performance.stepwise;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class EvaluationStepResult {
@@ -23,7 +24,7 @@ public class EvaluationStepResult {
 	private long timeResolution;
 	private long timeModelSaving;
 	private long totalProxies;
-	private List<EvaluationStepFileChange> changedFiles;
+	private List<EvaluationStepFileChange> changedFiles = new ArrayList<>();
 
 	public int getStep() {
 		return step;

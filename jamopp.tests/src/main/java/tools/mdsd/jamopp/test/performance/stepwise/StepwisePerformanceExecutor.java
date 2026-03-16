@@ -35,10 +35,13 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.revwalk.RevCommit;
+import org.eclipse.jgit.treewalk.AbstractTreeIterator;
 import org.eclipse.jgit.treewalk.CanonicalTreeParser;
+import org.eclipse.jgit.treewalk.EmptyTreeIterator;
 
 import com.google.gson.Gson;
 
+import tools.mdsd.jamopp.options.ParserOptions;
 import tools.mdsd.jamopp.parser.jdt.singlefile.JaMoPPJDTSingleFileParser;
 import tools.mdsd.jamopp.proxy.IJavaContextDependentURIFragmentCollector;
 import tools.mdsd.jamopp.test.ChartUtility;
@@ -67,6 +70,16 @@ public class StepwisePerformanceExecutor {
 	private static final String CHARTS_MODEL_SIZE_FILE_NAME = "chart-model-size.pdf";
 	private Git git;
 	private RevCommit lastCommit;
+
+	private void prepareParserOptionsForSecondVariant() {
+		ParserOptions.CREATE_LAYOUT_INFORMATION.setValue(Boolean.TRUE);
+		ParserOptions.REGISTER_LOCAL.setValue(Boolean.TRUE);
+		ParserOptions.PREFER_BINDING_CONVERSION.setValue(Boolean.FALSE);
+		ParserOptions.RESOLVE_BINDINGS.setValue(Boolean.FALSE);
+		ParserOptions.RESOLVE_BINDINGS_OF_INFERABLE_TYPES.setValue(Boolean.FALSE);
+		ParserOptions.RESOLVE_EVERYTHING.setValue(Boolean.FALSE);
+		ParserOptions.RESOLVE_ALL_BINDINGS.setValue(Boolean.FALSE);
+	}
 	
 	public void measurePerformance(String name, Path srcDirectory, Path outputDirectory) throws IOException, GitAPIException {
 		if (Files.notExists(srcDirectory) || !Files.isDirectory(srcDirectory)) {
@@ -81,6 +94,7 @@ public class StepwisePerformanceExecutor {
 			Files.createDirectories(outputDirectory);
 		}
 
+		prepareParserOptionsForSecondVariant();
 		LOGGER.info("Executing performance measurements for: " + name);
         StepwiseEvaluationResult result = new StepwiseEvaluationResult();
 		result.setName(name);
@@ -171,11 +185,13 @@ public class StepwisePerformanceExecutor {
 
 		// Get all changed files.
 		var gitObjReader = this.git.getRepository().newObjectReader();
-		CanonicalTreeParser oldTree = null;
+		AbstractTreeIterator oldTree = null;
 		if (this.lastCommit != null) {
-			oldTree = new CanonicalTreeParser(null, gitObjReader, this.lastCommit);
+			oldTree = new CanonicalTreeParser(null, gitObjReader, this.lastCommit.getTree().getId());
+		} else {
+			oldTree = new EmptyTreeIterator();
 		}
-		CanonicalTreeParser newTree = new CanonicalTreeParser(null, gitObjReader, recentCommit);
+		CanonicalTreeParser newTree = new CanonicalTreeParser(null, gitObjReader, recentCommit.getTree().getId());
 		var diffEntries = this.git.diff().setShowNameOnly(true).setOldTree(oldTree).setNewTree(newTree).call();
 
 		// Calculate the size for every changed file.
