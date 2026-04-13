@@ -164,5 +164,9 @@
             <groupId>org.knowm.xchart</groupId>
             <artifactId>xchart</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-core</artifactId>
+        </dependency>
     </dependencies>
 </project>
