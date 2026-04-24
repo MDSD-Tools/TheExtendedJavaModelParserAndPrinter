@@ -11,6 +11,7 @@ import org.eclipse.jgit.api.errors.GitAPIException;
 
 import tools.mdsd.jamopp.model.java.JavaClasspath;
 import tools.mdsd.jamopp.resource.JavaResource2Factory;
+import tools.mdsd.jamopp.test.performance.monitor.MemoryMonitor;
 import tools.mdsd.jamopp.test.performance.stepwise.StepwisePerformanceExecutor;
 
 public final class PerformanceTestStandaloneMain {
@@ -31,13 +32,19 @@ public final class PerformanceTestStandaloneMain {
     }
 
     public static void main(String[] args) {
+        var actualOutputDirectory = MAIN_ROOT_PATH.resolve(DEFAULT_OUTPUT_PATH);
+        var memoryMonitor = new MemoryMonitor(actualOutputDirectory.resolve("mem.txt"));
+        memoryMonitor.initialize();
+
         setupRegistries();
 
         if (args.length == 1 && args[0].equals(OPTION_NAME_STEPWISE_TEST)) {
             StepwisePerformanceExecutor executor = new StepwisePerformanceExecutor();
             try {
                 executor.measurePerformance("teastore-stepwise", MAIN_ROOT_PATH.resolve(DEFAULT_INPUT_PATH),
-                    MAIN_ROOT_PATH.resolve(DEFAULT_OUTPUT_PATH));
+                    actualOutputDirectory);
+                memoryMonitor.stop();
+                memoryMonitor.readDataAndCreateChart();
             } catch (IOException | GitAPIException e) {
                 e.printStackTrace();
             }
@@ -45,7 +52,7 @@ public final class PerformanceTestStandaloneMain {
         }
 
         PerformanceTestExecutor executor = new PerformanceTestExecutor(MAIN_ROOT_PATH.resolve(DEFAULT_INPUT_PATH),
-            MAIN_ROOT_PATH.resolve(DEFAULT_OUTPUT_PATH));
+            actualOutputDirectory);
         if (!(args.length == 1 && args[0].equals(OPTION_NAME_FULL_TEST))) {
             executor.setNumberOfRepetitions(1);
         }
@@ -56,6 +63,8 @@ public final class PerformanceTestStandaloneMain {
             executor.measureTeaStoreWithOneLevelResolution();
             executor.measureTeaStoreFullResolution();
             executor.cleanEverything();
+            memoryMonitor.stop();
+            memoryMonitor.readDataAndCreateChart();
         } catch (IOException e) {
             e.printStackTrace();
         }
