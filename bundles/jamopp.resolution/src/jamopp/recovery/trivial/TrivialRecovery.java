@@ -112,8 +112,8 @@ public class TrivialRecovery {
 			this.artFields.put(name, result);
 			return result;
 		} else if (obj instanceof EnumConstant) {
-			if (this.artConstants.containsKey(obj)) {
-				return this.artConstants.get(obj);
+			if (this.artConstants.containsKey(name)) {
+				return this.artConstants.get(name);
 			}
 			var result = MembersFactory.eINSTANCE.createEnumConstant();
 			result.setName(name);
