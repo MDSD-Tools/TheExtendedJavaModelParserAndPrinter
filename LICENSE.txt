@@ -1,3 +1,6 @@
+Copyright (c) 2020-2023
+Modelling for Continuous Software Engineering (MCSE) group, Institute of Information Security and Dependability (KASTEL), Karlsruhe Institute of Technology (KIT).
+
 Copyright (c) 2006-2014
 Software Technology Group, Dresden University of Technology
 DevBoost GmbH, Berlin, Amtsgericht Charlottenburg, HRB 140026
@@ -11,8 +14,8 @@ Contributors:
   Software Technology Group - TU Dresden, Germany;
   DevBoost GmbH - Berlin, Germany
      - initial API and implementation
-  Martin Armbruster
-     - Extension for Java 7-13
+  MCSE, KASTEL, KIT
+     - Extension for Java 7-15, further independent maintenance
 
 ------------------------------------------------------------------------------
 

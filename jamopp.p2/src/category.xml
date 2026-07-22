@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature id="tools.mdsd.jamopp.feature">
+      <category name="tools.mdsd.jamopp.core"/>
+   </feature>
+   <bundle id="tools.mdsd.jamopp.model">
+      <category name="tools.mdsd.jamopp.metamodel"/>
+   </bundle>
+   <category-def name="tools.mdsd.jamopp.core" label="Extended Java Model Parser and Printer (JaMoPP) Core"/>
+   <category-def name="tools.mdsd.jamopp.metamodel" label="Extended Java Model Parser and Printer (JaMoPP) Metamodel"/>
+</site>

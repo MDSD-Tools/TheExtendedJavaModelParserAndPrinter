@@ -14,6 +14,8 @@ javacore.*
 local.properties
 src-gen/
 tmp/
+.project
+.classpath
 
 # Maven
 .mvn/timing.properties
