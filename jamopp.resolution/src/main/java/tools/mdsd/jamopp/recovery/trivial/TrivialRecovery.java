@@ -50,6 +50,7 @@ public class TrivialRecovery {
 	private HashMap<String, tools.mdsd.jamopp.model.java.classifiers.Class> artClasses = new HashMap<>();
 	private HashMap<String, Annotation> artAnnotations = new HashMap<>();
 	private HashMap<String, Field> artFields = new HashMap<>();
+	private HashMap<String, EnumConstant> artConstants = new HashMap<>();
 	private HashMap<String, ClassMethod> artClassMethods = new HashMap<>();
 	private HashMap<String, InterfaceMethod> artInterfaceMethods = new HashMap<>();
 	private HashMap<String, EnumConstant> artEnumConstants = new HashMap<>();
@@ -115,6 +116,15 @@ public class TrivialRecovery {
 			this.artificialClass.getMembers().add(result);
 			this.artFields.put(name, result);
 			return result;
+		} else if (obj instanceof EnumConstant) {
+			if (this.artConstants.containsKey(obj)) {
+				return this.artConstants.get(obj);
+			}
+			var result = MembersFactory.eINSTANCE.createEnumConstant();
+			result.setName(name);
+			this.artificialEnum.getConstants().add(result);
+			this.artConstants.put(name, result);
+			return result;
 		} else if (obj instanceof ClassMethod) {
 			if (this.artClassMethods.containsKey(name)) {
 				return this.artClassMethods.get(name);
@@ -146,6 +156,7 @@ public class TrivialRecovery {
 				return this.artPackages.get(name);
 			}
 			var result = ContainersFactory.eINSTANCE.createPackage();
+			result.setName("");
 			p.getNamespaces().forEach(ns -> result.getNamespaces().add(ns));
 			this.artificialResource.getContents().add(result);
 			this.artPackages.put(name, result);
@@ -178,6 +189,7 @@ public class TrivialRecovery {
 					URI.createURI("pathmap:/javaclass/ArtificialResource.java"));
 			
 			this.artificialCU = ContainersFactory.eINSTANCE.createCompilationUnit();
+			this.artificialCU.setName("");
 			this.artificialResource.getContents().add(this.artificialCU);
 			
 			this.artificialClass = ClassifiersFactory.eINSTANCE.createClass();
@@ -190,6 +202,10 @@ public class TrivialRecovery {
 			
 			this.objectClass = findObjectClass();
 			this.artClasses.put("Object", objectClass);
+			
+			this.artificialEnum = ClassifiersFactory.eINSTANCE.createEnumeration();
+			this.artificialEnum.setName("SyntheticEnum");
+			this.artificialCU.getClassifiers().add(this.artificialEnum);
 		}
 	}
 	
