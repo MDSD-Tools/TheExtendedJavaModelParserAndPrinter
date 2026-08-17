@@ -26,7 +26,6 @@ FROM jdk-17-src
 COPY --from=build /etc/jamopp/jamopp.tests/target/jamopp.tests-6.0.0-SNAPSHOT.jar /app/jamopp.tests-6.0.0-SNAPSHOT.jar
 COPY --from=build /etc/jamopp/jamopp.tests/target/dependency /app/dependency/
 COPY --from=teastore-build /etc/jamopp/jamopp.tests/target/src-bulk/TeaStore /app/jamopp.tests/target/src-bulk/TeaStore/
-COPY ./docker/entrypoint-jamopp.sh /app/entrypoint-jamopp.sh
 
 WORKDIR /app
-ENTRYPOINT ["sh", "-c", "./entrypoint-jamopp.sh"]
+ENTRYPOINT ["java", "-jar", "/app/jamopp.tests-6.0.0-SNAPSHOT.jar"]

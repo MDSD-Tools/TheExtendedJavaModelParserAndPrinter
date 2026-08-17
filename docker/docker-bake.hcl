@@ -16,4 +16,3 @@ target "jamopp" {
   network = "host"
   tags = ["tools.mdsd/jamopp-performance-tests:6.0.0-SNAPSHOT"]
 }
-docker run --mount type=bind,source=./ttt,target=/app/jamopp.tests/target/tests/output_performance tools.mdsd/jamopp-performance-tests:6.0.0-SNAPSHOT
