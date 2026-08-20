@@ -264,7 +264,7 @@ public class PerformanceTestExecutor {
 			IJavaContextDependentURIFragmentCollector.GLOBAL_INSTANCE
 				.getContextDependentURIFragmentMap().clear();
 		}
-		LOGGER.debug("Finished meausring " + name);
+		LOGGER.debug("Finished measuring " + name);
 	}
 	
 	private List<StoragePerformance> measureStorage(ResourceSet resourceSet) throws IOException {

@@ -7,7 +7,7 @@
     <artifactId>jamopp.tests</artifactId>
     <packaging>jar</packaging>
     <name>Extended JaMoPP Tests</name>
-	<description>This package contains only tests for the extended JaMoPP.</description>
+    <description>This package contains only tests for the extended JaMoPP.</description>
 
     <parent>
         <groupId>tools.mdsd</groupId>
@@ -157,21 +157,21 @@
             <artifactId>commons-compress</artifactId>
         </dependency>
         <dependency>
-		    <groupId>commons-io</groupId>
-		    <artifactId>commons-io</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.emfcloud</groupId>
-			<artifactId>emfjson-jackson</artifactId>
-		</dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.emfcloud</groupId>
+            <artifactId>emfjson-jackson</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-math4-legacy</artifactId>
         </dependency>
-		<dependency>
-		    <groupId>org.eclipse.jgit</groupId>
-		    <artifactId>org.eclipse.jgit</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>org.eclipse.jgit</groupId>
+            <artifactId>org.eclipse.jgit</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.knowm.xchart</groupId>
             <artifactId>xchart</artifactId>
