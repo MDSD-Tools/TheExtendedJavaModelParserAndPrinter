@@ -67,7 +67,7 @@ public final class ChartUtility {
     }
 
     public static void buildAndSaveChartWithDiff(double[] data, String title, String xAxisTitle, String yAxisTitle, Path chartFile) throws IOException {
-        double[] diffData = new double[data.length - 1];
+        double[] diffData = new double[data.length <= 1 ? 0 : data.length - 1];
         for (var index = 0; index < diffData.length; index++) {
             diffData[index] = data[index + 1] - data[index];
         }

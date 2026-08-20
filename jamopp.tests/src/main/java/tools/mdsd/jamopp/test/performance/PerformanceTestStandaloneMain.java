@@ -9,6 +9,8 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.emfcloud.jackson.resource.JsonResourceFactory;
 import org.eclipse.jgit.api.errors.GitAPIException;
 
+import com.google.gson.JsonSyntaxException;
+
 import tools.mdsd.jamopp.model.java.JavaClasspath;
 import tools.mdsd.jamopp.resource.JavaResource2Factory;
 import tools.mdsd.jamopp.test.performance.monitor.MemoryMonitor;
@@ -45,7 +47,7 @@ public final class PerformanceTestStandaloneMain {
                     actualOutputDirectory);
                 memoryMonitor.stop();
                 memoryMonitor.readDataAndCreateChart();
-            } catch (IOException | GitAPIException e) {
+            } catch (IOException | GitAPIException | NumberFormatException | JsonSyntaxException e) {
                 e.printStackTrace();
             }
             return;
@@ -65,7 +67,7 @@ public final class PerformanceTestStandaloneMain {
             executor.cleanEverything();
             memoryMonitor.stop();
             memoryMonitor.readDataAndCreateChart();
-        } catch (IOException e) {
+        } catch (IOException | NumberFormatException | JsonSyntaxException e) {
             e.printStackTrace();
         }
     }

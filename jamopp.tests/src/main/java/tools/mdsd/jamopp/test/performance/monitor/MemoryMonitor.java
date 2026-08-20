@@ -32,6 +32,7 @@ import io.micrometer.core.instrument.binder.jvm.JvmMemoryMetrics;
 import tools.mdsd.jamopp.test.ChartUtility;
 
 public class MemoryMonitor {
+    private boolean initialized = false;
     private Path outputFile;
 
     public MemoryMonitor(Path outputFile) {
@@ -39,6 +40,10 @@ public class MemoryMonitor {
     }
 
     public void initialize() {
+        if (this.initialized) {
+            return;
+        }
+
         Metrics.globalRegistry.add(
             new JamoppPerformanceStepMeterRegistry(
                 new JamoppPerformanceStepRegistryConfig(),
@@ -47,6 +52,7 @@ public class MemoryMonitor {
             )
         );
         new JvmMemoryMetrics().bindTo(Metrics.globalRegistry);
+        this.initialized = true;
     }
 
     public void stop() {

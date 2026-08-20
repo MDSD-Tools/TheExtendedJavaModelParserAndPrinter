@@ -102,6 +102,7 @@ public class StepwisePerformanceExecutor {
 		JaMoPPJDTSingleFileParser parser = new JaMoPPJDTSingleFileParser();
 		parser.setExclusionPatterns(".*?src/test/.*?");
 
+		LOGGER.info("Parsing the directory " + srcDirectory.toString());
         long millis = System.currentTimeMillis();
         ResourceSet set = parser.parseDirectory(srcDirectory);
         result.setParsingTime(System.currentTimeMillis() - millis);
@@ -120,18 +121,20 @@ public class StepwisePerformanceExecutor {
 		stepResult.setTimeModelSaving(outputResult.getRight());
 		outputResult.getLeft().forEach(stepResult::addChangedFiles);
 		this.saveResults(result, resultFile);
-			
+		
+		LOGGER.info("Resolving proxy objects.");
 		List<Resource> oldResources = List.of();
 		int iteration = 1;
 		do {
 			oldResources = new ArrayList<>(set.getResources());
+			LOGGER.info("Having " + oldResources.size() + " resources to check for proxy objects.");
 
 			for (Resource resource : oldResources) {
 				if (EcoreUtil.ProxyCrossReferencer.find(resource).size() == 0) {
 					continue;
 				}
 
-				System.out.println(resource.getURI().toString());
+				LOGGER.info("Step " + iteration + ".");
 
 				millis = System.currentTimeMillis();
 				EcoreUtil.resolveAll(resource);
