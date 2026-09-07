@@ -402,7 +402,7 @@ public class TypeParameterExtension {
 	private static void inferTypeReferenceFromMethod(TypeParameter me, TypeReference typeReference,
 			Reference reference, Method method, MethodCall methodCall, EList<TypeReference> resultList,
 			Reference parentReference) {
-		if (!method.equals(methodCall.getTarget())) {
+		if (!method.equals(methodCall.getTarget()) || method.getParameters().size() > methodCall.getArguments().size()) {
 			return;
 		}
 		if (method.getTypeParameters().size() == methodCall.getCallTypeArguments().size()) {
