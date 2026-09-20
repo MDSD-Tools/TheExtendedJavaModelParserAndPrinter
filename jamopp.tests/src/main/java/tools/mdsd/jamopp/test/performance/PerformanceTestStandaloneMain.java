@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.core.config.Configurator;
+import org.apache.logging.log4j.core.config.builder.api.ConfigurationBuilderFactory;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.emfcloud.jackson.resource.JsonResourceFactory;
@@ -33,7 +36,24 @@ public final class PerformanceTestStandaloneMain {
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("json", new JsonResourceFactory());
     }
 
+    private static void setupLogging() {
+        var logConfigBuilder = ConfigurationBuilderFactory.newConfigurationBuilder();
+        var logConfig = logConfigBuilder
+            .add(
+                logConfigBuilder
+                    .newAppender("CONSOLE", "Console")
+                    .add(logConfigBuilder.newLayout("PatternLayout")))
+            .add(
+                logConfigBuilder
+                    .newRootLogger(Level.ALL)
+                    .add(logConfigBuilder.newAppenderRef("CONSOLE")))
+            .build();
+        Configurator.initialize(logConfig);
+    }
+
     public static void main(String[] args) {
+        setupLogging();
+        
         var actualOutputDirectory = MAIN_ROOT_PATH.resolve(DEFAULT_OUTPUT_PATH);
         var memoryMonitor = new MemoryMonitor(actualOutputDirectory.resolve("mem.txt"));
         memoryMonitor.initialize();
