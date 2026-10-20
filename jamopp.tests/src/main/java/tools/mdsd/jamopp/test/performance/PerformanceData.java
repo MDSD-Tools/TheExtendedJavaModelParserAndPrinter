@@ -20,7 +20,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-
+import org.apache.commons.math4.legacy.stat.descriptive.SummaryStatistics;
 import com.google.gson.Gson;
 
 /**
@@ -58,6 +58,26 @@ public class PerformanceData {
 	
 	public double getAverageResolutionTime() {
 		return (double) points.stream().mapToLong(p -> p.getResolutionTime()).sum() / points.size();
+	}
+	
+	public double getAverageRecoveryTime() {
+		return (double) points.stream().mapToLong(p -> p.getRecoverTime()).sum() / points.size();
+	}
+	
+	public SummaryStatistics getStatistics() {
+		SummaryStatistics stats = new SummaryStatistics();
+		points.forEach(p -> {
+			stats.addValue(p.getParseTime() + p.getResolutionTime() + p.getRecoverTime());
+		});
+		return stats;
+	}
+	
+	public SummaryStatistics getStatisticsWithoutResolution() {
+		SummaryStatistics stats = new SummaryStatistics();
+		points.forEach(p -> {
+			stats.addValue(p.getParseTime() + p.getRecoverTime());
+		});
+		return stats;
 	}
 	
 	public static PerformanceData load(Path file) {

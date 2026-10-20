@@ -402,7 +402,7 @@ public class TypeParameterExtension {
 	private static void inferTypeReferenceFromMethod(TypeParameter me, TypeReference typeReference,
 			Reference reference, Method method, MethodCall methodCall, EList<TypeReference> resultList,
 			Reference parentReference) {
-		if (!method.equals(methodCall.getTarget())) {
+		if (!method.equals(methodCall.getTarget()) || method.getParameters().size() > methodCall.getArguments().size()) {
 			return;
 		}
 		if (method.getTypeParameters().size() == methodCall.getCallTypeArguments().size()) {
@@ -738,6 +738,9 @@ public class TypeParameterExtension {
 				&& targetReference instanceof TypeArgumentable) {
 			TypeArgumentable typeArg = (TypeArgumentable) searchReference;
 			TypeArgumentable targetArg = (TypeArgumentable) targetReference;
+			if (targetArg.getTypeArguments().size() != typeArg.getTypeArguments().size()) {
+				return null;
+			}
 			for (int i = 0; i < typeArg.getTypeArguments().size(); i++) {
 				TypeArgument arg = typeArg.getTypeArguments().get(i);
 				TypeReference refOfArg = TypeReferenceExtension.getTypeReferenceOfTypeArgument(arg);
