@@ -106,6 +106,9 @@ public class ReferenceExtension {
 			Type thisClass = null;
 			if (me.getPrevious() != null) {
 				thisClassRef = me.getPrevious().getReferencedTypeReference();
+				if (thisClassRef == null) {
+					return null;
+				}
 				thisClass = thisClassRef.getTarget();
 			} else {
 				AnonymousClass anonymousContainer = me.getContainingAnonymousClass();

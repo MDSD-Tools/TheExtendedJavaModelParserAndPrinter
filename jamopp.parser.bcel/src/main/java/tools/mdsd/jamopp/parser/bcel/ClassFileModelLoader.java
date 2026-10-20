@@ -57,6 +57,7 @@ import tools.mdsd.jamopp.model.java.modifiers.AnnotableAndModifiable;
 import tools.mdsd.jamopp.model.java.modifiers.ModifiersFactory;
 import tools.mdsd.jamopp.model.java.parameters.Parameter;
 import tools.mdsd.jamopp.model.java.parameters.ParametersFactory;
+import tools.mdsd.jamopp.model.java.statements.StatementsFactory;
 import tools.mdsd.jamopp.model.java.types.ClassifierReference;
 import tools.mdsd.jamopp.model.java.types.TypeReference;
 import tools.mdsd.jamopp.model.java.types.TypedElement;
@@ -215,6 +216,10 @@ public class ClassFileModelLoader {
 			emfMethod = membersFactory.createClassMethod();
 		}
 		emfMethod.setName(method.getName());
+		
+		var block = StatementsFactory.eINSTANCE.createBlock();
+		block.setName("");
+		emfMethod.setStatement(block);
 
 		String signature = method.getReturnType().getSignature();
 		String plainSignature = "";
@@ -302,6 +307,7 @@ public class ClassFileModelLoader {
 			constructor.getTypeParameters().addAll(emfMethod.getTypeParameters());
 			constructor.getParameters().addAll(emfMethod.getParameters());
 			constructor.setName(emfClassifier.getName());
+			constructor.setBlock(block);
 			return constructor;
 		}
 

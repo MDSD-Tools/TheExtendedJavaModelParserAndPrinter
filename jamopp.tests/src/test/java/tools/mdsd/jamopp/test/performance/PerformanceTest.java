@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021, Martin Armbruster
+ * Copyright (c) 2021-2026, Martin Armbruster
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -13,172 +13,63 @@
 
 package tools.mdsd.jamopp.test.performance;
 
-import static org.junit.jupiter.api.Assertions.fail;
-
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.HashSet;
-import java.util.Set;
+
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import tools.mdsd.jamopp.options.ParserOptions;
-import tools.mdsd.jamopp.parser.jdt.singlefile.JaMoPPJDTSingleFileParser;
-import tools.mdsd.jamopp.resource.JavaResource2;
 import tools.mdsd.jamopp.test.AbstractJaMoPPTests;
-import tools.mdsd.jamopp.test.bulk.SingleFileParserBulkTests;
 
 /**
  * Class to perform performance tests and measurements.
  */
-@Disabled
 public class PerformanceTest extends AbstractJaMoPPTests {
 	private static final Logger LOGGER = LogManager.getLogger("jamopp."
-			+ SingleFileParserBulkTests.class.getSimpleName());
-	private final String inputFolder = "target" + File.separator + "src-bulk" + File.separator + "TeaStore";
-	private final Path parentOutput = Paths.get("output_performance");
+			+ PerformanceTest.class.getSimpleName());
+	protected static PerformanceTestExecutor TEST_EXECUTOR;
+
+	@BeforeAll
+	public static void setupEverything() {
+		PerformanceTestStandaloneMain.setupRegistries();
+		TEST_EXECUTOR = new PerformanceTestExecutor(PerformanceTestStandaloneMain.DEFAULT_INPUT_PATH.toAbsolutePath(),
+			PerformanceTestStandaloneMain.DEFAULT_OUTPUT_PATH.toAbsolutePath());
+	}
 	
-	@Test
-	public void measureTeaStoreFullResolution() {
-		ParserOptions.CREATE_LAYOUT_INFORMATION.setValue(Boolean.TRUE);
-		ParserOptions.REGISTER_LOCAL.setValue(Boolean.TRUE);
-		ParserOptions.PREFER_BINDING_CONVERSION.setValue(Boolean.TRUE);
-		ParserOptions.RESOLVE_BINDINGS.setValue(Boolean.TRUE);
-		ParserOptions.RESOLVE_BINDINGS_OF_INFERABLE_TYPES.setValue(Boolean.TRUE);
-		ParserOptions.RESOLVE_EVERYTHING.setValue(Boolean.TRUE);
-		ParserOptions.RESOLVE_ALL_BINDINGS.setValue(Boolean.TRUE);
-		measurePerformance("teastore-full-resolution", 100, true);
+	@BeforeEach
+	public void setup() throws IOException {
+		TEST_EXECUTOR.setupTestEnvironment();
 	}
 	
 	@Test
-	public void measureTeaStoreWithoutResolvingEverything() {
-		ParserOptions.CREATE_LAYOUT_INFORMATION.setValue(Boolean.TRUE);
-		ParserOptions.REGISTER_LOCAL.setValue(Boolean.TRUE);
-		ParserOptions.PREFER_BINDING_CONVERSION.setValue(Boolean.TRUE);
-		ParserOptions.RESOLVE_BINDINGS.setValue(Boolean.TRUE);
-		ParserOptions.RESOLVE_BINDINGS_OF_INFERABLE_TYPES.setValue(Boolean.TRUE);
-		ParserOptions.RESOLVE_EVERYTHING.setValue(Boolean.FALSE);
-		ParserOptions.RESOLVE_ALL_BINDINGS.setValue(Boolean.TRUE);
-		measurePerformance("teastore-without-resolving-everything", 20, true);
+	public void measureTeaStoreFullResolution() {
+		TEST_EXECUTOR.measureTeaStoreFullResolution();
 	}
 	
 	@Test
 	public void measureTeaStoreWithOneLevelResolution() {
-		ParserOptions.CREATE_LAYOUT_INFORMATION.setValue(Boolean.TRUE);
-		ParserOptions.REGISTER_LOCAL.setValue(Boolean.TRUE);
-		ParserOptions.PREFER_BINDING_CONVERSION.setValue(Boolean.TRUE);
-		ParserOptions.RESOLVE_BINDINGS.setValue(Boolean.TRUE);
-		ParserOptions.RESOLVE_BINDINGS_OF_INFERABLE_TYPES.setValue(Boolean.TRUE);
-		ParserOptions.RESOLVE_EVERYTHING.setValue(Boolean.FALSE);
-		ParserOptions.RESOLVE_ALL_BINDINGS.setValue(Boolean.FALSE);
-		measurePerformance("teastore-one-level-resolution", 20, false);
+		TEST_EXECUTOR.measureTeaStoreWithOneLevelResolution();
 	}
 	
 	@Test
 	public void measureTeaStoreSecondVariant() {
-		ParserOptions.CREATE_LAYOUT_INFORMATION.setValue(Boolean.TRUE);
-		ParserOptions.REGISTER_LOCAL.setValue(Boolean.TRUE);
-		ParserOptions.PREFER_BINDING_CONVERSION.setValue(Boolean.TRUE);
-		ParserOptions.RESOLVE_BINDINGS.setValue(Boolean.FALSE);
-		ParserOptions.RESOLVE_BINDINGS_OF_INFERABLE_TYPES.setValue(Boolean.FALSE);
-		ParserOptions.RESOLVE_EVERYTHING.setValue(Boolean.FALSE);
-		ParserOptions.RESOLVE_ALL_BINDINGS.setValue(Boolean.FALSE);
-		measurePerformance("teastore-second-variant", 20, false);
+		TEST_EXECUTOR.measureTeaStoreSecondVariant();
 	}
 	
-	@Test
-	public void printAllAverageTimes() {
-		try {
-			Files.walk(parentOutput).forEach(path -> {
-				var data = PerformanceData.load(path);
-				System.out.println(path.getFileName().toString());
-				System.out.println("Average parsing time: " + data.getAverageParseTime());
-				System.out.println("Average resolution time: " + data.getAverageResolutionTime());
-			});
-		} catch (IOException e) {
-		}
+	@AfterAll
+	public static void clean() throws IOException {
+		TEST_EXECUTOR.cleanEverything();
 	}
 	
 	@Override
 	protected boolean isExcludedFromReprintTest(String filename) {
-		return false;
+		return true;
 	}
 
 	@Override
 	protected String getTestInputFolder() {
-		return inputFolder;
-	}
-	
-	private void measurePerformance(String name, int max, boolean fullResolution) {
-		String testInput = getTestInputFolder();
-		LOGGER.debug("Executing performance measurements for " + name);
-		Path target = Paths.get(testInput);
-		JaMoPPJDTSingleFileParser parser = new JaMoPPJDTSingleFileParser();
-		parser.setExclusionPatterns(".*?src/test/.*?");
-		try {
-			Files.createDirectories(parentOutput);
-		} catch (IOException e1) {
-		}
-		Path outputMeasurement = parentOutput.resolve(name + ".json");
-		PerformanceData result;
-		if (Files.exists(outputMeasurement)) {
-			result = PerformanceData.load(outputMeasurement);
-		} else {
-			result = new PerformanceData();
-		}
-		int actualMax = Math.min(max, max - result.getPoints().size());
-		for (int i = 0; i < actualMax; i++) {
-			PerformanceDataPoint point = new PerformanceDataPoint();
-			long millis = System.currentTimeMillis();
-			ResourceSet set = parser.parseDirectory(target);
-			millis = System.currentTimeMillis() - millis;
-			point.setParseTime(millis);
-			if (fullResolution) {
-				millis = System.currentTimeMillis();
-				EcoreUtil.resolveAll(set);
-				millis = System.currentTimeMillis() - millis;
-			} else {
-				var ress = new HashSet<>(set.getResources());
-				millis = System.currentTimeMillis();
-				for (Resource r : ress) {
-					EcoreUtil.resolveAll(r);
-				}
-				millis = System.currentTimeMillis() - millis;
-			}
-			point.setResolutionTime(millis);
-			Set<Resource> parsedFiles = new HashSet<>(set.getResources());
-			LOGGER.debug("Asserting the resolution of all proxy objects.");
-			for (Resource res : parsedFiles) {
-				if (res.getContents().size() == 0 || !(fullResolution && res.getURI().isFile())) {
-					continue;
-				}
-				this.assertResolveAllProxies(res);
-			}
-			LOGGER.debug("Reprinting.");
-			for (Resource res : parsedFiles) {
-				if (res.getContents().size() == 0 || !(fullResolution && res.getURI().isFile())) {
-					continue;
-				}
-				try {
-					this.testReprint((JavaResource2) res);
-				} catch (Exception e) {
-					fail(e.getMessage());
-				}
-			}
-			result.getPoints().add(point);
-			PerformanceData.save(result, outputMeasurement);
-			for (Resource res : parsedFiles) {
-				res.unload();
-			}
-		}
-		LOGGER.debug("Finished meausring " + name);
+		return PerformanceTestStandaloneMain.DEFAULT_INPUT_PATH.toString();
 	}
 }

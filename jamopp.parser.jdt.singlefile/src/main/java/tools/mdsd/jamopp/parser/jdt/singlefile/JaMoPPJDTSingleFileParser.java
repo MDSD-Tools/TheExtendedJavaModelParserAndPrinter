@@ -207,7 +207,7 @@ public class JaMoPPJDTSingleFileParser implements JaMoPPParserAPI {
 	
 	private ASTParser setUpParser() {
 		ASTParser parser = ASTParser.newParser(AST.JLS15);
-		parser.setResolveBindings(true);
+		parser.setResolveBindings(ParserOptions.RESOLVE_BINDINGS.isTrue());
 		parser.setStatementsRecovery(true);
 		Map<String, String> compilerOptions = new HashMap<>();
 		compilerOptions.put(JavaCore.COMPILER_SOURCE, JavaCore.VERSION_15);

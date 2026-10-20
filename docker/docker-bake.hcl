@@ -1,0 +1,18 @@
+group "default" {
+    targets = ["jamopp"]
+}
+
+target "jdk-17-src" {
+  context = "."
+  dockerfile = "jdk-17-src.Dockerfile"
+}
+
+target "jamopp" {
+  context = ".."
+  dockerfile = "./docker/Dockerfile"
+  contexts = {
+    jdk-17-src = "target:jdk-17-src"
+  }
+  network = "host"
+  tags = ["tools.mdsd/jamopp-performance-tests:6.0.0-SNAPSHOT"]
+}

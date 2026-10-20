@@ -21,30 +21,24 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.File;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.Resource.Diagnostic;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.EcoreUtil.EqualityHelper;
-import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import tools.mdsd.jamopp.model.java.containers.CompilationUnit;
-import tools.mdsd.jamopp.model.java.containers.JavaRoot;
-import tools.mdsd.jamopp.model.java.containers.Package;
 import tools.mdsd.jamopp.options.ParserOptions;
 import tools.mdsd.jamopp.parser.jdt.singlefile.JaMoPPJDTSingleFileParser;
 import tools.mdsd.jamopp.test.AbstractJaMoPPTests;
+import tools.mdsd.jamopp.test.OutputUtility;
 
 public class JavaXMISerializationTest extends AbstractJaMoPPTests {
 
@@ -88,56 +82,7 @@ public class JavaXMISerializationTest extends AbstractJaMoPPTests {
 	}
 	
 	protected ResourceSet transferToXMI(ResourceSet sourceSet, boolean includeAllResources) throws Exception {
-		int emptyFileName = 0;
-		
-		ResourceSet targetSet = new ResourceSetImpl();
-		
-		for (Resource javaResource : new ArrayList<>(sourceSet.getResources())) {
-			if (javaResource.getContents().isEmpty()) {
-				System.out.println("WARNING: Emtpy Resource: " + javaResource.getURI());
-				continue;
-			}
-			if (!includeAllResources && !javaResource.getURI().isFile()) {
-				continue;
-			}
-			JavaRoot root = (JavaRoot) javaResource.getContents().get(0);
-			String outputFileName = "ERROR";
-			if (root instanceof CompilationUnit) {
-				outputFileName = root.getNamespacesAsString().replace(".", File.separator) + File.separator;
-				CompilationUnit cu = (CompilationUnit) root;
-				if (cu.getClassifiers().size() > 0) {
-					outputFileName += cu.getClassifiers().get(0).getName();
-				} else {
-					outputFileName += emptyFileName++;
-				}
-
-			} else if (root instanceof Package) {
-				outputFileName = root.getNamespacesAsString()
-						.replace(".", File.separator) + File.separator + "package-info";
-				if (outputFileName.startsWith(File.separator)) {
-					outputFileName = outputFileName.substring(1);
-				}
-			} else if (root instanceof tools.mdsd.jamopp.model.java.containers.Module) {
-				outputFileName = root.getNamespacesAsString()
-						.replace(".", File.separator) + File.separator + "module-info";
-			} else {
-				fail();
-			}
-			File outputFile = new File("." + File.separator + TEST_OUTPUT_FOLDER_NAME
-					+ File.separator + outputFileName);
-			URI xmiFileURI = URI.createFileURI(outputFile.getAbsolutePath()).appendFileExtension("xmi");	
-			XMIResource xmiResource = (XMIResource) targetSet.createResource(xmiFileURI);
-			xmiResource.setEncoding(StandardCharsets.UTF_8.toString());
-			xmiResource.getContents().addAll(javaResource.getContents());
-		}
-		for (Resource xmiResource : targetSet.getResources()) {
-			try {
-				xmiResource.save(targetSet.getLoadOptions());
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		return targetSet;
+		return OutputUtility.transferToOutput(sourceSet, TEST_OUTPUT_FOLDER_NAME, "xmi", includeAllResources).targetSet();
 	}
 	
 	protected void compare(ResourceSet rs) throws Exception {

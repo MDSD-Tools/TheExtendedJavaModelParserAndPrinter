@@ -44,7 +44,9 @@ class ContainersPrinterSwitch extends ContainersSwitch<Boolean> {
 				if (root.getNamespaces().size() > 0) {
 					parent.doSwitch(AnnotationsPackage.Literals.ANNOTABLE, root);
 					String p = root.getNamespacesAsString();
-					p = p.substring(0, p.length() - 1);
+					if (p.length() > 0) {
+						p = p.substring(0, p.length() - 1);
+					}
 					writer.append("package " + p + ";\n\n");
 				}
 				parent.doSwitch(ImportsPackage.Literals.IMPORTING_ELEMENT, root);
@@ -65,7 +67,9 @@ class ContainersPrinterSwitch extends ContainersSwitch<Boolean> {
 				writer.append("open ");
 			}
 			String n = LogicalJavaURIGenerator.packageName(element);
-			n = n.substring(0, n.length() - 1);
+			if (n.length() > 0) {
+				n = n.substring(0, n.length() - 1);
+			}
 			writer.append(n);
 			writer.append(" {\n");
 			for (ModuleDirective dir : element.getTarget()) {

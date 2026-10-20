@@ -42,7 +42,7 @@ public class MethodReferenceExpressionExtension {
 	public static TypeReference getTargetTypeReference(MethodReferenceExpression me) {
 		TypeReference targetType = null;
 		EObject parentContainer = me;
-		while (!(parentContainer.eContainer() instanceof MethodCall
+		while (parentContainer != null && !(parentContainer.eContainer() instanceof MethodCall
 				|| parentContainer.eContainer() instanceof LocalVariable
 				|| parentContainer.eContainer() instanceof AdditionalLocalVariable
 				|| parentContainer.eContainer() instanceof AssignmentExpression
@@ -50,6 +50,9 @@ public class MethodReferenceExpressionExtension {
 				|| parentContainer.eContainer() instanceof Field
 				|| parentContainer.eContainer() instanceof AdditionalField)) {
 			parentContainer = parentContainer.eContainer();
+		}
+		if (parentContainer == null) {
+			return null;
 		}
 		if (parentContainer.eContainer() instanceof MethodCall) {
 			MethodCall call = (MethodCall) parentContainer.eContainer();
