@@ -20,18 +20,18 @@ jobs:
           java-version: 17
           cache: 'maven'
       - name: Build Packages (without tests)
-        run: ./mvnw -P build-deploy clean package -Dmaven.test.skip=true
+        run: cd jamopp-ext.parent && ./mvnw -P build-deploy clean package -Dmaven.test.skip=true
       - name: Build Deploy Path
         shell: bash
         run: echo "DEPLOY_PATH=$( echo '${{ secrets.DEPLOYMENT_REMOTE_TARGET }}/extended-java-model-parser-and-printer' )" >> $GITHUB_ENV
       - name: Release Update Site
-        uses: PalladioSimulator/Palladio-Build-ActionsPipeline-Deployment@v3
+        uses: PalladioSimulator/Palladio-Build-ActionsPipeline-Deployment@master
         with:
           remote-user: ${{ secrets.DEPLOYMENT_REMOTE_USER }}
           remote-host: ${{ secrets.DEPLOYMENT_REMOTE_HOST }}
           remote-port: ${{ secrets.DEPLOYMENT_REMOTE_PORT }}
           server-ssh-key: ${{ secrets.DEPLOYMENT_SERVER_SSH_KEY }}
-          local-source: './jamopp.p2/target/repository/*'
+          local-source: './jamopp-ext.parent/jamopp-ext.p2/target/repository/*'
           remote-target: '${{ env.DEPLOY_PATH }}/release/${{ inputs.release-version }}'
           release-version: ${{ inputs.release-version }}
           link-path: ${{ env.DEPLOY_PATH }}
@@ -47,7 +47,7 @@ jobs:
           gpg-passphrase: MAVEN_GPG_PASSPHRASE
           cache: 'maven'
       - name: Deploy to Apache Maven Central
-        run: mvn -P deploy-mvn-central deploy
+        run: cd jamopp-ext.parent && mvn -P deploy-mvn-central deploy
         env:
           CENTRAL_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
           CENTRAL_PASSWORD: ${{ secrets.CENTRAL_PASSWORD }}
