@@ -1,0 +1,39 @@
+name: docu-wf
+on:
+  push:
+    branches:
+      - 'develop'
+jobs:
+  build-docu:
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: ./jamopp-ext.doc
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+      - name: Build Documentation
+        run: npm ci
+      - run: npm run build
+      - name: Upload Docu Artifacts
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: build
+  deploy-docu:
+    runs-on: ubuntu-24.04
+    needs: build-docu
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy Docu to GitHub Pages
+        uses: actions/deploy-pages@v4
